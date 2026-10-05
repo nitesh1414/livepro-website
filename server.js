@@ -176,6 +176,35 @@ app.delete('/api/testimonials/:id', (req, res) => {
   res.json({ message: "Testimonial deleted successfully" });
 });
 
+// GET / POST / PUT / DELETE Leaders & Mentors (About Us section)
+app.get('/api/leaders', (req, res) => {
+  const db = readDatabase();
+  res.json(db.leaders || []);
+});
+app.post('/api/leaders', (req, res) => {
+  const db = readDatabase();
+  if (!db.leaders) db.leaders = [];
+  const newLeader = { id: `ldr-${Date.now()}`, photo: "", status: "active", order: 10, ...req.body };
+  db.leaders.push(newLeader);
+  db.leaders.sort((a, b) => (a.order || 0) - (b.order || 0));
+  saveDatabase(db);
+  res.status(201).json(newLeader);
+});
+app.put('/api/leaders/:id', (req, res) => {
+  const db = readDatabase();
+  const idx = (db.leaders || []).findIndex(l => l.id === req.params.id);
+  if (idx === -1) return res.status(404).json({ error: "Leader / Mentor not found" });
+  db.leaders[idx] = { ...db.leaders[idx], ...req.body };
+  saveDatabase(db);
+  res.json(db.leaders[idx]);
+});
+app.delete('/api/leaders/:id', (req, res) => {
+  const db = readDatabase();
+  db.leaders = (db.leaders || []).filter(l => l.id !== req.params.id);
+  saveDatabase(db);
+  res.json({ message: "Leader / Mentor profile deleted successfully" });
+});
+
 // GET / POST / PUT / DELETE Inquiries
 app.get('/api/inquiries', (req, res) => {
   const db = readDatabase();

@@ -38,6 +38,7 @@ $settings = get_all_settings();
     <li><a href="panels.php" class="<?= $admin_page === 'panels' ? 'active' : ''; ?>">🧩 Feature &amp; Value Panels</a></li>
     <li><a href="casestudies.php" class="<?= $admin_page === 'casestudies' ? 'active' : ''; ?>">📈 Enterprise Case Studies</a></li>
     <li><a href="projects.php" class="<?= $admin_page === 'projects' ? 'active' : ''; ?>">🏛️ Projects &amp; Clients Portfolio</a></li>
+    <li><a href="leaders.php" class="<?= $admin_page === 'leaders' ? 'active' : ''; ?>">👥 Leaders &amp; Mentors (About)</a></li>
     <li><a href="expertise.php" class="<?= $admin_page === 'expertise' ? 'active' : ''; ?>">🧠 Tech Expertise &amp; Stack</a></li>
     <li><a href="services.php" class="<?= $admin_page === 'services' ? 'active' : ''; ?>">🛠️ IT Capabilities &amp; Services</a></li>
     <li><a href="careers.php" class="<?= $admin_page === 'careers' ? 'active' : ''; ?>">💼 Careers &amp; Job Openings</a></li>

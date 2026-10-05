@@ -1,6 +1,6 @@
 -- ============================================================================
 -- LIVEpro Software Solutions x TCS Enterprise Theme (Facebook Color Scheme)
--- Complete Multipage CMS Portal Database Schema (14 Relational Tables)
+-- Complete Multipage CMS Portal Database Schema (15 Relational Tables)
 -- Pure Corporate IT Consulting, Website & Mobile App Dev, & Client Projects
 -- Database Name: livepro_cms_db
 -- ============================================================================
@@ -327,6 +327,35 @@ INSERT INTO `expertise_areas` (`id`, `title`, `category`, `description`, `tech_l
 (7, 'Embedded Systems & Industrial IoT', 'Embedded Hardware', 'Programming ARM Cortex microcontrollers, RTOS firmware, and wireless MQTT sensor telemetry for industrial manufacturing automation.', 'Embedded C/C++, ARM Cortex AVR, FreeRTOS, MQTT, BLE, Wi-Fi Sensor Interfacing', 'cpu', 96, 'active', 70),
 (8, '24/7 Hardware & Software AMC Maintenance', 'Managed Support', 'Scheduled system diagnostics, database performance tuning, security patch management, and continuous uptime AMC infrastructure contracts.', 'Proactive Health Monitoring, Database Indexing, Patch Management, AMC SLA Contracts', 'server', 98, 'active', 80);
 
+-- 15. leaders_mentors (About Us: Leadership & Mentorship Profiles)
+DROP TABLE IF EXISTS `leaders_mentors`;
+CREATE TABLE `leaders_mentors` (
+  `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(150) NOT NULL,
+  `designation` VARCHAR(180) NOT NULL,
+  `member_type` VARCHAR(30) NOT NULL DEFAULT 'Leader',
+  `bio` TEXT,
+  `photo` VARCHAR(255) DEFAULT '',
+  `expertise` VARCHAR(255) DEFAULT '',
+  `experience_years` VARCHAR(50) DEFAULT '',
+  `email` VARCHAR(190) DEFAULT '',
+  `phone` VARCHAR(60) DEFAULT '',
+  `linkedin_url` VARCHAR(255) DEFAULT '',
+  `twitter_url` VARCHAR(255) DEFAULT '',
+  `status` ENUM('active', 'draft') DEFAULT 'active',
+  `display_order` INT(11) DEFAULT 0,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `leaders_mentors` (`id`, `name`, `designation`, `member_type`, `bio`, `photo`, `expertise`, `experience_years`, `email`, `phone`, `linkedin_url`, `twitter_url`, `status`, `display_order`) VALUES
+(1, 'Nitesh G.', 'Founder & Chief Executive Officer', 'Leader', 'Founded LIVEpro Software Solutions in Nagpur with a simple belief - the right people, at the right time, in the right place can transform how an enterprise runs. Nitesh leads corporate strategy, client partnerships and the long-term technology roadmap across domestic and international engagements.', '', 'Enterprise Strategy, Client Partnerships, Solution Architecture', '18+ Years', 'niteshg@liveprosolutions.com', '+91-940-448-4560', 'https://www.linkedin.com/company/livepro-solutions', '', 'active', 10),
+(2, 'Priya Deshmukh', 'Chief Technology Officer', 'Leader', 'Priya owns the LIVEpro engineering practice - technology standards, architecture reviews and the delivery of high-concurrency web and mobile platforms for corporate clients. She drives the adoption of microservices, cloud-native tooling and secure coding practices across every project pod.', '', 'Java Spring Boot, Microservices, Cloud Architecture (AWS / Azure)', '15+ Years', 'priya.d@liveprosolutions.com', '+91-712-274-0470', 'https://www.linkedin.com/company/livepro-solutions', '', 'active', 20),
+(3, 'Amit Sharma', 'Head of Delivery & Client Success', 'Leader', 'Amit leads delivery governance and client success - sprint planning, risk mitigation, transparent progress reporting and 24/7 AMC support operations. He is the single point of accountability for on-time, on-budget enterprise rollouts.', '', 'Agile Delivery, Project Governance, AMC Support Operations', '13+ Years', 'amit.s@liveprosolutions.com', '+91-956-107-9560', 'https://www.linkedin.com/company/livepro-solutions', '', 'active', 30),
+(4, 'Dr. Sneha Kulkarni', 'Principal Enterprise Architecture Mentor', 'Mentor', 'Dr. Kulkarni mentors senior engineers and architects through live architecture reviews, system design clinics and domain-driven design workshops. She anchors the LIVEpro campus-to-corporate incubator, guiding graduates into production-grade engineering roles.', '', 'System Design, Domain-Driven Design, Architecture Reviews', '20+ Years', 'sneha.k@liveprosolutions.com', '+91-712-274-0470', 'https://www.linkedin.com/company/livepro-solutions', '', 'active', 40),
+(5, 'Rajesh Iyer', 'Cloud & DevOps Mentorship Lead', 'Mentor', 'Rajesh coaches delivery teams on containerization, CI/CD automation, infrastructure-as-code and observability. Under his mentorship, LIVEpro squads ship to production multiple times a day with zero-downtime release pipelines.', '', 'Docker, Kubernetes, Terraform, CI/CD Pipelines', '14+ Years', 'rajesh.i@liveprosolutions.com', '+91-940-448-4560', 'https://www.linkedin.com/company/livepro-solutions', '', 'active', 50),
+(6, 'Farhan Qureshi', 'Mobile & Full-Stack Engineering Mentor', 'Mentor', 'Farhan guides the mobile and full-stack engineering guild - code reviews, API design standards and cross-platform delivery patterns. He runs the internal LIVEpro upskilling bootcamps on Flutter, React Native and Node.js.', '', 'Flutter, React Native, Node.js, API Design', '11+ Years', 'farhan.q@liveprosolutions.com', '+91-956-107-9560', 'https://www.linkedin.com/company/livepro-solutions', '', 'active', 60);
+
 -- ============================================================================
--- END OF DATABASE SCHEMA AND SEEDING (14 TABLES TOTAL - BG_IMAGE ADDED)
+-- END OF DATABASE SCHEMA AND SEEDING (15 TABLES TOTAL - LEADERS_MENTORS ADDED)
 -- ============================================================================

@@ -389,7 +389,141 @@ function get_expertise_by_id($id) {
 }
 
 // ============================================================================
-// 13. SECURITY & AUTHENTICATION
+// 13. LEADERS & MENTORS (ABOUT US PAGE) HELPERS
+// ============================================================================
+
+/**
+ * Idempotent run-time migration: guarantees the `leaders_mentors` table exists.
+ * Existing MySQL / SQLite installations created before this module was added
+ * keep working without a manual schema re-import.
+ */
+function ensure_leaders_mentors_table() {
+    static $done = false;
+    if ($done) {
+        return true;
+    }
+
+    try {
+        $pdo = get_db_connection();
+        $driver = $pdo->getAttribute(PDO::ATTR_DRIVER_NAME);
+
+        if ($driver === 'sqlite') {
+            $pdo->exec("CREATE TABLE IF NOT EXISTS leaders_mentors (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL,
+                designation TEXT NOT NULL,
+                member_type TEXT DEFAULT 'Leader',
+                bio TEXT DEFAULT '',
+                photo TEXT DEFAULT '',
+                expertise TEXT DEFAULT '',
+                experience_years TEXT DEFAULT '',
+                email TEXT DEFAULT '',
+                phone TEXT DEFAULT '',
+                linkedin_url TEXT DEFAULT '',
+                twitter_url TEXT DEFAULT '',
+                status TEXT DEFAULT 'active',
+                display_order INTEGER DEFAULT 0,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+            )");
+        } else {
+            $pdo->exec("CREATE TABLE IF NOT EXISTS `leaders_mentors` (
+              `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+              `name` VARCHAR(150) NOT NULL,
+              `designation` VARCHAR(180) NOT NULL,
+              `member_type` VARCHAR(30) NOT NULL DEFAULT 'Leader',
+              `bio` TEXT,
+              `photo` VARCHAR(255) DEFAULT '',
+              `expertise` VARCHAR(255) DEFAULT '',
+              `experience_years` VARCHAR(50) DEFAULT '',
+              `email` VARCHAR(190) DEFAULT '',
+              `phone` VARCHAR(60) DEFAULT '',
+              `linkedin_url` VARCHAR(255) DEFAULT '',
+              `twitter_url` VARCHAR(255) DEFAULT '',
+              `status` ENUM('active', 'draft') DEFAULT 'active',
+              `display_order` INT(11) DEFAULT 0,
+              `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+              PRIMARY KEY (`id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+        }
+    } catch (PDOException $e) {
+        return false;
+    }
+
+    $done = true;
+    return true;
+}
+
+/**
+ * Fetch Leaders / Mentors for the public About page or the admin panel.
+ *
+ * @param string      $status      'active' | 'draft' | 'all'
+ * @param string|null $member_type 'Leader' | 'Mentor' | 'all' | null
+ * @param int|null    $limit
+ */
+function get_leaders_mentors($status = 'active', $member_type = null, $limit = null) {
+    ensure_leaders_mentors_table();
+    $pdo = get_db_connection();
+    $sql = "SELECT * FROM leaders_mentors WHERE 1=1";
+    $params = [];
+
+    if ($status !== 'all') {
+        $sql .= " AND status = ?";
+        $params[] = $status;
+    }
+    if ($member_type !== null && $member_type !== 'all' && $member_type !== '') {
+        $sql .= " AND member_type = ?";
+        $params[] = $member_type;
+    }
+    $sql .= " ORDER BY display_order ASC, id ASC";
+    if ($limit) {
+        $sql .= " LIMIT " . intval($limit);
+    }
+
+    try {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute($params);
+        return $stmt->fetchAll();
+    } catch (PDOException $e) {
+        return [];
+    }
+}
+
+function get_leader_mentor_by_id($id) {
+    ensure_leaders_mentors_table();
+    $pdo = get_db_connection();
+    $stmt = $pdo->prepare("SELECT * FROM leaders_mentors WHERE id = ?");
+    $stmt->execute([intval($id)]);
+    return $stmt->fetch();
+}
+
+/** Supported profile types (used by the admin form dropdown). */
+function get_leader_mentor_types() {
+    return ['Leader', 'Mentor'];
+}
+
+/** Split the comma separated expertise string into clean tags. */
+function leader_mentor_expertise_list($csv) {
+    $tags = array_filter(array_map('trim', explode(',', (string)$csv)), function ($t) {
+        return $t !== '';
+    });
+    return array_values($tags);
+}
+
+/** Build a 2 letter initials avatar fallback when no photo is uploaded. */
+function leader_mentor_initials($name) {
+    $clean = preg_replace('/\b(dr|mr|mrs|ms|prof|er)\.?\s+/i', '', trim((string)$name));
+    $parts = preg_split('/\s+/', trim($clean));
+    $initials = '';
+    foreach (array_slice($parts, 0, 2) as $part) {
+        if ($part !== '') {
+            $initials .= strtoupper(substr($part, 0, 1));
+        }
+    }
+    return $initials !== '' ? $initials : 'LP';
+}
+
+// ============================================================================
+// 14. SECURITY & AUTHENTICATION
 // ============================================================================
 
 function sanitize($data) {
@@ -436,7 +570,7 @@ function logout_admin() {
 }
 
 // ============================================================================
-// 14. FLASH / TOAST MESSAGES
+// 15. FLASH / TOAST MESSAGES
 // ============================================================================
 
 function flash_message($message, $type = 'success') {

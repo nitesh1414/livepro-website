@@ -1658,3 +1658,221 @@ body.setup-body {
     max-height: none;
   }
 }
+/* ============================================================================
+   LEADERS & MENTORS MODULE (About Us page + Admin panel)
+   Profile cards fully managed from the CMS admin panel
+   ============================================================================ */
+.member-filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.member-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 32px 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.member-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.12);
+  border-color: #c7ddf5;
+}
+
+.member-card[hidden],
+.member-card.is-filtered-out {
+  display: none !important;
+}
+
+.member-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 18px;
+  box-shadow: 0 0 0 3px var(--primary);
+}
+
+.member-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #1a85e8, #0f172a);
+  box-shadow: 0 0 0 3px var(--primary);
+}
+
+.member-card.member-mentor .member-photo,
+.member-card.member-mentor .member-avatar {
+  box-shadow: 0 0 0 3px var(--accent);
+}
+
+.member-card.member-mentor .member-avatar {
+  background: linear-gradient(135deg, #22a316, #0f172a);
+}
+
+.member-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 0 0 6px;
+}
+
+.member-designation {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 0 12px;
+}
+
+.member-card.member-mentor .member-designation {
+  color: var(--accent);
+}
+
+.member-type-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(26, 133, 232, 0.12);
+  color: var(--primary);
+  margin-bottom: 14px;
+}
+
+.member-card.member-mentor .member-type-badge {
+  background: rgba(34, 163, 22, 0.14);
+  color: var(--accent);
+}
+
+.member-experience {
+  display: inline-block;
+  background: #f3f6fa;
+  color: #334155;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+.member-bio {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin: 0 0 18px;
+}
+
+.member-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.member-tag {
+  background: #eef4fd;
+  color: #14548f;
+  border: 1px solid #d5e5f8;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 5px 11px;
+  border-radius: 999px;
+}
+
+.member-card.member-mentor .member-tag {
+  background: #edf8ea;
+  color: #1c7a13;
+  border-color: #d4ebcf;
+}
+
+.member-contact {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid #eef2f7;
+  width: 100%;
+}
+
+.member-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+  background: #f3f6fa;
+  border-radius: 8px;
+  padding: 8px 12px;
+  transition: background 0.2s ease;
+}
+
+.member-contact a:hover {
+  background: #e8f0fe;
+}
+
+.member-empty-state {
+  background: #f3f6fa;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 40px 25px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* Admin list thumbnails */
+.admin-member-thumb {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #dbeafe;
+}
+
+.admin-member-initials {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a85e8, #0f172a);
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 0.9rem;
+}
+
+.admin-member-initials.mentor {
+  background: linear-gradient(135deg, #22a316, #0f172a);
+}

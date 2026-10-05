@@ -4,7 +4,7 @@
 
 Welcome to the **Complete Enterprise CMS Portal Suite** engineered for **LIVEpro Software Solutions** (reference: [https://liveprosolutions.com/](https://liveprosolutions.com/)) with architectural design from **Tata Consultancy Services (TCS.com)** and visual styling harmonized around your **Uploaded Geometric Logo (`logo-LP.png`)** and typographic banner (`logo.png`).
 
-This workspace delivers an enterprise web application structured into **Two Complete Deployment Architectures**, where **EVERY element, section, stat, job posting, project, hero banner image, and expertise domain is 100% manageable via the 13-module CMS Admin Suite**:
+This workspace delivers an enterprise web application structured into **Two Complete Deployment Architectures**, where **EVERY element, section, stat, job posting, project, hero banner image, expertise domain, and leadership profile is 100% manageable via the 14-module CMS Admin Suite**:
 
 ---
 
@@ -43,12 +43,13 @@ This workspace delivers an enterprise web application structured into **Two Comp
    - **24/7 Hardware & Software AMC Maintenance** (Scheduled diagnostics, database tuning, security patch AMCs).
 9. **🏛️ Clients & Projects Portfolio Showcase (`projects.php`)**: Showcases enterprise client deliverables and case studies (*Vidarbha Financial Core Banking Re-Engineering*, *Central Logistics Mobile Fleet Tracking App*, *Butibori Smart Industrial IoT Grid*, *Omnichannel E-Commerce POS Web System*). Features category tabs, client badges, technology stack tags, challenge vs solution breakdowns, and measurable impact results!
 10. **💼 Careers & Job Seekers Portal (`careers.php`)**: A dedicated recruitment portal for job seekers. Lists open corporate engineering positions (Senior Full Stack Web Architect, Senior Mobile App Lead, Python AI Engineer, Embedded R&D Engineer). Includes department filtering and an interactive popup modal with a **1-click Job Application Form** (`name`, `email`, `phone`, `resume_link`, `cover_letter`) that submits directly into the MySQL database!
+11. **👥 Leaders & Mentors Module on the About Us Page (`about.php` + `admin/leaders.php`)**: The About Us page now renders a fully CMS-driven **“The Leaders & Mentors Behind LIVEpro”** section. Add, edit, re-order, publish/unpublish, and delete profiles from the new **Leaders & Mentors** admin module — each card supports a profile photo upload (or automatic initials avatar), designation, type (Leader / Mentor), experience badge, biography, expertise tags, email, phone, LinkedIn and X/Twitter links. Visitors can filter the grid between **All Profiles / Leaders / Mentors**, and only `active` profiles are published to the live site.
 
 ---
 
 ## 🚀 1-Click Automated Database Installer (`install.php`)
 
-We have created an automated system installer, **`install.php`**, designed to set up your entire server environment, create the relational database, execute the 14-table schema, and seed all LIVEpro corporate IT content in seconds!
+We have created an automated system installer, **`install.php`**, designed to set up your entire server environment, create the relational database, execute the 15-table schema, and seed all LIVEpro corporate IT content in seconds!
 
 ### How to Run `install.php`:
 1. Upload the workspace files to your web server root (e.g., `htdocs/livepro/` in XAMPP, `www/` in WAMP/MAMP, or `/var/www/html/` on Linux servers).
@@ -58,13 +59,41 @@ We have created an automated system installer, **`install.php`**, designed to se
    - Select your database mode: **MySQL / MariaDB Production Server** or **SQLite Local Offline Development**.
    - Enter your database host (`localhost`), database name (`livepro_cms_db`), and MySQL username/password.
    - Configure your initial Admin Account (Default demo: Username `admin` / Password `livepro2026`).
-   - Leave **"Seed Database with Complete LIVEpro Corporate IT Content"** checked to populate all 14 tables!
+   - Leave **"Seed Database with Complete LIVEpro Corporate IT Content"** checked to populate all 15 tables!
 5. Click **"🚀 Install Schema & Seed Database Now"**. The installer will:
    - Create database `livepro_cms_db` if missing.
-   - Create all 14 relational tables (`admin_users`, `site_settings`, `hero_banners`, `feature_panels`, `case_studies`, `projects_portfolio`, `expertise_areas`, `services`, `careers`, `job_applications`, `industries`, `blog_posts`, `testimonials`, `inquiries`).
+   - Create all 15 relational tables (`admin_users`, `site_settings`, `hero_banners`, `feature_panels`, `case_studies`, `projects_portfolio`, `expertise_areas`, `services`, `careers`, `job_applications`, `industries`, `blog_posts`, `testimonials`, `inquiries`, `leaders_mentors`).
    - Seed all banners (with background image paths!), capabilities, case studies, client projects, expertise domains, job openings, and site branding.
    - Automatically write and secure your `includes/config.php` file!
 6. **Step 3 — Launch**: You will be presented with a celebration summary screen with direct links to **Launch Public Portal (`index.php`)** or **Enter CMS Admin Suite (`admin/login.php`)**.
+
+---
+
+## 👥 Leaders & Mentors Module (About Us page, CMS driven)
+
+The About Us page (`about.php`) contains a dedicated **“The Leaders & Mentors Behind LIVEpro”** section that is populated **100% from the admin panel** — no HTML editing required.
+
+### Managing Profiles (Admin Panel)
+Open **Admin &rarr; 👥 Leaders & Mentors (About)** (`admin/leaders.php`) to:
+
+| Action | Details |
+| --- | --- |
+| **Add / Edit / Delete** | Full CRUD over every profile, with instant success toasts. |
+| **Profile Type** | `Leader` (blue accent) or `Mentor` (green accent) — drives the badge, card colour and visitor filter. |
+| **Profile Photo** | Upload `jpg / jpeg / png / webp / gif` (stored in `assets/images/leaders/`) **or** paste a relative/external URL. Leave empty for an automatic **initials avatar**. |
+| **Fields** | Full name, designation, experience badge (e.g. `15+ Years`), biography, comma-separated expertise tags, email, phone, LinkedIn URL, X/Twitter URL. |
+| **Publishing** | `Active` publishes the profile on the live About page, `Draft` hides it. Click the status badge in the list to toggle instantly. |
+| **Ordering** | `Display Order` controls the position of the card in the section (lower number = first). |
+
+### Database
+A new 15th table `leaders_mentors` is created by `schema.sql` / `install.php` and seeded with 6 sample profiles (3 Leaders + 3 Mentors) that you can edit or replace.
+
+Existing installations are upgraded automatically: `ensure_leaders_mentors_table()` runs an idempotent `CREATE TABLE IF NOT EXISTS` migration on first use, so no manual SQL import is needed — **just open the new admin module and start adding profiles**.
+
+### Front-end behaviour
+- Active profiles render as responsive cards (photo/initials avatar, name, designation, experience badge, bio, expertise tags and contact buttons).
+- Visitors can filter between **All Profiles / Leaders / Mentors** with a single click.
+- Cards are ordered by `display_order`, and the section gracefully hides itself for visitors until at least one profile is published (logged-in admins always see it, including an empty-state hint).
 
 ---
 
@@ -76,9 +105,9 @@ Engineered for traditional hosting environments (Apache/Nginx, PHP 7.4/8.x, MySQ
 ```text
 ├── install.php                 # 🚀 3-Step Automated System & Database Installer Wizard
 ├── setup.php                   # ⚡ Alternate Quick Setup Helper
-├── schema.sql                  # 🗄️ Complete MySQL Database Dump (14 tables + all default content)
+├── schema.sql                  # 🗄️ Complete MySQL Database Dump (15 tables + all default content)
 ├── index.php                   # 🏠 Public Portal: Home Page (Estimator Calculator, Hero Carousel, Projects)
-├── about.php                   # 🏢 Public Portal: About Us (Two Corporate Sectors & SDLC Methodologies)
+├── about.php                   # 🏢 Public Portal: About Us (Two Corporate Sectors, SDLC Methodologies & Leaders/Mentors)
 ├── expertise.php               # 🧠 Public Portal: Tech Expertise & Agile Methodologies (Live Search & Bars)
 ├── services.php                # 🛠️ Public Portal: Complete IT Capabilities Catalog (Estimator Widget)
 ├── projects.php                # 🏛️ Public Portal: Enterprise Clients & Projects Portfolio Showcase (Impact)
@@ -88,10 +117,10 @@ Engineered for traditional hosting environments (Apache/Nginx, PHP 7.4/8.x, MySQ
 ├── contact.php                 # 📥 Public Portal: Office Location in Nagpur & Interactive PHP POST CRM Form
 ├── includes/
 │   ├── config.php              # ⚙️ PDO Database Connection Wrapper (with smart offline SQLite fallback!)
-│   ├── functions.php           # 📚 Core Library: Settings, 14-table CRUD helpers, Auth, Flash Toasts
+│   ├── functions.php           # 📚 Core Library: Settings, 15-table CRUD helpers, Auth, Flash Toasts
 │   ├── header.php              # 🧩 Reusable HTML Header & Navbar (with logo-LP.png & active highlighting)
 │   └── footer.php              # 🧩 Reusable HTML Footer & Modals
-├── admin/                      # 🔐 13-Module CMS Admin Management Suite
+├── admin/                      # 🔐 14-Module CMS Admin Management Suite
 │   ├── login.php & logout.php  # 🔑 Secure Admin Authentication (Demo: admin / livepro2026)
 │   ├── index.php               # 📊 KPI Dashboard Overview & Recent CRM Leads Feed
 │   ├── settings.php            # ⚙️ Live Site Branding, What's New Ticker, Address, & Hero Stat Manager
@@ -100,6 +129,7 @@ Engineered for traditional hosting environments (Apache/Nginx, PHP 7.4/8.x, MySQ
 │   ├── casestudies.php         # 📈 Enterprise Case Studies CRUD Manager (Analyst Reports, Metrics)
 │   ├── projects.php            # 🏛️ Enterprise Client Projects CRUD Manager (Impact & Tech Stack)
 │   ├── expertise.php           # 🧠 Technological Expertise CRUD Manager (Proficiency levels)
+│   ├── leaders.php             # 👥 Leaders & Mentors CRUD Manager (About Us page: photos, bios, socials)
 │   ├── services.php            # 🛠️ IT Capabilities CRUD Manager (Add, Edit, Delete, Toggle Status)
 │   ├── careers.php             # 💼 Careers & Job Openings CRUD Manager (Salary, Experience)
 │   ├── applications.php        # 📄 Job Applications CRM (Review candidates, Mailto, WhatsApp)
@@ -148,7 +178,7 @@ To access the backend admin control panel:
 
 For immediate interactive evaluation without running any PHP web server:
 - Open `index.html` directly in any web browser or Arena viewer.
-- Features the exact same **Uploaded Logo-LP.png + Matching Typography + Harmonized LP Color Theme + TCS Enterprise Theme + Complete-Width Background Images + LIVEpro Corporate IT content** across ALL portals (including Expertise, Projects, and Careers) and includes the complete **13-module CMS Admin Dashboard** operating via reactive HTML5, CSS3, and JavaScript with localStorage data persistence (`livepro_lp_logo_cms_db_v6`).
+- Features the exact same **Uploaded Logo-LP.png + Matching Typography + Harmonized LP Color Theme + TCS Enterprise Theme + Complete-Width Background Images + LIVEpro Corporate IT content** across ALL portals (including Expertise, Projects, and Careers) and includes the complete **14-module CMS Admin Dashboard** operating via reactive HTML5, CSS3, and JavaScript with localStorage data persistence (`livepro_lp_logo_cms_db_v6`).
 
 ---
 *Developed for LIVEpro Software Solutions • Copyright © 2026 All Rights Reserved.*

@@ -101,6 +101,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a onclick="showPublicView(); scrollToSection('home')" class="active">Home</a></li>
         <li><a onclick="showPublicView(); scrollToSection('about')">About Us</a></li>
+        <li><a onclick="showPublicView(); scrollToSection('leaders')">Leadership</a></li>
         <li><a onclick="showPublicView(); scrollToSection('expertise')">Our Expertise</a></li>
         <li><a onclick="showPublicView(); scrollToSection('services')">IT Services</a></li>
         <li><a onclick="showPublicView(); scrollToSection('projects')">Clients &amp; Projects</a></li>
@@ -291,6 +292,25 @@
             necessary insight and skills for business situations worldwide.</p>
         </div>
         <div class="grid grid-2" style="gap: 40px;" id="foundationSectorsContainer"></div>
+      </div>
+    </section>
+
+    <!-- LEADERSHIP & MENTORSHIP (MANAGED FROM CMS ADMIN PANEL) -->
+    <section style="background: var(--bg-light);" id="leaders">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-primary">Leadership &amp; Mentorship</span>
+          <h2 class="section-title">The Leaders &amp; Mentors Behind LIVEpro</h2>
+          <p class="section-desc">Our leadership team owns strategy, architecture and delivery governance, while our
+            mentors coach every engineering pod - from campus incubator graduates to senior architects. Every profile
+            is published from the CMS dashboard.</p>
+        </div>
+        <div class="member-filter-bar" id="leaderFilterTabs">
+          <button class="btn btn-primary" onclick="filterLeaders('All', this)">All Profiles</button>
+          <button class="btn btn-outline" onclick="filterLeaders('Leader', this)">👔 Leaders</button>
+          <button class="btn btn-outline" onclick="filterLeaders('Mentor', this)">🎓 Mentors</button>
+        </div>
+        <div class="member-grid" id="leadersGridContainer"></div>
       </div>
     </section>
 
@@ -584,6 +604,7 @@
           <span class="badge badge-warning" id="sidebarInquiryCount"
             style="background: var(--danger); color: white;">0</span>
         </button>
+        <button class="cms-nav-item" onclick="switchCmsTab('leaders', this)">👥 Leaders &amp; Mentors (About)</button>
       </nav>
 
       <div style="padding: 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: auto;">
@@ -633,6 +654,16 @@
             <div>
               <h3 id="statTotalExpertise" style="font-size: 1.6rem; font-weight: 900; margin: 0;">0</h3>
               <p style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; margin: 0;">Expertise Areas</p>
+            </div>
+          </div>
+          <div
+            style="background: white; padding: 20px; border-radius: var(--radius); border: 1px solid var(--border-color); display: flex; align-items: center; gap: 15px;">
+            <div
+              style="width: 48px; height: 48px; border-radius: 12px; background: rgba(34,163,22,0.15); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+              👥</div>
+            <div>
+              <h3 id="statTotalLeaders" style="font-size: 1.6rem; font-weight: 900; margin: 0;">0</h3>
+              <p style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; margin: 0;">Leaders &amp; Mentors</p>
             </div>
           </div>
           <div
@@ -1078,6 +1109,42 @@
         </div>
       </div>
 
+      <!-- TAB 14: LEADERS & MENTORS (ABOUT US PAGE) -->
+      <div class="cms-tab-content" id="tab-leaders" style="display: none;">
+        <div class="cms-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 12px;">
+            <h2 style="font-size: 1.25rem; font-weight: 700; margin: 0;">Leaders &amp; Mentors (About Us Section)</h2>
+            <div style="display: flex; gap: 10px; align-items: center;">
+              <select class="form-control" style="width: 170px; padding: 6px 12px;" onchange="filterCmsLeaders(this.value)">
+                <option value="all">All Profile Types</option>
+                <option value="Leader">Leaders Only</option>
+                <option value="Mentor">Mentors Only</option>
+              </select>
+              <button class="btn btn-primary btn-sm" onclick="openLeaderModal()">+ Add Leader / Mentor</button>
+            </div>
+          </div>
+          <p style="background: #e7f3ff; border-left: 4px solid var(--primary); color: var(--text-main); font-size: 0.85rem; padding: 12px 16px; border-radius: 6px; margin-bottom: 20px;">
+            ℹ️ Active profiles are published automatically inside the <strong>“The Leaders &amp; Mentors Behind LIVEpro”</strong> section of the About Us page (grouped as Leaders and Mentors).
+          </p>
+          <div style="overflow-x: auto;">
+            <table class="cms-table">
+              <thead>
+                <tr>
+                  <th>Order</th>
+                  <th>Profile</th>
+                  <th>Type</th>
+                  <th>Expertise</th>
+                  <th>Contact</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="cmsLeadersTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
     </main>
   </div>
   <!-- ================= END CMS ADMIN DASHBOARD ================= -->
@@ -1475,6 +1542,70 @@
     </div>
   </div>
 
+  <!-- LEADER / MENTOR MODAL (ABOUT US SECTION) -->
+  <div class="modal-overlay" id="leaderModal">
+    <div class="modal-content" style="max-width: 720px;">
+      <div class="modal-header">
+        <h3 id="leaderModalTitle" style="font-size: 1.4rem; font-weight: 800; margin: 0;">Add Leader / Mentor</h3>
+        <button class="modal-close" onclick="closeModal('leaderModal')">×</button>
+      </div>
+      <form onsubmit="handleLeaderSave(event)"><input type="hidden" id="ldrId">
+        <div class="grid grid-3 gap-4">
+          <div class="form-group"><label>Full Name *</label><input type="text" id="ldrName" class="form-control"
+              placeholder="e.g. Priya Deshmukh" required></div>
+          <div class="form-group"><label>Profile Type *</label><select id="ldrType" class="form-control">
+              <option value="Leader">👔 Leader</option>
+              <option value="Mentor">🎓 Mentor</option>
+            </select></div>
+          <div class="form-group"><label>Display Order</label><input type="number" id="ldrOrder" class="form-control"
+              value="10"></div>
+        </div>
+        <div class="grid grid-2 gap-4">
+          <div class="form-group"><label>Designation / Title *</label><input type="text" id="ldrDesignation"
+              class="form-control" placeholder="e.g. Chief Technology Officer" required></div>
+          <div class="form-group"><label>Experience Badge</label><input type="text" id="ldrExperience" class="form-control"
+              placeholder="e.g. 15+ Years"></div>
+        </div>
+        <div class="form-group"><label>Short Biography *</label><textarea id="ldrBio" class="form-control" rows="3"
+            placeholder="Role, focus areas and contribution to LIVEpro..." required></textarea></div>
+        <div class="form-group"><label>Expertise / Specialities (comma separated)</label><input type="text"
+            id="ldrExpertise" class="form-control" placeholder="Java Spring Boot, Microservices, Cloud Architecture"></div>
+        <div class="form-group"><label>Profile Photo (upload or paste image URL)</label>
+          <div class="grid grid-2 gap-4" style="align-items: center;">
+            <input type="file" id="ldrPhotoFile" class="form-control" accept="image/*" onchange="handleLeaderPhotoUpload(event)">
+            <input type="text" id="ldrPhoto" class="form-control" placeholder="assets/images/leaders/photo.jpg">
+          </div>
+          <div style="margin-top: 10px; display: flex; align-items: center; gap: 12px;">
+            <img id="ldrPhotoPreview" src="" alt="Profile preview"
+              style="width: 54px; height: 54px; border-radius: 50%; object-fit: cover; display: none; border: 2px solid var(--primary);">
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Leave empty to auto-generate an initials avatar.</span>
+            <label style="display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--text-muted);">
+              <input type="checkbox" id="ldrPhotoClear"> Remove photo
+            </label>
+          </div>
+        </div>
+        <div class="grid grid-2 gap-4">
+          <div class="form-group"><label>Email</label><input type="email" id="ldrEmail" class="form-control"
+              placeholder="name@liveprosolutions.com"></div>
+          <div class="form-group"><label>Phone</label><input type="text" id="ldrPhone" class="form-control"
+              placeholder="+91-712-274-0470"></div>
+          <div class="form-group"><label>LinkedIn URL</label><input type="text" id="ldrLinkedin" class="form-control"
+              placeholder="https://www.linkedin.com/in/username"></div>
+          <div class="form-group"><label>X / Twitter URL</label><input type="text" id="ldrTwitter" class="form-control"
+              placeholder="https://twitter.com/username"></div>
+        </div>
+        <div class="form-group"><label>Status</label><select id="ldrStatus" class="form-control">
+            <option value="active">Active (published on About Us page)</option>
+            <option value="draft">Draft (hidden)</option>
+          </select></div>
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+          <button type="button" class="btn btn-outline" onclick="closeModal('leaderModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Profile</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- VIEW DETAIL MODAL -->
   <div class="modal-overlay" id="viewDetailModal">
     <div class="modal-content">
@@ -1602,6 +1733,14 @@
         { id: "srv-7", title: "Custom Software & Desktop Applications", category: "Corporate IT", shortDesc: "Tailored desktop software, warehouse management systems (WMS), inventory tracking ERPs, and bespoke business automation suites.", fullDesc: "We design and program customized standalone desktop applications for Windows, macOS, and Linux that integrate seamlessly with local hardware peripherals, barcode scanners, and central databases.", status: "active", order: 70 }
       ],
       industries: ["Banking & Financial Services", "eCommerce & Retail", "Healthcare & Medical", "Entertainment & Media", "Embedded Systems", "Logistics & Supply Chain", "Human Resource & Staffing", "Insurance Services", "IT Enabled Services (ITES)", "Networking & Telecomm", "Pharmaceuticals", "Real Time Control Systems", "Travel & Transportation", "Recruiting Firms", "Education & Academic Enablement", "Government & PSU"],
+      leaders: [
+        { id: "ldr-1", name: "Nitesh G.", designation: "Founder & Chief Executive Officer", type: "Leader", bio: "Founded LIVEpro Software Solutions in Nagpur with a simple belief - the right people, at the right time, in the right place can transform how an enterprise runs. Nitesh leads corporate strategy, client partnerships and the long-term technology roadmap across domestic and international engagements.", photo: "", expertise: "Enterprise Strategy, Client Partnerships, Solution Architecture", experience: "18+ Years", email: "niteshg@liveprosolutions.com", phone: "+91-940-448-4560", linkedin: "https://www.linkedin.com/company/livepro-solutions", twitter: "", order: 10, status: "active" },
+        { id: "ldr-2", name: "Priya Deshmukh", designation: "Chief Technology Officer", type: "Leader", bio: "Priya owns the LIVEpro engineering practice - technology standards, architecture reviews and the delivery of high-concurrency web and mobile platforms for corporate clients. She drives the adoption of microservices, cloud-native tooling and secure coding practices across every project pod.", photo: "", expertise: "Java Spring Boot, Microservices, Cloud Architecture (AWS / Azure)", experience: "15+ Years", email: "priya.d@liveprosolutions.com", phone: "+91-712-274-0470", linkedin: "https://www.linkedin.com/company/livepro-solutions", twitter: "", order: 20, status: "active" },
+        { id: "ldr-3", name: "Amit Sharma", designation: "Head of Delivery & Client Success", type: "Leader", bio: "Amit leads delivery governance and client success - sprint planning, risk mitigation, transparent progress reporting and 24/7 AMC support operations. He is the single point of accountability for on-time, on-budget enterprise rollouts.", photo: "", expertise: "Agile Delivery, Project Governance, AMC Support Operations", experience: "13+ Years", email: "amit.s@liveprosolutions.com", phone: "+91-956-107-9560", linkedin: "https://www.linkedin.com/company/livepro-solutions", twitter: "", order: 30, status: "active" },
+        { id: "ldr-4", name: "Dr. Sneha Kulkarni", designation: "Principal Enterprise Architecture Mentor", type: "Mentor", bio: "Dr. Kulkarni mentors senior engineers and architects through live architecture reviews, system design clinics and domain-driven design workshops. She anchors the LIVEpro campus-to-corporate incubator, guiding graduates into production-grade engineering roles.", photo: "", expertise: "System Design, Domain-Driven Design, Architecture Reviews", experience: "20+ Years", email: "sneha.k@liveprosolutions.com", phone: "+91-712-274-0470", linkedin: "https://www.linkedin.com/company/livepro-solutions", twitter: "", order: 40, status: "active" },
+        { id: "ldr-5", name: "Rajesh Iyer", designation: "Cloud & DevOps Mentorship Lead", type: "Mentor", bio: "Rajesh coaches delivery teams on containerization, CI/CD automation, infrastructure-as-code and observability. Under his mentorship, LIVEpro squads ship to production multiple times a day with zero-downtime release pipelines.", photo: "", expertise: "Docker, Kubernetes, Terraform, CI/CD Pipelines", experience: "14+ Years", email: "rajesh.i@liveprosolutions.com", phone: "+91-940-448-4560", linkedin: "https://www.linkedin.com/company/livepro-solutions", twitter: "", order: 50, status: "active" },
+        { id: "ldr-6", name: "Farhan Qureshi", designation: "Mobile & Full-Stack Engineering Mentor", type: "Mentor", bio: "Farhan guides the mobile and full-stack engineering guild - code reviews, API design standards and cross-platform delivery patterns. He runs the internal LIVEpro upskilling bootcamps on Flutter, React Native and Node.js.", photo: "", expertise: "Flutter, React Native, Node.js, API Design", experience: "11+ Years", email: "farhan.q@liveprosolutions.com", phone: "+91-956-107-9560", linkedin: "https://www.linkedin.com/company/livepro-solutions", twitter: "", order: 60, status: "active" }
+      ],
       posts: [
         { id: "pst-1", title: "Why Modern Website Development Architecture Requires API Decoupling", category: "Web Development", date: "2026-06-15", author: "Nitesh G.", excerpt: "Discover how separating frontend UI presentation from backend database logic transforms corporate website performance and security.", content: "At LIVEpro Software Solutions, we recognize that traditional monolithic website architectures struggle under modern traffic demands. By decoupling frontend web applications built in React or Next.js from backend microservices running in Spring Boot or Node.js, enterprises achieve instant page loads, robust DDoS protection, and seamless mobile app integration.\n\nOur engineering division in Nagpur specializes in migrating legacy corporate websites to modern cloud-native web architectures.", status: "published" },
         { id: "pst-2", title: "The Rise of Cross-Platform Mobile App Development in Enterprise IT", category: "Mobile Apps", date: "2026-05-28", author: "Tech Solutions Team", excerpt: "How Flutter and React Native are allowing corporate organizations to deploy high-performance iOS and Android mobile apps in half the time.", content: "In today's mobile-first business environment, corporate clients require native-quality mobile applications for both iOS and Android without doubling their engineering budgets.\n\nLIVEpro's Mobile App Development division utilizes modern cross-platform frameworks like Flutter and React Native to build unified codebases that deliver native performance, GPS hardware access, offline synchronization, and bank-grade encryption.", status: "published" }
@@ -1623,6 +1762,8 @@
     let currentCareerFilter = "All";
     let currentInquiryFilter = "all";
     let currentAppFilter = "all";
+    let currentLeaderFilter = "All";
+    let currentLeaderCmsFilter = "all";
 
     function initDatabase() {
       const stored = localStorage.getItem("livepro_lp_logo_cms_db_v6");
@@ -1642,6 +1783,7 @@
           if (!cmsData.posts) cmsData.posts = DEFAULT_DATA.posts;
           if (!cmsData.testimonials) cmsData.testimonials = DEFAULT_DATA.testimonials;
           if (!cmsData.inquiries) cmsData.inquiries = DEFAULT_DATA.inquiries;
+          if (!cmsData.leaders) cmsData.leaders = DEFAULT_DATA.leaders;
         } catch (e) {
           cmsData = JSON.parse(JSON.stringify(DEFAULT_DATA));
         }
@@ -1658,7 +1800,7 @@
     }
 
     function resetDemoData() {
-      if (confirm("Reset all 14 corporate IT tables back to initial LIVEpro x LP Geometric Logo Theme Demo State?")) {
+      if (confirm("Reset all 15 corporate IT tables (incl. Leaders &amp; Mentors) back to initial LIVEpro x LP Geometric Logo Theme Demo State?")) {
         cmsData = JSON.parse(JSON.stringify(DEFAULT_DATA));
         saveDatabase();
         showToast("Database reset to initial demo state!", "success");
@@ -1697,6 +1839,7 @@
       renderPublicBanners();
       renderPublicCaseStudies();
       renderPublicFoundation();
+      renderPublicLeaders();
       renderPublicProjects();
       renderPublicExpertise();
       renderPublicServices();
@@ -1705,6 +1848,7 @@
       renderPublicBlog();
       renderPublicTestimonials();
       renderCmsDashboard();
+      renderCmsLeaders();
       calculateEstimate();
     }
 
@@ -1823,6 +1967,61 @@
           <a onclick="scrollToSection('services')" class="btn btn-accent">Explore AMC &amp; Support Services &rarr;</a>
         </div>
       `;
+    }
+
+    // LEADERSHIP & MENTORSHIP SECTION (ABOUT US - 100% CMS MANAGED)
+    function memberInitials(name) {
+      const parts = String(name || '').replace(/\b(Dr|Mr|Mrs|Ms|Prof)\.?\s+/gi, '').trim().split(/\s+/).filter(Boolean);
+      if (!parts.length) return 'LP';
+      return ((parts[0] || 'L').charAt(0) + (parts[1] || '').charAt(0)).toUpperCase() || 'LP';
+    }
+
+    function renderPublicLeaders() {
+      const container = document.getElementById("leadersGridContainer");
+      if (!container) return;
+
+      const members = (cmsData.leaders || [])
+        .filter(m => m.status === 'active')
+        .filter(m => currentLeaderFilter === 'All' || m.type === currentLeaderFilter)
+        .sort((a, b) => (a.order || 0) - (b.order || 0));
+
+      const html = members.map(m => {
+        const tags = String(m.expertise || '').split(',').map(t => t.trim()).filter(Boolean);
+        const avatar = m.photo
+          ? `<img class="member-photo" src="${m.photo}" alt="${m.name}" loading="lazy" onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='flex';}"><div class="member-avatar" style="display:none;">${memberInitials(m.name)}</div>`
+          : `<div class="member-avatar">${memberInitials(m.name)}</div>`;
+        const contacts = [
+          m.email ? `<a href="mailto:${m.email}" title="Email ${m.name}">✉️ Email</a>` : '',
+          m.phone ? `<a href="tel:${String(m.phone).replace(/[^0-9+]/g, '')}" title="Call ${m.name}">📞 Call</a>` : '',
+          m.linkedin ? `<a href="${m.linkedin}" target="_blank" rel="noopener" title="LinkedIn Profile">in LinkedIn</a>` : '',
+          m.twitter ? `<a href="${m.twitter}" target="_blank" rel="noopener" title="X / Twitter Profile">𝕏 Profile</a>` : ''
+        ].filter(Boolean).join('');
+
+        return `
+          <article class="member-card member-${m.type === 'Mentor' ? 'mentor' : 'leader'}" data-member-type="${m.type}">
+            ${avatar}
+            <span class="member-type-badge">${m.type}</span>
+            <h3 class="member-name">${m.name}</h3>
+            <p class="member-designation">${m.designation}</p>
+            ${m.experience ? `<span class="member-experience">⭐ ${m.experience} of experience</span>` : ''}
+            ${m.bio ? `<p class="member-bio">${m.bio}</p>` : ''}
+            ${tags.length ? `<div class="member-tags">${tags.map(t => `<span class="member-tag">${t}</span>`).join('')}</div>` : ''}
+            ${contacts ? `<div class="member-contact">${contacts}</div>` : ''}
+          </article>`;
+      }).join('');
+
+      container.innerHTML = html || `
+        <div class="member-empty-state" style="grid-column: 1 / -1;">
+          <strong>No leadership profiles published yet.</strong><br>
+          Publish Leaders or Mentors from the CMS Dashboard &rarr; <em>Leaders &amp; Mentors (About)</em> tab and they appear here instantly.
+        </div>`;
+    }
+
+    function filterLeaders(type, btn) {
+      currentLeaderFilter = type;
+      document.querySelectorAll('#leaderFilterTabs button').forEach(b => { b.className = 'btn btn-outline'; });
+      if (btn) btn.className = 'btn btn-primary';
+      renderPublicLeaders();
     }
 
     // PROJECTS PORTFOLIO SHOWCASE
@@ -2040,6 +2239,7 @@
     function renderCmsDashboard() {
       document.getElementById("statTotalServices").textContent = cmsData.services.length;
       document.getElementById("statTotalExpertise").textContent = cmsData.expertise.length;
+      document.getElementById("statTotalLeaders").textContent = (cmsData.leaders || []).length;
       document.getElementById("statTotalProjects").textContent = cmsData.projects.length;
       document.getElementById("statTotalCareers").textContent = cmsData.careers.length;
       document.getElementById("statTotalApps").textContent = cmsData.applications.length;
@@ -2377,6 +2577,167 @@
     }
     function deleteTestimonial(id) { if (confirm("Delete testimonial?")) { cmsData.testimonials = cmsData.testimonials.filter(x => x.id !== id); saveDatabase(); showToast("Testimonial deleted.", "success"); } }
 
+    // LEADERS & MENTORS CRUD (ABOUT US SECTION)
+    function renderCmsLeaders() {
+      const tbody = document.getElementById("cmsLeadersTableBody");
+      if (!tbody) return;
+      const rows = (cmsData.leaders || [])
+        .filter(m => currentLeaderCmsFilter === 'all' || m.type === currentLeaderCmsFilter)
+        .sort((a, b) => (a.order || 0) - (b.order || 0));
+
+      tbody.innerHTML = rows.map(m => {
+        const contacts = [
+          m.email ? `<a href="mailto:${m.email}" style="color: var(--primary);">✉️</a>` : '',
+          m.phone ? `<span title="${m.phone}">📞</span>` : '',
+          m.linkedin ? `<a href="${m.linkedin}" target="_blank" style="color: var(--primary);">in</a>` : ''
+        ].filter(Boolean).join(' ') || '<span style="color: var(--text-muted);">—</span>';
+
+        const avatar = m.photo
+          ? `<img src="${m.photo}" alt="${m.name}" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid #dbeafe;" onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='flex';}"><div class="admin-member-initials ${m.type === 'Mentor' ? 'mentor' : ''}" style="display:none;">${memberInitials(m.name)}</div>`
+          : `<div class="admin-member-initials ${m.type === 'Mentor' ? 'mentor' : ''}">${memberInitials(m.name)}</div>`;
+
+        return `
+          <tr>
+            <td><strong>#${m.order || 0}</strong></td>
+            <td style="display: flex; align-items: center; gap: 12px;">
+              ${avatar}
+              <div><strong>${m.name}</strong><br><span style="font-size: 0.8rem; color: var(--text-muted);">${m.designation}</span></div>
+            </td>
+            <td><span class="badge ${m.type === 'Mentor' ? 'badge-accent' : 'badge-primary'}">${String(m.type).toUpperCase()}</span></td>
+            <td style="max-width: 220px; font-size: 0.78rem; color: var(--text-muted);">${m.expertise || '—'}</td>
+            <td style="font-size: 0.85rem;">${contacts}</td>
+            <td>
+              <button class="badge ${m.status === 'active' ? 'badge-accent' : 'badge-warning'}" style="border: none; cursor: pointer;"
+                onclick="toggleLeaderStatus('${m.id}')" title="Click to toggle status">${String(m.status).toUpperCase()}</button>
+            </td>
+            <td>
+              <div style="display: flex; gap: 8px;">
+                <button class="btn btn-outline btn-sm" onclick="editLeader('${m.id}')">Edit</button>
+                <button class="btn btn-danger btn-sm" onclick="deleteLeader('${m.id}')">Delete</button>
+              </div>
+            </td>
+          </tr>`;
+      }).join('') || `<tr><td colspan="7" class="text-center" style="padding: 25px; color: var(--text-muted);">No Leaders or Mentors added yet. Click <strong>+ Add Leader / Mentor</strong> to create the first profile.</td></tr>`;
+    }
+
+    function filterCmsLeaders(type) {
+      currentLeaderCmsFilter = type;
+      renderCmsLeaders();
+    }
+
+    function toggleLeaderStatus(id) {
+      const m = (cmsData.leaders || []).find(x => x.id === id);
+      if (!m) return;
+      m.status = (m.status === 'active') ? 'draft' : 'active';
+      saveDatabase();
+      showToast(`Profile is now ${m.status.toUpperCase()}.`, "success");
+    }
+
+    function openLeaderModal() {
+      document.getElementById("ldrId").value = "";
+      document.getElementById("ldrName").value = "";
+      document.getElementById("ldrType").value = "Leader";
+      document.getElementById("ldrDesignation").value = "";
+      document.getElementById("ldrExperience").value = "";
+      document.getElementById("ldrBio").value = "";
+      document.getElementById("ldrExpertise").value = "";
+      document.getElementById("ldrPhoto").value = "";
+      document.getElementById("ldrPhotoFile").value = "";
+      document.getElementById("ldrEmail").value = "";
+      document.getElementById("ldrPhone").value = "";
+      document.getElementById("ldrLinkedin").value = "";
+      document.getElementById("ldrTwitter").value = "";
+      document.getElementById("ldrStatus").value = "active";
+      document.getElementById("ldrOrder").value = 10;
+      document.getElementById("ldrPhotoClear").checked = false;
+      setLeaderPhotoPreview("");
+      document.getElementById("leaderModalTitle").textContent = "Add Leader / Mentor";
+      openModal('leaderModal');
+    }
+
+    function editLeader(id) {
+      const m = (cmsData.leaders || []).find(x => x.id === id);
+      if (!m) return;
+      document.getElementById("ldrId").value = m.id;
+      document.getElementById("ldrName").value = m.name;
+      document.getElementById("ldrType").value = m.type;
+      document.getElementById("ldrDesignation").value = m.designation;
+      document.getElementById("ldrExperience").value = m.experience || "";
+      document.getElementById("ldrBio").value = m.bio || "";
+      document.getElementById("ldrExpertise").value = m.expertise || "";
+      document.getElementById("ldrPhoto").value = m.photo || "";
+      document.getElementById("ldrPhotoFile").value = "";
+      document.getElementById("ldrEmail").value = m.email || "";
+      document.getElementById("ldrPhone").value = m.phone || "";
+      document.getElementById("ldrLinkedin").value = m.linkedin || "";
+      document.getElementById("ldrTwitter").value = m.twitter || "";
+      document.getElementById("ldrStatus").value = m.status || "active";
+      document.getElementById("ldrOrder").value = m.order || 10;
+      document.getElementById("ldrPhotoClear").checked = false;
+      setLeaderPhotoPreview(m.photo || "");
+      document.getElementById("leaderModalTitle").textContent = "Edit Leader / Mentor Profile";
+      openModal('leaderModal');
+    }
+
+    function setLeaderPhotoPreview(src) {
+      const preview = document.getElementById("ldrPhotoPreview");
+      if (!preview) return;
+      if (src) { preview.src = src; preview.style.display = "block"; }
+      else { preview.removeAttribute("src"); preview.style.display = "none"; }
+    }
+
+    function handleLeaderPhotoUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        document.getElementById("ldrPhoto").value = e.target.result; // base64 data URI (standalone mode)
+        setLeaderPhotoPreview(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function handleLeaderSave(event) {
+      event.preventDefault();
+      const id = document.getElementById("ldrId").value;
+      const photoField = document.getElementById("ldrPhoto").value;
+      const existing = id ? (cmsData.leaders || []).find(x => x.id === id) : null;
+      const obj = {
+        id: id || `ldr-${Date.now()}`,
+        name: document.getElementById("ldrName").value,
+        type: document.getElementById("ldrType").value,
+        designation: document.getElementById("ldrDesignation").value,
+        experience: document.getElementById("ldrExperience").value,
+        bio: document.getElementById("ldrBio").value,
+        expertise: document.getElementById("ldrExpertise").value,
+        photo: document.getElementById("ldrPhotoClear").checked ? "" : photoField,
+        email: document.getElementById("ldrEmail").value,
+        phone: document.getElementById("ldrPhone").value,
+        linkedin: document.getElementById("ldrLinkedin").value,
+        twitter: document.getElementById("ldrTwitter").value,
+        status: document.getElementById("ldrStatus").value,
+        order: parseInt(document.getElementById("ldrOrder").value) || 10
+      };
+      if (id && existing) {
+        const idx = cmsData.leaders.findIndex(x => x.id === id);
+        if (idx !== -1) cmsData.leaders[idx] = obj;
+      } else {
+        cmsData.leaders.push(obj);
+      }
+      cmsData.leaders.sort((a, b) => (a.order || 0) - (b.order || 0));
+      saveDatabase();
+      closeModal('leaderModal');
+      showToast(id ? "Leader / Mentor profile updated!" : "New Leader / Mentor published on the About Us page!", "success");
+    }
+
+    function deleteLeader(id) {
+      if (confirm("Delete this Leader / Mentor profile permanently?")) {
+        cmsData.leaders = (cmsData.leaders || []).filter(x => x.id !== id);
+        saveDatabase();
+        showToast("Profile deleted.", "success");
+      }
+    }
+
     /* ---------------- PUBLIC INQUIRY SUBMISSION ---------------- */
     function handlePublicInquirySubmit(event) {
       event.preventDefault();
@@ -2428,7 +2789,7 @@
     function showCmsView() { document.getElementById("publicView").style.display = "none"; document.getElementById("cmsView").classList.add("active"); document.getElementById("newsTickerBar").style.display = "none"; document.querySelector("#cmsToggleBtn span").textContent = "🌐 Public View"; window.scrollTo(0, 0); }
     function showPublicView() { document.getElementById("publicView").style.display = "block"; document.getElementById("cmsView").classList.remove("active"); document.getElementById("newsTickerBar").style.display = "flex"; document.querySelector("#cmsToggleBtn span").textContent = "🛡️ CMS Dashboard"; window.scrollTo(0, 0); }
     function handleAdminLogin(event) { event.preventDefault(); const u = document.getElementById("loginUser").value; const p = document.getElementById("loginPass").value; if (u === "admin" && p === "livepro2026") { isAdminLoggedIn = true; closeModal('loginModal'); showToast("Welcome back, System Administrator! Entering CMS Suite...", "success"); showCmsView(); } else { showToast("Invalid credentials. Use admin / livepro2026", "error"); } }
-    function switchCmsTab(tabId, el) { document.querySelectorAll(".cms-tab-content").forEach(c => c.style.display = "none"); document.querySelectorAll(".cms-nav-item").forEach(i => i.classList.remove("active")); const target = document.getElementById(`tab-${tabId}`); if (target) target.style.display = "block"; if (el) el.classList.add("active"); const titles = { overview: "Dashboard Overview", settings: "Site Brand & Top Bar", banners: "Hero Banners Carousel", panels: "Feature & Value Panels", casestudies: "Enterprise Case Studies", projects: "Projects Portfolio", expertise: "Tech Expertise & Stack", services: "IT Capabilities & Services", careers: "Careers & Job Openings", applications: "Job Applications CRM", posts: "Thought Leadership Blog", testimonials: "Testimonials & Reviews", inquiries: "CRM Leads Engine" }; document.getElementById("cmsTabTitle").textContent = titles[tabId] || "CMS Dashboard"; }
+    function switchCmsTab(tabId, el) { document.querySelectorAll(".cms-tab-content").forEach(c => c.style.display = "none"); document.querySelectorAll(".cms-nav-item").forEach(i => i.classList.remove("active")); const target = document.getElementById(`tab-${tabId}`); if (target) target.style.display = "block"; if (el) el.classList.add("active"); const titles = { overview: "Dashboard Overview", settings: "Site Brand & Top Bar", banners: "Hero Banners Carousel", panels: "Feature & Value Panels", casestudies: "Enterprise Case Studies", projects: "Projects Portfolio", expertise: "Tech Expertise & Stack", services: "IT Capabilities & Services", careers: "Careers & Job Openings", applications: "Job Applications CRM", posts: "Thought Leadership Blog", testimonials: "Testimonials & Reviews", inquiries: "CRM Leads Engine", leaders: "Leaders & Mentors (About Us)" }; document.getElementById("cmsTabTitle").textContent = titles[tabId] || "CMS Dashboard"; }
     function toggleMobileMenu(e) { if (e) e.stopPropagation(); const nav = document.getElementById("navLinks"); if (nav) nav.classList.toggle("active"); }
     function openModal(id) { document.getElementById(id).classList.add("active"); }
     function closeModal(id) { document.getElementById(id).classList.remove("active"); }

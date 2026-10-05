@@ -8,10 +8,26 @@
     "email": "admin@liveprosolutions.com, niteshg@liveprosolutions.com",
     "copyrightYear": "2026",
     "heroStats": [
-      { "label": "Years of Excellence", "value": "15+", "icon": "calendar" },
-      { "label": "Enterprise Projects", "value": "500+", "icon": "briefcase" },
-      { "label": "Engineers Trained", "value": "1,200+", "icon": "users" },
-      { "label": "Industry Verticals", "value": "16+", "icon": "globe" }
+      {
+        "label": "Years of Excellence",
+        "value": "15+",
+        "icon": "calendar"
+      },
+      {
+        "label": "Enterprise Projects",
+        "value": "500+",
+        "icon": "briefcase"
+      },
+      {
+        "label": "Engineers Trained",
+        "value": "1,200+",
+        "icon": "users"
+      },
+      {
+        "label": "Industry Verticals",
+        "value": "16+",
+        "icon": "globe"
+      }
     ]
   },
   "services": [
@@ -209,6 +225,104 @@
     "Recruiting Firms",
     "Logistics & Supply Chain",
     "Government & PSU"
+  ],
+  "leaders": [
+    {
+      "id": "ldr-1",
+      "name": "Nitesh G.",
+      "designation": "Founder & Chief Executive Officer",
+      "type": "Leader",
+      "bio": "Founded LIVEpro Software Solutions in Nagpur with a simple belief - the right people, at the right time, in the right place can transform how an enterprise runs. Nitesh leads corporate strategy, client partnerships and the long-term technology roadmap across domestic and international engagements.",
+      "photo": "",
+      "expertise": "Enterprise Strategy, Client Partnerships, Solution Architecture",
+      "experience": "18+ Years",
+      "email": "niteshg@liveprosolutions.com",
+      "phone": "+91-940-448-4560",
+      "linkedin": "https://www.linkedin.com/company/livepro-solutions",
+      "twitter": "",
+      "order": 10,
+      "status": "active"
+    },
+    {
+      "id": "ldr-2",
+      "name": "Priya Deshmukh",
+      "designation": "Chief Technology Officer",
+      "type": "Leader",
+      "bio": "Priya owns the LIVEpro engineering practice - technology standards, architecture reviews and the delivery of high-concurrency web and mobile platforms for corporate clients. She drives the adoption of microservices, cloud-native tooling and secure coding practices across every project pod.",
+      "photo": "",
+      "expertise": "Java Spring Boot, Microservices, Cloud Architecture (AWS / Azure)",
+      "experience": "15+ Years",
+      "email": "priya.d@liveprosolutions.com",
+      "phone": "+91-712-274-0470",
+      "linkedin": "https://www.linkedin.com/company/livepro-solutions",
+      "twitter": "",
+      "order": 20,
+      "status": "active"
+    },
+    {
+      "id": "ldr-3",
+      "name": "Amit Sharma",
+      "designation": "Head of Delivery & Client Success",
+      "type": "Leader",
+      "bio": "Amit leads delivery governance and client success - sprint planning, risk mitigation, transparent progress reporting and 24/7 AMC support operations. He is the single point of accountability for on-time, on-budget enterprise rollouts.",
+      "photo": "",
+      "expertise": "Agile Delivery, Project Governance, AMC Support Operations",
+      "experience": "13+ Years",
+      "email": "amit.s@liveprosolutions.com",
+      "phone": "+91-956-107-9560",
+      "linkedin": "https://www.linkedin.com/company/livepro-solutions",
+      "twitter": "",
+      "order": 30,
+      "status": "active"
+    },
+    {
+      "id": "ldr-4",
+      "name": "Dr. Sneha Kulkarni",
+      "designation": "Principal Enterprise Architecture Mentor",
+      "type": "Mentor",
+      "bio": "Dr. Kulkarni mentors senior engineers and architects through live architecture reviews, system design clinics and domain-driven design workshops. She anchors the LIVEpro campus-to-corporate incubator, guiding graduates into production-grade engineering roles.",
+      "photo": "",
+      "expertise": "System Design, Domain-Driven Design, Architecture Reviews",
+      "experience": "20+ Years",
+      "email": "sneha.k@liveprosolutions.com",
+      "phone": "+91-712-274-0470",
+      "linkedin": "https://www.linkedin.com/company/livepro-solutions",
+      "twitter": "",
+      "order": 40,
+      "status": "active"
+    },
+    {
+      "id": "ldr-5",
+      "name": "Rajesh Iyer",
+      "designation": "Cloud & DevOps Mentorship Lead",
+      "type": "Mentor",
+      "bio": "Rajesh coaches delivery teams on containerization, CI/CD automation, infrastructure-as-code and observability. Under his mentorship, LIVEpro squads ship to production multiple times a day with zero-downtime release pipelines.",
+      "photo": "",
+      "expertise": "Docker, Kubernetes, Terraform, CI/CD Pipelines",
+      "experience": "14+ Years",
+      "email": "rajesh.i@liveprosolutions.com",
+      "phone": "+91-940-448-4560",
+      "linkedin": "https://www.linkedin.com/company/livepro-solutions",
+      "twitter": "",
+      "order": 50,
+      "status": "active"
+    },
+    {
+      "id": "ldr-6",
+      "name": "Farhan Qureshi",
+      "designation": "Mobile & Full-Stack Engineering Mentor",
+      "type": "Mentor",
+      "bio": "Farhan guides the mobile and full-stack engineering guild - code reviews, API design standards and cross-platform delivery patterns. He runs the internal LIVEpro upskilling bootcamps on Flutter, React Native and Node.js.",
+      "photo": "",
+      "expertise": "Flutter, React Native, Node.js, API Design",
+      "experience": "11+ Years",
+      "email": "farhan.q@liveprosolutions.com",
+      "phone": "+91-956-107-9560",
+      "linkedin": "https://www.linkedin.com/company/livepro-solutions",
+      "twitter": "",
+      "order": 60,
+      "status": "active"
+    }
   ],
   "posts": [
     {

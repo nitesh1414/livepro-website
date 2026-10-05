@@ -109,4 +109,133 @@ $settings = get_all_settings();
   </div>
 </section>
 
+<?php
+// ============================================================================
+// LEADERSHIP & MENTORSHIP PROFILES
+// 100% managed from the CMS admin panel (admin/leaders.php)
+// ============================================================================
+$leaders = get_leaders_mentors('active', 'Leader');
+$mentors = get_leaders_mentors('active', 'Mentor');
+$all_members = array_merge($leaders, $mentors);
+usort($all_members, function ($a, $b) {
+    $order_a = intval($a['display_order'] ?? 0);
+    $order_b = intval($b['display_order'] ?? 0);
+    if ($order_a === $order_b) {
+        return intval($a['id'] ?? 0) <=> intval($b['id'] ?? 0);
+    }
+    return $order_a <=> $order_b;
+});
+// The section is always visible to logged-in admins (so they can verify their
+// CMS entries); visitors only see it once at least one profile is published.
+$show_members_section = !empty($all_members) || is_admin_logged_in();
+?>
+
+<?php if ($show_members_section): ?>
+<!-- LEADERSHIP & MENTORSHIP (POPULATED FROM ADMIN PANEL) -->
+<section id="leadership" style="background: white; padding: 80px 0;">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge badge-primary">Leadership &amp; Mentorship</span>
+      <h2 class="section-title">The Leaders &amp; Mentors Behind LIVEpro</h2>
+      <p class="section-desc">
+        Our leadership team owns strategy, architecture and delivery governance, while our mentors coach every
+        engineering pod &mdash; from campus incubator graduates to senior architects. Every profile below is
+        published and updated directly from the LIVEpro admin panel.
+      </p>
+    </div>
+
+    <?php if (!empty($all_members)): ?>
+      <?php if (!empty($leaders) && !empty($mentors)): ?>
+        <div class="member-filter-bar" id="memberFilterTabs">
+          <button type="button" class="btn btn-primary" onclick="filterMembers('All', this)">All Profiles (<?= count($all_members); ?>)</button>
+          <button type="button" class="btn btn-outline" onclick="filterMembers('Leader', this)">👔 Leaders (<?= count($leaders); ?>)</button>
+          <button type="button" class="btn btn-outline" onclick="filterMembers('Mentor', this)">🎓 Mentors (<?= count($mentors); ?>)</button>
+        </div>
+      <?php endif; ?>
+
+      <div class="member-grid" id="memberGrid">
+        <?php foreach ($all_members as $member):
+            $type = ($member['member_type'] === 'Mentor') ? 'Mentor' : 'Leader';
+            $photo = trim($member['photo'] ?? '');
+            if ($photo !== '' && strpos($photo, 'data:') !== 0 && !preg_match('~^(https?:)?//~i', $photo)) {
+                $photo = ltrim($photo, '/');
+            }
+            $tags = leader_mentor_expertise_list($member['expertise'] ?? '');
+            $initials_id = 'memberInitials' . intval($member['id']);
+        ?>
+          <article class="member-card member-<?= strtolower($type); ?>" data-member-type="<?= $type; ?>">
+            <?php if ($photo !== ''): ?>
+              <img class="member-photo" src="<?= htmlspecialchars($photo); ?>" alt="<?= htmlspecialchars($member['name']); ?>" loading="lazy"
+                   onerror="this.style.display='none'; var f=document.getElementById('<?= $initials_id; ?>'); if(f){f.style.display='flex';}">
+              <div class="member-avatar" id="<?= $initials_id; ?>" style="display:none;"><?= htmlspecialchars(leader_mentor_initials($member['name'])); ?></div>
+            <?php else: ?>
+              <div class="member-avatar"><?= htmlspecialchars(leader_mentor_initials($member['name'])); ?></div>
+            <?php endif; ?>
+
+            <span class="member-type-badge"><?= $type; ?></span>
+            <h3 class="member-name"><?= htmlspecialchars($member['name']); ?></h3>
+            <p class="member-designation"><?= htmlspecialchars($member['designation']); ?></p>
+
+            <?php if (!empty($member['experience_years'])): ?>
+              <span class="member-experience">⭐ <?= htmlspecialchars($member['experience_years']); ?> of experience</span>
+            <?php endif; ?>
+
+            <?php if (!empty($member['bio'])): ?>
+              <p class="member-bio"><?= nl2br(htmlspecialchars($member['bio'])); ?></p>
+            <?php endif; ?>
+
+            <?php if (!empty($tags)): ?>
+              <div class="member-tags">
+                <?php foreach ($tags as $tag): ?>
+                  <span class="member-tag"><?= htmlspecialchars($tag); ?></span>
+                <?php endforeach; ?>
+              </div>
+            <?php endif; ?>
+
+            <?php if (!empty($member['email']) || !empty($member['phone']) || !empty($member['linkedin_url']) || !empty($member['twitter_url'])): ?>
+              <div class="member-contact">
+                <?php if (!empty($member['email'])): ?>
+                  <a href="mailto:<?= htmlspecialchars($member['email']); ?>" title="Email <?= htmlspecialchars($member['name']); ?>">✉️ Email</a>
+                <?php endif; ?>
+                <?php if (!empty($member['phone'])): ?>
+                  <a href="tel:<?= htmlspecialchars(preg_replace('/[^0-9+]/', '', $member['phone'])); ?>" title="Call <?= htmlspecialchars($member['name']); ?>">📞 Call</a>
+                <?php endif; ?>
+                <?php if (!empty($member['linkedin_url'])): ?>
+                  <a href="<?= htmlspecialchars($member['linkedin_url']); ?>" target="_blank" rel="noopener" title="LinkedIn Profile">in LinkedIn</a>
+                <?php endif; ?>
+                <?php if (!empty($member['twitter_url'])): ?>
+                  <a href="<?= htmlspecialchars($member['twitter_url']); ?>" target="_blank" rel="noopener" title="X / Twitter Profile">𝕏 Profile</a>
+                <?php endif; ?>
+              </div>
+            <?php endif; ?>
+          </article>
+        <?php endforeach; ?>
+      </div>
+    <?php else: ?>
+      <div class="member-empty-state">
+        <strong>Leadership &amp; mentor profiles are being updated.</strong><br>
+        Add your first profile from the admin panel (<code>Leaders &amp; Mentors</code> module) &mdash; it will appear here instantly.
+      </div>
+    <?php endif; ?>
+
+    <div style="text-align: center; margin-top: 45px;">
+      <a href="careers.php" class="btn btn-outline" style="margin-right: 10px;">Join Our Engineering Team &rarr;</a>
+      <a href="contact.php" class="btn btn-primary">Talk to Our Leadership &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  function filterMembers(type, btn) {
+    var tabs = document.querySelectorAll('#memberFilterTabs button');
+    tabs.forEach(function (b) { b.className = 'btn btn-outline'; });
+    if (btn) { btn.className = 'btn btn-primary'; }
+    document.querySelectorAll('#memberGrid .member-card').forEach(function (card) {
+      var isMatch = (type === 'All' || card.getAttribute('data-member-type') === type);
+      card.classList.toggle('is-filtered-out', !isMatch);
+    });
+  }
+</script>
+<?php endif; ?>
+
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

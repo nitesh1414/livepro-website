@@ -73,8 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                 ]);
             }
 
-            // 14 Tables (Courses Removed)
-            $tables = ['admin_users', 'site_settings', 'hero_banners', 'feature_panels', 'case_studies', 'services', 'industries', 'blog_posts', 'testimonials', 'inquiries', 'job_openings', 'job_applications', 'projects_portfolio', 'expertise_areas'];
+            // 15 Tables (Courses Removed, Leaders & Mentors Added)
+            $tables = ['admin_users', 'site_settings', 'hero_banners', 'feature_panels', 'case_studies', 'services', 'industries', 'blog_posts', 'testimonials', 'inquiries', 'job_openings', 'job_applications', 'projects_portfolio', 'expertise_areas', 'leaders_mentors'];
             if ($clean_install) {
                 if ($db_mode === 'mysql') {
                     $pdo->exec("SET FOREIGN_KEY_CHECKS = 0;");
@@ -87,9 +87,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                 }
             }
 
-            // Read schema.sql or execute
-            $schema_file = __DIR__ . '/schema.sql';
-            if (file_exists($schema_file)) {
+            if ($db_mode === 'sqlite') {
+                // SQLite uses the portable schema + seed routine from includes/config.php
+                // (schema.sql is MySQL/MariaDB specific: ENUM, ENGINE, AUTO_INCREMENT, ...)
+                require_once __DIR__ . '/includes/config.php';
+                seed_sqlite_fallback($pdo);
+            } else if (file_exists(__DIR__ . '/schema.sql')) {
+                $schema_file = __DIR__ . '/schema.sql';
                 $sql = file_get_contents($schema_file);
                 $queries = preg_split("/;+(?=([^'|^\\\']*['|\\\'][^'|^\\\']*['|\\\'])*[^'|^\\\']*$)/", $sql);
                 foreach ($queries as $query) {
@@ -140,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             file_put_contents($config_path, $config_php);
 
             $step = 3;
-            $success_msg = "🎉 Complete LIVEpro x TCS Enterprise Suite (14 Tables) successfully installed and seeded!";
+            $success_msg = "🎉 Complete LIVEpro x TCS Enterprise Suite (15 Tables) successfully installed and seeded!";
         } catch (Exception $ex) {
             $errors[] = "Installation Failed: " . $ex->getMessage();
         }
@@ -197,7 +201,7 @@ $write_ok  = is_writable(__DIR__) || is_writable(__DIR__ . '/includes');
 
     <?php if ($step === 1): ?>
       <h2>Server Environment Verification</h2>
-      <p class="subtitle">Checking server capabilities to ensure smooth operation of all 14 corporate IT tables and admin suite.</p>
+      <p class="subtitle">Checking server capabilities to ensure smooth operation of all 15 corporate IT tables and admin suite.</p>
       <ul class="req-list">
         <li class="req-item"><span>PHP Version (7.4+ required) — Detected: <strong><?= PHP_VERSION; ?></strong></span><span class="badge <?= $php_ok ? 'badge-ok' : 'badge-err'; ?>"><?= $php_ok ? 'OK' : 'FAIL'; ?></span></li>
         <li class="req-item"><span>PHP PDO Database Extension</span><span class="badge <?= $pdo_ok ? 'badge-ok' : 'badge-err'; ?>"><?= $pdo_ok ? 'OK' : 'FAIL'; ?></span></li>
@@ -224,7 +228,7 @@ $write_ok  = is_writable(__DIR__) || is_writable(__DIR__ . '/includes');
             <?php if ($mysql_ok): ?><option value="mysql">🐬 MySQL / MariaDB Server (Production Standard)</option><?php endif; ?>
             <?php if ($sqlite_ok): ?><option value="sqlite">📦 SQLite Local File Database (Zero-Config / Offline Development)</option><?php endif; ?>
           </select>
-          <p style="font-size: 0.8rem; color: #0f172a; margin: 8px 0 0 0;">MySQL will connect to your server, create database <code>livepro_cms_db</code>, and install 14 corporate IT tables.</p>
+          <p style="font-size: 0.8rem; color: #0f172a; margin: 8px 0 0 0;">MySQL will connect to your server, create database <code>livepro_cms_db</code>, and install 15 corporate IT tables (incl. Leaders &amp; Mentors).</p>
         </div>
         <div id="mysqlFieldsSection">
           <div class="grid-2">
@@ -246,7 +250,7 @@ $write_ok  = is_writable(__DIR__) || is_writable(__DIR__ . '/includes');
         <div class="form-group"><label>Admin Email Address *</label><input type="email" name="admin_email" value="admin@liveprosolutions.com" required></div>
         <div class="checkbox-group">
           <input type="checkbox" name="seed_demo" id="seedDemo" value="1" checked>
-          <div><label for="seedDemo">Seed Database with Complete LIVEpro Corporate IT &amp; Projects Content</label><p>Automatically populates all 14 tables with Banners (with Background Images!), Capabilities, Case Studies, Client Projects, Expertise, and Careers!</p></div>
+          <div><label for="seedDemo">Seed Database with Complete LIVEpro Corporate IT &amp; Projects Content</label><p>Automatically populates all 15 tables with Banners (with Background Images!), Capabilities, Case Studies, Client Projects, Expertise, and Careers!</p></div>
         </div>
         <div class="checkbox-group" style="border-color: #d92323; background: #ffebe9;">
           <input type="checkbox" name="clean_install" id="cleanInstall" value="1" checked>

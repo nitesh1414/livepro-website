@@ -13,6 +13,7 @@ require_once __DIR__ . '/includes/header.php';
 $total_services = count(get_services('all'));
 $total_projects = count(get_projects('all'));
 $total_openings = count(get_job_openings('all'));
+$total_leaders = count(get_leaders_mentors('all'));
 $all_inquiries = get_inquiries('all');
 $new_inquiries = array_filter($all_inquiries, function($i) { return $i['status'] === 'new'; });
 $all_applications = get_job_applications('all');
@@ -36,6 +37,14 @@ $new_applications = array_filter($all_applications, function($a) { return $a['st
     <div>
       <h3 style="font-size: 1.7rem; font-weight: 900; margin: 0; line-height: 1.1; color: #050505;"><?= $total_projects; ?></h3>
       <p style="font-size: 0.85rem; color: #65676b; font-weight: 700; margin: 0;">Client Projects</p>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-icon" style="background: rgba(34,163,22,0.12); color: #22a316;">👥</div>
+    <div>
+      <h3 style="font-size: 1.7rem; font-weight: 900; margin: 0; line-height: 1.1; color: #050505;"><?= $total_leaders; ?></h3>
+      <p style="font-size: 0.85rem; color: #65676b; font-weight: 700; margin: 0;">Leaders &amp; Mentors</p>
     </div>
   </div>
 
@@ -72,6 +81,7 @@ $new_applications = array_filter($all_applications, function($a) { return $a['st
       <a href="careers.php?action=new" class="btn" style="background: #e8f0fe; color: #1877f2; text-decoration: none; justify-content: start; font-size: 0.85rem;">+ Add Job Opening</a>
       <a href="projects.php?action=new" class="btn" style="background: #e6f4ea; color: #137333; text-decoration: none; justify-content: start; font-size: 0.85rem;">+ Add Project Showcase</a>
       <a href="services.php?action=new" class="btn" style="background: #e8f0fe; color: #1877f2; text-decoration: none; justify-content: start; font-size: 0.85rem;">+ Add IT Capability</a>
+      <a href="leaders.php?action=new" class="btn" style="background: #edf8ea; color: #1c7a13; text-decoration: none; justify-content: start; font-size: 0.85rem;">+ Add Leader / Mentor</a>
     </div>
   </div>
 
@@ -79,7 +89,7 @@ $new_applications = array_filter($all_applications, function($a) { return $a['st
     <h3 style="font-size: 1.2rem; font-weight: 800; margin-top: 0; margin-bottom: 15px; color: #050505;">🛡️ System Health &amp; Theme Status</h3>
     <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9rem; line-height: 2; color: #333;">
       <li>✅ <strong>Color Theme:</strong> Facebook.com Enterprise White/Blue (`#1877f2`)</li>
-      <li>✅ <strong>Database Schema:</strong> 15 Relational Tables Active</li>
+      <li>✅ <strong>Database Schema:</strong> 15 Relational Tables Active (Leaders &amp; Mentors included)</li>
       <li>✅ <strong>New Portals:</strong> Careers, Projects &amp; Clients, Expertise</li>
       <li>📍 <strong>Company HQ:</strong> Raghuji Nagar, Nagpur, India</li>
     </ul>
