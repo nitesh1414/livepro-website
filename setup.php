@@ -32,15 +32,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             throw new Exception("schema.sql file not found in directory!");
         }
 
-        $sql = file_get_contents($schema_file);
-        
-        // Remove comments and split statements
-        $queries = preg_split("/;+(?=([^'|^\\\']*['|\\\'][^'|^\\\']*['|\\\'])*[^'|^\\\']*$)/", $sql);
-        foreach ($queries as $query) {
-            $query = trim($query);
-            if (!empty($query) && strpos($query, 'CREATE DATABASE') === false && strpos($query, 'USE ') === false) {
-                $pdo->exec($query);
+        require_once __DIR__ . '/includes/sql_tools.php';
+
+        // Deterministic statement splitter (string / escape / comment / emoji safe)
+        $statements = livepro_split_sql(file_get_contents($schema_file));
+        if (empty($statements)) {
+            throw new Exception("schema.sql could not be read or contains no SQL statements!");
+        }
+
+        $executed = 0;
+        foreach ($statements as $statement) {
+            $keyword = livepro_sql_first_keyword($statement);
+            if (livepro_sql_is_environment_statement($keyword)) {
+                continue;   // connection already selects the target database
             }
+            try {
+                $pdo->exec($statement);
+                $executed++;
+            } catch (PDOException $statement_error) {
+                throw new Exception("SQL error in [" . $keyword . "]: " . $statement_error->getMessage());
+            }
+        }
+
+        // Verify the schema before touching admin records
+        if (!livepro_table_exists($pdo, 'admin_users')) {
+            throw new Exception("The schema is incomplete - table 'admin_users' was not created. Please import schema.sql manually.");
         }
 
         // 4. Update includes/config.php

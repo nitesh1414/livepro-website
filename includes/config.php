@@ -74,10 +74,11 @@ function get_db_connection() {
 }
 
 /**
- * Helper: Seed SQLite database if MySQL is unavailable (All 14 Tables - bg_image included)
+ * Helper: Create the full relational schema (15 tables) on SQLite and, when
+ *         $seed_demo is true, seed the complete LIVEpro corporate content.
  */
-function seed_sqlite_fallback($pdo) {
-    // Create all 14 tables
+function seed_sqlite_fallback($pdo, $seed_demo = true) {
+    // Create all 15 tables
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS admin_users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, password_hash TEXT, email TEXT, full_name TEXT, role TEXT DEFAULT 'superadmin', created_at DATETIME DEFAULT CURRENT_TIMESTAMP);
         CREATE TABLE IF NOT EXISTS site_settings (id INTEGER PRIMARY KEY AUTOINCREMENT, setting_key TEXT UNIQUE, setting_value TEXT, setting_group TEXT DEFAULT 'general');
@@ -95,6 +96,10 @@ function seed_sqlite_fallback($pdo) {
         CREATE TABLE IF NOT EXISTS expertise_areas (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, category TEXT DEFAULT 'Core Engineering', description TEXT, tech_list TEXT, icon TEXT DEFAULT 'code', proficiency INTEGER DEFAULT 95, status TEXT DEFAULT 'active', display_order INTEGER DEFAULT 0);
         CREATE TABLE IF NOT EXISTS leaders_mentors (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, designation TEXT NOT NULL, member_type TEXT DEFAULT 'Leader', bio TEXT DEFAULT '', photo TEXT DEFAULT '', expertise TEXT DEFAULT '', experience_years TEXT DEFAULT '', email TEXT DEFAULT '', phone TEXT DEFAULT '', linkedin_url TEXT DEFAULT '', twitter_url TEXT DEFAULT '', status TEXT DEFAULT 'active', display_order INTEGER DEFAULT 0, created_at DATETIME DEFAULT CURRENT_TIMESTAMP);
     ");
+
+    if (!$seed_demo) {
+        return;   // schema only - installer asked to skip the demo content
+    }
 
     // Insert Default Settings
     $settings = [

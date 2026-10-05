@@ -87,21 +87,75 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                 }
             }
 
+            require_once __DIR__ . '/includes/sql_tools.php';
+
             if ($db_mode === 'sqlite') {
                 // SQLite uses the portable schema + seed routine from includes/config.php
                 // (schema.sql is MySQL/MariaDB specific: ENUM, ENGINE, AUTO_INCREMENT, ...)
                 require_once __DIR__ . '/includes/config.php';
-                seed_sqlite_fallback($pdo);
+
+                // Re-running the installer over an existing SQLite file should not
+                // duplicate the seeded demo rows.
+                $already_seeded = false;
+                try {
+                    $already_seeded = intval($pdo->query("SELECT COUNT(*) FROM site_settings")->fetchColumn()) > 0;
+                } catch (PDOException $sqlite_check) {
+                    $already_seeded = false;
+                }
+
+                seed_sqlite_fallback($pdo, $seed_demo && !$already_seeded);
+                $installed_stats['statements'] = count($tables);
+                $installed_stats['mode'] = 'SQLite portable schema';
             } else if (file_exists(__DIR__ . '/schema.sql')) {
-                $schema_file = __DIR__ . '/schema.sql';
-                $sql = file_get_contents($schema_file);
-                $queries = preg_split("/;+(?=([^'|^\\\']*['|\\\'][^'|^\\\']*['|\\\'])*[^'|^\\\']*$)/", $sql);
-                foreach ($queries as $query) {
-                    $query = trim($query);
-                    if (!empty($query) && strpos($query, 'CREATE DATABASE') === false && strpos($query, 'USE ') === false) {
-                        $pdo->exec($query);
+                // Deterministic statement splitter (strings, escapes, comments, emoji safe)
+                $statements = livepro_split_sql(file_get_contents(__DIR__ . '/schema.sql'));
+                if (empty($statements)) {
+                    throw new Exception("schema.sql could not be read or contains no SQL statements.");
+                }
+
+                $executed = 0;
+                foreach ($statements as $statement) {
+                    $keyword = livepro_sql_first_keyword($statement);
+
+                    // Connection/environment statements are handled by the installer itself
+                    if (livepro_sql_is_environment_statement($keyword)) {
+                        continue;
+                    }
+                    // Honour the "Seed Database with content" checkbox
+                    if (!$seed_demo && $keyword === 'INSERT INTO') {
+                        continue;
+                    }
+
+                    try {
+                        $pdo->exec($statement);
+                        $executed++;
+                    } catch (PDOException $statement_error) {
+                        throw new Exception("SQL error while running statement #" . ($executed + 1) . " [" . $keyword . "]: " . $statement_error->getMessage());
                     }
                 }
+                $installed_stats['statements'] = $executed;
+            } else {
+                throw new Exception("schema.sql file not found in the workspace root.");
+            }
+
+            // ----------------------------------------------------------------
+            // VERIFY the schema really exists before touching admin records.
+            // (This is what used to fail silently and produced the confusing
+            //  "Table 'livepro_cms_db.admin_users' doesn't exist" error.)
+            // ----------------------------------------------------------------
+            $missing_tables = [];
+            foreach ($tables as $table_name) {
+                if (!livepro_table_exists($pdo, $table_name)) {
+                    $missing_tables[] = $table_name;
+                }
+            }
+            if (!empty($missing_tables)) {
+                throw new Exception(
+                    "The database schema is incomplete - missing table(s): " . implode(', ', $missing_tables) . ". "
+                    . "Only " . (is_numeric($installed_stats['statements']) ? $installed_stats['statements'] : 0) . " statement(s) were executed. "
+                    . "Please tick \"Re-Create / Overwrite Existing Tables\" and run the installer again, "
+                    . "or import schema.sql manually with phpMyAdmin."
+                );
             }
 
             // Seed Admin Account
@@ -144,7 +198,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             file_put_contents($config_path, $config_php);
 
             $step = 3;
-            $success_msg = "🎉 Complete LIVEpro x TCS Enterprise Suite (15 Tables) successfully installed and seeded!";
+            $success_msg = "🎉 Complete LIVEpro x TCS Enterprise Suite (" . $installed_stats['tables'] . " Tables, " . $installed_stats['statements'] . " SQL statements) successfully installed" . ($seed_demo ? " and seeded" : " (content seeding skipped)") . "!";
         } catch (Exception $ex) {
             $errors[] = "Installation Failed: " . $ex->getMessage();
         }

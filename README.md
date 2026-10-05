@@ -69,6 +69,39 @@ We have created an automated system installer, **`install.php`**, designed to se
 
 ---
 
+## 🛠️ Troubleshooting: `Table 'livepro_cms_db.admin_users' doesn't exist` (FIXED)
+
+**Symptom:** `install.php` / `setup.php` finished with
+`Installation Failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'livepro_cms_db.admin_users' doesn't exist`.
+
+**Cause (fixed in this revision):** the installers split `schema.sql` with a fragile regex
+(`preg_split("/;+(?=([^'|^\']*['|\'][^'|^\']*['|\'])*[^'|^\']*$)/", ...)`) that only breaks the file on `;`
+when the **rest of the file contains an even number of `'` / `|` characters**. A single `|` inside a seeded string
+(the announcement ticker: *"🚀 LP Geometric Theme | Custom Website Development…"*) flipped that parity, so everything
+before it — including `CREATE TABLE admin_users` and `CREATE TABLE site_settings` — was merged into the same chunk as
+`CREATE DATABASE …`, which the installer skips. Result: those two tables were never created and the very next query
+(inserting the admin user) crashed with error 1146.
+
+**What changed:**
+1. New `includes/sql_tools.php` with `livepro_split_sql()` — a deterministic single-pass scanner that understands
+   strings, escaped quotes / `''` doubling, backticks, `--` / `#` / `/* */` comments, so quotes, emoji and `|` characters can
+   never break the import. `install.php` and `setup.php` now both use it (no more `preg_split`).
+2. The installer now **verifies all 15 tables exist before seeding the admin account** and, if any are missing,
+   stops with an actionable message instead of a confusing SQL error.
+3. The **“Seed Database with content” checkbox** is now honoured (previously, unchecking it made the admin insert
+   fail because the table was empty; SQLite mode ignored it too).
+4. Installer success screen reports how many tables/statements were executed; re-running on an existing SQLite
+   file no longer duplicates the seeded demo rows.
+
+**If your database is already half-installed, do this:**
+1. Upload the updated `install.php`, `setup.php`, `schema.sql` and `includes/sql_tools.php`.
+2. Re-run `install.php`, and on step 2 tick **“Re-Create / Overwrite Existing Tables (Clean Install)”**, then click
+   **🚀 Install Schema & Seed Database Now**.
+3. (Alternative, no installer) In phpMyAdmin select the `livepro_cms_db` database → **Import** → choose `schema.sql`
+   → Go, then log in with the admin account you created.
+
+---
+
 ## 👥 Leaders & Mentors Module (About Us page, CMS driven)
 
 The About Us page (`about.php`) contains a dedicated **“The Leaders & Mentors Behind LIVEpro”** section that is populated **100% from the admin panel** — no HTML editing required.
