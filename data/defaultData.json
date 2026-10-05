@@ -1,0 +1,314 @@
+{
+  "settings": {
+    "companyName": "LIVEpro Software Solutions",
+    "tagline": "RIGHT TIME... RIGHT PLACE... RIGHT PEOPLE...",
+    "subTagline": "We provide a wide range of solutions and services across various verticals in Information Technologies like Project Development, Implementation & Customized Solutions, Testing, Onsite Service and Support, Platform Delivery, Networking, Training, Outsourcing and Application Management Support.",
+    "address": "G-9B, Sidhhesh Sai Darshan Apartment, Raghuji Nagar, Nagpur, Maharashtra, India",
+    "phone": "+91-712-274-0470, +91-940-448-4560, +91-956-107-9560",
+    "email": "admin@liveprosolutions.com, niteshg@liveprosolutions.com",
+    "copyrightYear": "2026",
+    "heroStats": [
+      { "label": "Years of Excellence", "value": "15+", "icon": "calendar" },
+      { "label": "Enterprise Projects", "value": "500+", "icon": "briefcase" },
+      { "label": "Engineers Trained", "value": "1,200+", "icon": "users" },
+      { "label": "Industry Verticals", "value": "16+", "icon": "globe" }
+    ]
+  },
+  "services": [
+    {
+      "id": "srv-1",
+      "title": "Systems Development",
+      "category": "Corporate IT",
+      "shortDesc": "Custom end-to-end enterprise software development, cloud-native applications, and scalable architecture design tailored to your core business goals.",
+      "fullDesc": "We deliver comprehensive systems development services from requirement analysis and architectural design to full-cycle development and deployment. Our team builds robust web, desktop, and cloud applications utilizing modern microservices, RESTful APIs, and secure databases.",
+      "icon": "code",
+      "featured": true,
+      "status": "active"
+    },
+    {
+      "id": "srv-2",
+      "title": "Hardware & Software Maintenance",
+      "category": "Corporate IT",
+      "shortDesc": "24/7 Annual Maintenance Contracts (AMC), proactive infrastructure upkeep, system optimization, and security patching.",
+      "fullDesc": "Ensure continuous uptime and optimal performance for your business-critical systems. We provide scheduled hardware diagnostics, software version management, database tuning, and immediate incident troubleshooting to eliminate operational downtime.",
+      "icon": "server",
+      "featured": true,
+      "status": "active"
+    },
+    {
+      "id": "srv-3",
+      "title": "Systems Integration & Re-Engineering",
+      "category": "Corporate IT",
+      "shortDesc": "Modernization of legacy systems, seamless API integration, database migration, and enterprise workflow restructuring.",
+      "fullDesc": "Transform your legacy IT infrastructure into modern, agile systems without business disruption. We specialize in API orchestration, ERP/CRM integrations, cloud migration, and refactoring monolithic architectures into cloud-ready microservices.",
+      "icon": "refresh",
+      "featured": true,
+      "status": "active"
+    },
+    {
+      "id": "srv-4",
+      "title": "Network Services & Infrastructure",
+      "category": "Corporate IT",
+      "shortDesc": "Secure network design, corporate LAN/WAN implementation, VPN administration, firewall configuration, and cybersecurity audits.",
+      "fullDesc": "Build a resilient and high-speed network backbone for your enterprise. Our network engineers handle routing, switching, wireless enterprise setup, network virtualization, and multi-layer firewall defense against cyber threats.",
+      "icon": "network",
+      "featured": true,
+      "status": "active"
+    },
+    {
+      "id": "srv-5",
+      "title": "Education & Academic Enablement",
+      "category": "Academic & Training",
+      "shortDesc": "Digital learning solutions, academic ERP implementations, virtual classroom infrastructure, and curriculum consulting.",
+      "fullDesc": "Empowering educational institutions with state-of-the-art technology. We deploy Learning Management Systems (LMS), campus management software, and provide strategic consulting to align academic engineering curricula with industry demands.",
+      "icon": "book",
+      "featured": true,
+      "status": "active"
+    },
+    {
+      "id": "srv-6",
+      "title": "Corporate & Industrial Training",
+      "category": "Academic & Training",
+      "shortDesc": "Customized upskilling bootcamps for corporate teams in emerging technologies like AI, Cloud DevOps, Full Stack Web, and Embedded Systems.",
+      "fullDesc": "Bridge the technology gap in your organization with our specialized corporate training modules. We conduct intensive on-site and virtual workshops tailored to project requirements, enhancing developer productivity and technical versatility.",
+      "icon": "award",
+      "featured": true,
+      "status": "active"
+    }
+  ],
+  "courses": [
+    {
+      "id": "crs-1",
+      "title": "Full Stack Java Enterprise Mastery",
+      "targetAudience": "B.E / MCA / BCA / MCM Students",
+      "duration": "4 Months (160 Hours)",
+      "fee": "₹18,500",
+      "level": "Advanced",
+      "description": "Comprehensive hands-on program covering Core & Advanced Java, Spring Boot microservices, Hibernate JPA, REST APIs, and React frontend integration with real-time enterprise project deployment.",
+      "modules": [
+        "Core Java ES-Features & OOPs Concepts",
+        "Advanced Java (JDBC, Servlets, JSP)",
+        "Spring Framework & Spring Boot Microservices",
+        "Hibernate ORM & JPA Database Integration",
+        "Frontend Integration with React.js & Redux",
+        "Live Capstone Enterprise Project"
+      ],
+      "status": "active",
+      "featured": true
+    },
+    {
+      "id": "crs-2",
+      "title": "Python & Data Science Incubator",
+      "targetAudience": "B.E / M.Sc / MCA / Any Engineering",
+      "duration": "3.5 Months (140 Hours)",
+      "fee": "₹16,000",
+      "level": "Intermediate to Advanced",
+      "description": "Master Python programming, data manipulation with Pandas & NumPy, statistical modeling, Machine Learning algorithms, and web application development using Django & Flask.",
+      "modules": [
+        "Python 3 Programming & Advanced Syntax",
+        "Data Analysis with Pandas, NumPy & Matplotlib",
+        "Machine Learning Algorithms (Scikit-Learn)",
+        "Web Application Development with Django & SQLite",
+        "Introduction to Deep Learning & NLP",
+        "Real-world Data Analytics Project"
+      ],
+      "status": "active",
+      "featured": true
+    },
+    {
+      "id": "crs-3",
+      "title": "Embedded Systems & IoT Engineering",
+      "targetAudience": "B.E Electronics / Telecomm / Diploma",
+      "duration": "3 Months (120 Hours)",
+      "fee": "₹15,000",
+      "level": "Specialized",
+      "description": "Specialized module designed for hardware and electronics engineers. Covers Embedded C/C++, ARM Cortex microcontrollers, RTOS, sensor interfacing, and IoT cloud protocols (MQTT/HTTP).",
+      "modules": [
+        "Embedded C & Microcontroller Architecture",
+        "ARM Cortex-M & AVR Interfacing",
+        "Real-Time Operating Systems (RTOS) Basics",
+        "Sensor Integration & Wireless Protocols (BLE, Wi-Fi, LoRa)",
+        "IoT Cloud Communication (MQTT, AWS IoT Core)",
+        "Hardware-in-the-Loop Capstone Project"
+      ],
+      "status": "active",
+      "featured": true
+    },
+    {
+      "id": "crs-4",
+      "title": "Cloud Computing & DevOps Architecture",
+      "targetAudience": "B.E / Working IT Professionals",
+      "duration": "3 Months (120 Hours)",
+      "fee": "₹17,500",
+      "level": "Advanced",
+      "description": "Equip yourself with modern cloud infrastructure skills. Learn AWS cloud services, containerization with Docker & Kubernetes, CI/CD automated deployment pipelines, and Linux administration.",
+      "modules": [
+        "Linux System Administration & Shell Scripting",
+        "Amazon Web Services (EC2, S3, RDS, VPC, IAM)",
+        "Containerization with Docker & Docker Compose",
+        "Container Orchestration with Kubernetes (K8s)",
+        "CI/CD Pipelines with Jenkins, GitHub Actions & Terraform",
+        "Cloud Infrastructure Deployment Project"
+      ],
+      "status": "active",
+      "featured": true
+    },
+    {
+      "id": "crs-5",
+      "title": "Software Quality Assurance & Automation",
+      "targetAudience": "BCA / B.Sc / Diploma / Any Graduate",
+      "duration": "2.5 Months (100 Hours)",
+      "fee": "₹12,500",
+      "level": "Foundation to Pro",
+      "description": "Complete software testing certification covering manual testing fundamentals, Agile SDLC, API testing with Postman, and robust UI test automation using Selenium WebDriver and TestNG.",
+      "modules": [
+        "Manual Testing Concepts & Defect Life Cycle",
+        "Agile Methodology & JIRA Test Management",
+        "API & Web Services Testing using Postman & REST Assured",
+        "Automation Testing with Java & Selenium WebDriver",
+        "Test Frameworks (TestNG, Cucumber BDD, Maven)",
+        "Live Application Bug Hunting & Automation Suite"
+      ],
+      "status": "active",
+      "featured": false
+    },
+    {
+      "id": "crs-6",
+      "title": "Web Technologies & UI/UX Mastery",
+      "targetAudience": "Diploma / Undergraduate / Beginners",
+      "duration": "2 Months (80 Hours)",
+      "fee": "₹10,000",
+      "level": "Beginner to Intermediate",
+      "description": "Start your career in web development. Build responsive, modern websites using HTML5, CSS3 Grid/Flexbox, JavaScript ES6+, Tailwind CSS concepts, and introductory React.js component development.",
+      "modules": [
+        "HTML5 Semantic Structure & Modern CSS3 Styling",
+        "Responsive Web Design & Mobile-First Layouts",
+        "JavaScript ES6+ DOM Manipulation & Asynchronous JS",
+        "UI/UX Principles & Wireframing Fundamentals",
+        "Modern Frontend Build Tools & Git Version Control",
+        "Personal Portfolio & E-commerce Frontend Project"
+      ],
+      "status": "active",
+      "featured": false
+    }
+  ],
+  "industries": [
+    "Banking & Finance",
+    "eCommerce & Retail",
+    "Education & Training",
+    "Entertainment & Media",
+    "Embedded Systems",
+    "Healthcare & Medical",
+    "Human Resource & Staffing",
+    "Insurance Services",
+    "IT Enabled Services (ITES)",
+    "Networking & Telecomm",
+    "Pharmaceuticals",
+    "Real Time Control Systems",
+    "Travel & Transportation",
+    "Recruiting Firms",
+    "Logistics & Supply Chain",
+    "Government & PSU"
+  ],
+  "posts": [
+    {
+      "id": "pst-1",
+      "title": "How LIVEpro Incubates Campus Engineers for Industry Roles",
+      "category": "Training & Campus",
+      "date": "2026-06-15",
+      "author": "Nitesh G.",
+      "excerpt": "Discover how our specialized hands-on training modules bridge the academic gap for B.E, MCA, and Diploma students in Nagpur and across Maharashtra.",
+      "content": "At LIVEpro Software Solutions, we recognize that university curricula often lag behind the rapidly evolving IT landscape. Through our 'Incubating Software Professional' initiative, we immerse students in real-world project development from day one. Our trainees don't just learn syntax; they work with Git workflows, Agile sprint ceremonies, automated CI/CD pipelines, and cloud deployments. Over 1,200 engineers have successfully transitioned from campus to corporate roles through this rigorous mentorship model.",
+      "status": "published",
+      "readTime": "4 min read"
+    },
+    {
+      "id": "pst-2",
+      "title": "Modernizing Enterprise IT: When to Re-Engineer Legacy Systems",
+      "category": "IT Solutions",
+      "date": "2026-05-28",
+      "author": "Tech Solutions Team",
+      "excerpt": "Legacy software can become a bottleneck to business growth. Here is our 5-step roadmap for seamless system integration and architectural refactoring.",
+      "content": "Many corporate organizations rely on monolithic applications that have served them well for decades but now struggle under the demands of mobile access, cloud scalability, and real-time API integrations. LIVEpro's Systems Integration and Re-Engineering division specializes in incremental modernization—using strangler fig patterns to replace monolithic modules with cloud-native microservices without causing a single hour of business downtime.",
+      "status": "published",
+      "readTime": "6 min read"
+    },
+    {
+      "id": "pst-3",
+      "title": "Why Embedded Systems & IoT Are Booming in Industrial Automation",
+      "category": "Technology Trends",
+      "date": "2026-04-10",
+      "author": "Engineering Div.",
+      "excerpt": "From smart manufacturing in Vidarbha to global IoT sensor networks, embedded engineers are in high demand. Learn about our RTOS and ARM Cortex courses.",
+      "content": "The convergence of hardware engineering and software intelligence is redefining industrial automation. LIVEpro provides specialized solutions and training in RTOS, microcontroller interfacing, and MQTT wireless protocols. Whether designing real-time control systems for manufacturing plants or developing medical diagnostic devices, our embedded systems division stands at the forefront of hardware-software integration.",
+      "status": "published",
+      "readTime": "5 min read"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "tst-1",
+      "name": "Rajeshwar Rao",
+      "role": "IT Director, Vidarbha Financial Services",
+      "quote": "LIVEpro Software Solutions handled our core banking system re-engineering with exceptional professionalism. Their Nagpur team delivered on time and within budget, improving our transaction processing speed by 40%.",
+      "rating": 5,
+      "type": "Client"
+    },
+    {
+      "id": "tst-2",
+      "name": "Priya Deshmukh",
+      "role": "Software Engineer at Infosys (Alumni)",
+      "quote": "The Full Stack Java Enterprise incubator program at LIVEpro changed my career trajectory. As an MCA student, the hands-on project training gave me the exact practical exposure needed to crack my campus interviews!",
+      "rating": 5,
+      "type": "Student Alumni"
+    },
+    {
+      "id": "tst-3",
+      "name": "Amitabh Sharma",
+      "role": "Operations Manager, Central Logistics",
+      "quote": "We rely on LIVEpro for our 24/7 Hardware & Software Maintenance AMC and Network Security. Their proactive response time and technical depth give us complete peace of mind.",
+      "rating": 5,
+      "type": "Client"
+    },
+    {
+      "id": "tst-4",
+      "name": "Saurabh Kulkarni",
+      "role": "Embedded Firmware Developer (Alumni)",
+      "quote": "Coming from an electronics background, finding quality Embedded Systems and RTOS training was tough. LIVEpro's course in Raghuji Nagar was brilliant—the microcontroller lab work helped me secure my dream R&D job.",
+      "rating": 5,
+      "type": "Student Alumni"
+    }
+  ],
+  "inquiries": [
+    {
+      "id": "inq-101",
+      "name": "Vikramaditya Patil",
+      "email": "v.patil@enterprise-tech.in",
+      "phone": "+91 98230 11223",
+      "subject": "Inquiry: Corporate Training for Full Stack Team",
+      "message": "We are looking to upskill a team of 15 developers in our Nagpur office on Spring Boot and Docker. Please share your corporate training catalog and fee structure.",
+      "date": "2026-06-29 14:30",
+      "status": "new"
+    },
+    {
+      "id": "inq-102",
+      "name": "Sneha Shinde",
+      "email": "sneha.shinde@gmail.com",
+      "phone": "+91 91720 44556",
+      "subject": "Admission: Python & Data Science Incubator Batch",
+      "message": "Hello, I am a final year B.E student. When is the next batch starting for the Python Data Science incubator course? Do you offer weekend batches?",
+      "date": "2026-06-28 10:15",
+      "status": "replied"
+    },
+    {
+      "id": "inq-103",
+      "name": "Anil Mehta",
+      "email": "a.mehta@vidarbha-logistics.com",
+      "phone": "+91 712 255 8899",
+      "subject": "System Maintenance AMC Quotation",
+      "message": "We need an Annual Maintenance Contract (AMC) for our corporate office network (40 PCs, 2 servers, firewall). Requesting a technical consultation visit.",
+      "date": "2026-06-25 16:45",
+      "status": "contacted"
+    }
+  ]
+}

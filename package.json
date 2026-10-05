@@ -1,0 +1,24 @@
+{
+  "name": "livepro-cms-website",
+  "version": "3.0.0",
+  "description": "Complete Content Management System (CMS) Website for LIVEpro Software Solutions based in Nagpur, India.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "cms",
+    "livepro",
+    "software-solutions",
+    "nagpur",
+    "incubator",
+    "it-services"
+  ],
+  "author": "LIVEpro Tech Team",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}

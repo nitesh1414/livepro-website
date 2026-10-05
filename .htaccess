@@ -1,0 +1,25 @@
+# LIVEpro CMS Apache Configuration
+
+# Protect sensitive files
+<FilesMatch "\.(sql|log|ini|json|lock)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Disable directory browsing
+Options -Indexes
+
+# Optional: Pretty URLs (uncomment if project is at web root and mod_rewrite is enabled)
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{REQUEST_FILENAME} !-d
+#     RewriteCond %{REQUEST_FILENAME} !-f
+#     RewriteRule ^([a-zA-Z0-9_-]+)$ $1.php [L,QSA]
+# </IfModule>
+
+# PHP settings (adjust if needed)
+<IfModule mod_php.c>
+    php_flag display_errors off
+    php_value upload_max_filesize 8M
+    php_value post_max_size 8M
+</IfModule>
