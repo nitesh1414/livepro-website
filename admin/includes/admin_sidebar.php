@@ -4,8 +4,8 @@ $current = basename($_SERVER['PHP_SELF']);
 <div class="col-auto col-md-3 col-lg-2 px-0 admin-sidebar">
     <div class="d-flex flex-column align-items-start min-vh-100">
         <a href="<?php echo admin_url(); ?>" class="d-flex align-items-center p-3 text-decoration-none w-100">
-            <img src="<?php echo assets_url(get_setting($pdo, 'logo')); ?>" alt="" height="40" class="me-2">
-            <span class="text-white fw-bold">LIVEpro Admin</span>
+            <img src="<?php echo assets_url(get_setting($pdo, 'logo')); ?>" alt="" height="54" class="me-2">
+            <span class="text-white fw-bold" style="font-size: 1.15rem;">LIVEpro Admin</span>
         </a>
         <ul class="nav nav-pills flex-column w-100 mt-2">
             <li class="nav-item"><a href="<?php echo admin_url('index.php'); ?>" class="nav-link <?php echo $current === 'index.php' ? 'active' : ''; ?>"><i class="material-icons">dashboard</i> Dashboard</a></li>

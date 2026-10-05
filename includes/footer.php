@@ -13,12 +13,12 @@ $copyright_year = $settings['copyright_year'] ?? '2026';
       <div>
         <!-- BRAND WITH LOGO-LP.PNG AND MATCHING TYPOGRAPHY -->
         <div class="logo" style="margin-bottom: 18px; display: flex; align-items: center; gap: 12px; text-decoration: none;">
-          <img src="assets/images/logo-LP.png" alt="LIVEpro Geometric Logo" style="height: 50px; width: auto; object-fit: contain;" onerror="this.onerror=null; this.src='/home/user/uploads/logo-LP.png';">
+          <img src="assets/images/logo-LP.png" alt="LIVEpro Geometric Logo" style="height: 62px; width: auto; object-fit: contain;" onerror="this.onerror=null; this.src='/home/user/uploads/logo-LP.png';">
           <div style="display: flex; flex-direction: column; justify-content: center; line-height: 1;">
             <div>
-              <span style="font-family: 'Arial Black', 'Impact', sans-serif; color: var(--primary); font-size: 1.5rem; font-weight: 900; letter-spacing: 0.5px;">LIVE</span><span style="font-family: 'Times New Roman', Georgia, serif; color: var(--danger); font-size: 1.5rem; font-weight: bold;">pro</span>
+              <span style="font-family: 'Arial Black', 'Impact', sans-serif; color: var(--primary); font-size: 1.8rem; font-weight: 900; letter-spacing: 0.5px;">LIVE</span><span style="font-family: 'Times New Roman', Georgia, serif; color: var(--danger); font-size: 1.8rem; font-weight: bold;">pro</span>
             </div>
-            <span style="font-family: 'Monotype Corsiva', 'Apple Chancery', 'Lucida Calligraphy', cursive; color: var(--accent); font-size: 0.85rem; font-style: italic; display: block; margin-top: -3px;">Software Solutions</span>
+            <span style="font-family: 'Monotype Corsiva', 'Apple Chancery', 'Lucida Calligraphy', cursive; color: var(--accent); font-size: 1rem; font-style: italic; display: block; margin-top: -3px;">Software Solutions</span>
           </div>
         </div>
         <p style="font-size: 0.9rem; line-height: 1.7; margin-bottom: 22px; color: var(--text-on-dark-muted);">We provide a wide range of corporate IT solutions across custom website development, mobile app development, bespoke software projects, cloud DevOps, systems integration, and 24/7 AMC maintenance support.</p>

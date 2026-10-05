@@ -21,12 +21,12 @@ $settings = get_all_settings();
 <aside class="admin-sidebar">
   <div class="admin-sidebar-header">
     <div style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-      <img src="../assets/images/logo-LP.png" alt="LIVEpro Geometric Logo" style="height: 42px; width: auto; object-fit: contain;" onerror="this.onerror=null; this.src='/home/user/uploads/logo-LP.png';">
+      <img src="../assets/images/logo-LP.png" alt="LIVEpro Geometric Logo" style="height: 56px; width: auto; object-fit: contain;" onerror="this.onerror=null; this.src='/home/user/uploads/logo-LP.png';">
       <div style="display: flex; flex-direction: column; justify-content: center; line-height: 1;">
         <div>
-          <span style="font-family: 'Arial Black', 'Impact', sans-serif; color: var(--primary); font-size: 1.3rem; font-weight: 900;">LIVE</span><span style="font-family: 'Times New Roman', Georgia, serif; color: var(--danger); font-size: 1.3rem; font-weight: bold;">pro</span>
+          <span style="font-family: 'Arial Black', 'Impact', sans-serif; color: var(--primary); font-size: 1.7rem; font-weight: 900;">LIVE</span><span style="font-family: 'Times New Roman', Georgia, serif; color: var(--danger); font-size: 1.7rem; font-weight: bold;">pro</span>
         </div>
-        <span style="font-family: 'Monotype Corsiva', 'Apple Chancery', 'Lucida Calligraphy', cursive; color: var(--accent); font-size: 0.75rem; font-style: italic; display: block; margin-top: -2px;">Software Solutions</span>
+        <span style="font-family: 'Monotype Corsiva', 'Apple Chancery', 'Lucida Calligraphy', cursive; color: var(--accent); font-size: 0.95rem; font-style: italic; display: block; margin-top: -2px;">Software Solutions</span>
       </div>
     </div>
   </div>

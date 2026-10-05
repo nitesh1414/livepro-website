@@ -813,18 +813,18 @@ header.is-scrolled { box-shadow: var(--shadow-sm); background: rgba(255, 255, 25
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  min-height: 78px;
+  min-height: 104px;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
   text-decoration: none;
 }
 
 .logo-img {
-  height: 52px;
+  height: 70px;
   width: auto;
   object-fit: contain;
   transition: transform var(--speed) var(--ease);
@@ -840,7 +840,7 @@ header.is-scrolled { box-shadow: var(--shadow-sm); background: rgba(255, 255, 25
   font-family: "Arial Black", Impact, "Trebuchet MS", sans-serif;
   color: var(--primary);
   font-weight: 900;
-  font-size: 1.5rem;
+  font-size: 2rem;
   letter-spacing: 0.4px;
 }
 
@@ -849,16 +849,16 @@ header.is-scrolled { box-shadow: var(--shadow-sm); background: rgba(255, 255, 25
   font-family: "Times New Roman", Georgia, serif;
   color: var(--danger);
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .logo-software-solutions,
 .font-software-solutions {
   font-family: "Monotype Corsiva", "Apple Chancery", "Lucida Calligraphy", cursive;
   color: var(--accent);
-  font-size: 0.82rem;
+  font-size: 1.1rem;
   font-style: italic;
-  margin-top: -2px;
+  margin-top: -3px;
 }
 
 .font-tagline-script {
@@ -868,8 +868,8 @@ header.is-scrolled { box-shadow: var(--shadow-sm); background: rgba(255, 255, 25
 }
 
 .logo-tag {
-  font-size: 0.62rem;
-  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text-faint);
   margin-top: 4px;
@@ -878,6 +878,7 @@ header.is-scrolled { box-shadow: var(--shadow-sm); background: rgba(255, 255, 25
 .nav-links {
   display: flex;
   align-items: center;
+  flex-wrap: nowrap;
   gap: 2px;
   list-style: none;
   margin: 0;
@@ -887,7 +888,7 @@ header.is-scrolled { box-shadow: var(--shadow-sm); background: rgba(255, 255, 25
 .nav-links a {
   position: relative;
   display: inline-block;
-  padding: 10px 13px;
+  padding: 10px 11px;
   border-radius: 10px;
   color: var(--text-body);
   font-size: 0.9rem;
@@ -1787,7 +1788,12 @@ body.login-body {
   animation: lvScaleIn 0.5s var(--ease) both;
 }
 
-.login-card .logo { margin-bottom: 24px; }
+.login-card .logo { margin-bottom: 26px; }
+.login-card .logo-img { height: 62px; }
+.login-card .logo-live,
+.login-card .logo-pro { font-size: 1.8rem; }
+.login-card .logo-software-solutions { font-size: 1rem; }
+.login-brand .logo-img { height: 68px; }
 
 .login-card h1 {
   font-size: 1.55rem;
@@ -1920,12 +1926,12 @@ body.setup-body {
 .subtitle { color: var(--text-muted); font-size: 0.96rem; margin: 0; }
 
 .logo-text { display: flex; align-items: baseline; justify-content: center; gap: 2px; margin-bottom: 10px; }
-.logo-text span { font-size: 1.7rem; }
+.logo-text span { font-size: 2rem; }
 
 .logo-icon {
-  width: 54px;
-  height: 54px;
-  margin: 0 auto 14px;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -1933,7 +1939,7 @@ body.setup-body {
   background: linear-gradient(135deg, var(--primary), var(--accent));
   color: #fff;
   font-weight: 900;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 
 .steps-bar {
@@ -2268,8 +2274,18 @@ body.setup-body {
 /* ---------------------------------------------------------------------------
    22. RESPONSIVE
    --------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+  /* enlarged logo + 9 nav items: step the whole row down one size */
+  .nav-container { min-height: 94px; gap: 14px; }
+  .logo-img { height: 64px; }
+  .logo-live, .logo-pro, .font-live, .font-pro { font-size: 1.8rem; }
+  .logo-software-solutions, .font-software-solutions { font-size: 1.02rem; }
+  .nav-links a { padding: 9px 9px; font-size: 0.84rem; }
+  .cms-toggle-btn { padding: 8px 14px; font-size: 0.82rem; min-height: 40px; }
+}
+
 @media (max-width: 1100px) {
-  .nav-links a { padding: 9px 10px; font-size: 0.85rem; }
+  /* <=1100px the navigation collapses into the hamburger menu (see below) */
   .admin-sidebar, .cms-sidebar { flex-basis: 232px; width: 232px; }
 }
 
@@ -2296,14 +2312,9 @@ body.setup-body {
   .login-shell { grid-template-columns: 1fr; }
   .login-brand { padding: 46px 32px; }
   .login-brand-art { align-self: flex-start; }
-
-  /* keep the top bar to one comfortable row on tablets */
-  .top-bar-address,
-  .top-bar-divider-address,
-  .top-bar-label { display: none; }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   /* MOBILE: the contact/social top bar is hidden completely — quick contact
      moves into the collapsed menu instead */
   .top-bar { display: none; }
@@ -2356,6 +2367,11 @@ body.setup-body {
   }
   .nav-links a { display: block; padding: 12px 14px; font-size: 0.95rem; }
   .nav-links a::after { display: none; }
+  /* logo scales down with the header on small screens */
+  .nav-container { min-height: 84px; }
+  .logo-img { height: 58px; }
+  .logo-live, .logo-pro, .font-live, .font-pro { font-size: 1.65rem; }
+  .logo-software-solutions, .font-software-solutions { font-size: 0.95rem; }
   .hero-slide { min-height: 520px; }
   .section-header { margin-bottom: 34px; }
   section { padding: 58px 0; }
@@ -2367,6 +2383,12 @@ body.setup-body {
   h1 { font-size: 1.9rem; }
   h2 { font-size: 1.55rem; }
   .container { padding: 0 16px; }
+  .nav-container { min-height: 78px; }
+  .logo-img { height: 54px; }
+  .logo { gap: 11px; }
+  .logo-live, .logo-pro, .font-live, .font-pro { font-size: 1.55rem; }
+  .logo-software-solutions, .font-software-solutions { font-size: 0.95rem; }
+  .logo-tag { display: none; }
   .card, .admin-card, .cms-card, .estimator-widget, .installer-container, .setup-card { padding: 22px; }
   .login-card { padding: 28px 22px; }
   .modal-content { padding: 22px; }
