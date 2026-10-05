@@ -22,7 +22,7 @@
     <span id="tickerTextDisplay">🚀 Harmonized LP Geometric Logo Theme | Custom Website Development, Mobile Apps & 24/7
       AMC Support</span>
     <a onclick="scrollToSection('expertise')"
-      style="color: var(--primary); text-decoration: underline; cursor: pointer;">Learn More &rarr;</a>
+      style="color: var(--primary); text-decoration: underline; cursor: pointer;">Explore</a>
   </div>
 
   <!-- NAVBAR WITH UPLOADED LOGO-LP.PNG AND MATCHING TYPOGRAPHY -->
@@ -33,7 +33,7 @@
         <div class="top-bar-contact">
           <a href="tel:+917122740470" title="Call LIVEpro HQ"><svg width="14" height="14" viewBox="0 0 24 24"
               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              style="color:#38bdf8;">
+              style="color:var(--on-dark-accent);">
               <path
                 d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
               </path>
@@ -41,19 +41,19 @@
           <span class="top-bar-divider">|</span>
           <a href="mailto:admin@liveprosolutions.com" title="Email LIVEpro"><svg width="14" height="14"
               viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round" style="color:#f2c10d;">
+              stroke-linejoin="round" style="color:var(--warning);">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
               <polyline points="22,6 12,13 2,6"></polyline>
             </svg> admin@liveprosolutions.com</a>
           <span class="top-bar-divider">|</span>
           <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" style="color:#c92020;">
+              stroke-linecap="round" stroke-linejoin="round" style="color:var(--danger);">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
               <circle cx="12" cy="10" r="3"></circle>
             </svg> Nagpur, Maharashtra, India</span>
         </div>
         <div class="top-bar-social">
-          <span style="color: #94a3b8; font-size: 0.8rem;">Connect:</span>
+          <span style="color: var(--text-on-dark-muted); font-size: 0.8rem;">Connect:</span>
           <a href="https://www.linkedin.com/company/livepro-solutions" target="_blank" aria-label="LinkedIn"
             title="LinkedIn" class="social-icon-btn"><svg width="13" height="13" viewBox="0 0 24 24"
               fill="currentColor">
@@ -100,11 +100,11 @@
 
       <ul class="nav-links" id="navLinks">
         <li><a onclick="showPublicView(); scrollToSection('home')" class="active">Home</a></li>
-        <li><a onclick="showPublicView(); scrollToSection('about')">About Us</a></li>
+        <li><a onclick="showPublicView(); scrollToSection('about')">About</a></li>
         <li><a onclick="showPublicView(); scrollToSection('leaders')">Leadership</a></li>
-        <li><a onclick="showPublicView(); scrollToSection('expertise')">Our Expertise</a></li>
-        <li><a onclick="showPublicView(); scrollToSection('services')">IT Services</a></li>
-        <li><a onclick="showPublicView(); scrollToSection('projects')">Clients &amp; Projects</a></li>
+        <li><a onclick="showPublicView(); scrollToSection('expertise')">Expertise</a></li>
+        <li><a onclick="showPublicView(); scrollToSection('services')">Services</a></li>
+        <li><a onclick="showPublicView(); scrollToSection('projects')">Projects</a></li>
         <li><a onclick="showPublicView(); scrollToSection('industries')">Industries</a></li>
         <li><a onclick="showPublicView(); scrollToSection('careers')">Careers</a></li>
         <li><a onclick="showPublicView(); scrollToSection('blog')">Insights</a></li>
@@ -113,7 +113,7 @@
 
       <div style="display: flex; align-items: center; gap: 12px;">
         <button class="cms-toggle-btn" onclick="toggleCmsMode()" id="cmsToggleBtn">
-          <span>🛡️ CMS Dashboard</span>
+          <span>Dashboard</span>
         </button>
         <button id="mobileHamburger" class="hamburger" onclick="toggleMobileMenu(event)"
           aria-label="Toggle Navigation Menu">☰</button>
@@ -130,7 +130,7 @@
     </section>
 
     <!-- STATS COUNTER BAR -->
-    <section style="background: #090d16; padding: 45px 0; border-bottom: 1px solid rgba(255,255,255,0.1); margin: 0;">
+    <section style="background: var(--dark-3); padding: 45px 0; border-bottom: 1px solid rgba(255,255,255,0.1); margin: 0;">
       <div class="container">
         <div class="hero-stats" id="heroStatsContainer"
           style="margin: 0; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);"></div>
@@ -152,20 +152,15 @@
             <h4>1. What type of software solution do you require?</h4>
             <div class="option-pills">
               <button type="button" class="option-pill active"
-                onclick="selectEstOption('service', 'Website & Web App Portal', this)">🌐 Website &amp; Web App
-                Portal</button>
+                onclick="selectEstOption('service', 'portal', this)" title="Website & Web Application Portal">Portal</button>
               <button type="button" class="option-pill"
-                onclick="selectEstOption('service', 'Mobile App Dev (iOS & Android)', this)">📱 Mobile App Dev (iOS
-                &amp; Android)</button>
+                onclick="selectEstOption('service', 'mobile', this)" title="Mobile App Development (iOS & Android)">Mobile</button>
               <button type="button" class="option-pill"
-                onclick="selectEstOption('service', 'Systems Integration & Re-Engineering', this)">🔄 Systems
-                Re-Engineering</button>
+                onclick="selectEstOption('service', 'systems', this)" title="Systems Integration & Re-Engineering">Systems</button>
               <button type="button" class="option-pill"
-                onclick="selectEstOption('service', 'AI & Cognitive Business Operations', this)">🤖 AI &amp; Generative
-                LLMs</button>
+                onclick="selectEstOption('service', 'ai', this)" title="AI & Cognitive Business Operations">AI</button>
               <button type="button" class="option-pill"
-                onclick="selectEstOption('service', '24/7 AMC Support & Maintenance', this)">🖥️ 24/7 AMC
-                Support</button>
+                onclick="selectEstOption('service', 'amc', this)" title="24/7 AMC Support & Maintenance">AMC</button>
             </div>
           </div>
 
@@ -173,14 +168,11 @@
             <h4>2. What is the target scale and complexity?</h4>
             <div class="option-pills">
               <button type="button" class="option-pill"
-                onclick="selectEstOption('scale', 'Startup MVP / Fast Track', this)">🚀 Startup MVP / Fast
-                Track</button>
+                onclick="selectEstOption('scale', 'mvp', this)" title="Startup MVP / Fast Track Delivery">MVP</button>
               <button type="button" class="option-pill active"
-                onclick="selectEstOption('scale', 'Mid-Size Enterprise Scale', this)">🏢 Mid-Size Enterprise
-                Scale</button>
+                onclick="selectEstOption('scale', 'enterprise', this)" title="Mid-Size Enterprise Scale">Enterprise</button>
               <button type="button" class="option-pill"
-                onclick="selectEstOption('scale', 'Global MNC Scale & High Concurrency', this)">🌍 Global MNC Scale
-                &amp; High Traffic</button>
+                onclick="selectEstOption('scale', 'global', this)" title="Global MNC Scale & High Concurrency">Global</button>
             </div>
           </div>
 
@@ -188,34 +180,29 @@
             <h4>3. What is your desired deployment timeline?</h4>
             <div class="option-pills">
               <button type="button" class="option-pill"
-                onclick="selectEstOption('timeline', 'Rush Delivery (1-2 Months)', this)">⚡ Rush Delivery (1-2
-                Months)</button>
+                onclick="selectEstOption('timeline', 'rush', this)" title="Rush Delivery (1-2 Months)">Rush</button>
               <button type="button" class="option-pill active"
-                onclick="selectEstOption('timeline', 'Standard Delivery (3-4 Months)', this)">⏱️ Standard Delivery (3-4
-                Months)</button>
+                onclick="selectEstOption('timeline', 'standard', this)" title="Standard Delivery (3-4 Months)">Standard</button>
               <button type="button" class="option-pill"
-                onclick="selectEstOption('timeline', 'Long-term Partnership / Retainer', this)">🤝 Long-term Retainer /
-                AMC</button>
+                onclick="selectEstOption('timeline', 'retainer', this)" title="Long-term Partnership / Retainer">Retainer</button>
             </div>
           </div>
 
           <div class="estimate-result-box">
             <div>
               <span
-                style="font-size: 0.8rem; color: #38bdf8; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">INSTANT
+                style="font-size: 0.8rem; color: var(--on-dark-accent); font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">INSTANT
                 INTERACTIVE ESTIMATE</span>
               <h3 style="font-size: 2.2rem; font-weight: 900; margin: 4px 0 2px; color: white;" id="estCostDisplay">₹8L
                 - ₹14L</h3>
-              <p style="font-size: 0.95rem; color: #cbd5e1; margin: 0;">Estimated Timeline: <strong
-                  style="color: #34d399;" id="estTimeDisplay">3 - 4 Months</strong></p>
-              <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 6px;" id="estDescDisplay">Estimated for: Website
+              <p style="font-size: 0.95rem; color: var(--text-on-dark-muted); margin: 0;">Estimated Timeline: <strong
+                  style="color: var(--on-dark-accent-2);" id="estTimeDisplay">3 - 4 Months</strong></p>
+              <p style="font-size: 0.8rem; color: var(--text-on-dark-muted); margin-top: 6px;" id="estDescDisplay">Estimated for: Website
                 &amp; Web App Portal (Mid-Size Enterprise Scale) under Standard Delivery.</p>
             </div>
             <div>
               <button type="button" onclick="bookEstimateConsultation()" class="btn btn-accent"
-                style="padding: 15px 30px; font-size: 1.05rem; box-shadow: 0 10px 20px rgba(34,163,22,0.4);">
-                🔒 Lock In Estimate &amp; Book Consultation &rarr;
-              </button>
+                style="padding: 15px 30px; font-size: 1.05rem; box-shadow: 0 10px 20px rgba(43, 125, 95,0.4);">Book</button>
             </div>
           </div>
         </div>
@@ -238,14 +225,11 @@
         </div>
         <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap;"
           id="projectFilterTabs">
-          <button class="btn btn-primary" onclick="filterProjects('All', this)">All Projects</button>
-          <button class="btn btn-outline" onclick="filterProjects('Web & Cloud Portals', this)">Web &amp; Cloud
-            Portals</button>
-          <button class="btn btn-outline" onclick="filterProjects('Mobile Enterprise Apps', this)">Mobile Enterprise
-            Apps</button>
-          <button class="btn btn-outline" onclick="filterProjects('Industrial IoT & Automation', this)">Industrial
-            IoT</button>
-          <button class="btn btn-outline" onclick="filterProjects('Cloud & AMC', this)">Cloud &amp; AMC</button>
+          <button class="btn btn-primary" onclick="filterProjects('All', this)">All</button>
+          <button class="btn btn-outline" onclick="filterProjects('Web & Cloud Portals', this)">Web</button>
+          <button class="btn btn-outline" onclick="filterProjects('Mobile Enterprise Apps', this)">Mobile</button>
+          <button class="btn btn-outline" onclick="filterProjects('Industrial IoT & Automation', this)">IoT</button>
+          <button class="btn btn-outline" onclick="filterProjects('Cloud & AMC', this)">Cloud</button>
         </div>
         <div class="grid grid-2" style="gap: 30px;" id="projectsGridContainer"></div>
       </div>
@@ -286,7 +270,7 @@
     <section style="background: white;" id="about">
       <div class="container">
         <div class="section-header">
-          <span class="badge badge-primary">Our Foundation</span>
+          <span class="badge badge-primary">Foundation</span>
           <h2 class="section-title">Zeroed-In to Serve Two Corporate IT Sectors</h2>
           <p class="section-desc">We have a perfect blend of Indian and International perspective providing the
             necessary insight and skills for business situations worldwide.</p>
@@ -306,9 +290,9 @@
             is published from the CMS dashboard.</p>
         </div>
         <div class="member-filter-bar" id="leaderFilterTabs">
-          <button class="btn btn-primary" onclick="filterLeaders('All', this)">All Profiles</button>
-          <button class="btn btn-outline" onclick="filterLeaders('Leader', this)">👔 Leaders</button>
-          <button class="btn btn-outline" onclick="filterLeaders('Mentor', this)">🎓 Mentors</button>
+          <button class="btn btn-primary" onclick="filterLeaders('All', this)">All</button>
+          <button class="btn btn-outline" onclick="filterLeaders('Leader', this)">Leaders</button>
+          <button class="btn btn-outline" onclick="filterLeaders('Mentor', this)">Mentors</button>
         </div>
         <div class="member-grid" id="leadersGridContainer"></div>
       </div>
@@ -325,11 +309,10 @@
         </div>
         <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap;"
           id="serviceFilterTabs">
-          <button class="btn btn-primary" onclick="filterServices('All', this)">All Capabilities</button>
-          <button class="btn btn-outline" onclick="filterServices('Web & Mobile', this)">Web &amp; Mobile Dev</button>
-          <button class="btn btn-outline" onclick="filterServices('Corporate IT', this)">Corporate IT Solutions</button>
-          <button class="btn btn-outline" onclick="filterServices('AI & Platforms', this)">AI &amp; Cognitive
-            Platforms</button>
+          <button class="btn btn-primary" onclick="filterServices('All', this)">All</button>
+          <button class="btn btn-outline" onclick="filterServices('Web & Mobile', this)">Web</button>
+          <button class="btn btn-outline" onclick="filterServices('Corporate IT', this)">Corporate</button>
+          <button class="btn btn-outline" onclick="filterServices('AI & Platforms', this)">AI</button>
         </div>
         <div class="grid grid-3" id="servicesGridContainer"></div>
       </div>
@@ -339,7 +322,7 @@
     <section style="background: white;" id="careers">
       <div class="container">
         <div class="section-header">
-          <span class="badge badge-accent">Join Our Team</span>
+          <span class="badge badge-accent">Join</span>
           <h2 class="section-title">Build Your IT Career With LIVEpro</h2>
           <p class="section-desc">Explore open corporate engineering positions in Nagpur and hybrid across India. Click
             any role to apply instantly.</p>
@@ -351,14 +334,11 @@
         </div>
         <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap;"
           id="careerFilterTabs">
-          <button class="btn btn-primary" onclick="filterCareers('All', this)">All Openings</button>
-          <button class="btn btn-outline" onclick="filterCareers('Website Development', this)">Website
-            Development</button>
-          <button class="btn btn-outline" onclick="filterCareers('Mobile Development', this)">Mobile
-            Development</button>
-          <button class="btn btn-outline" onclick="filterCareers('AI & Data Science', this)">AI &amp; Data
-            Science</button>
-          <button class="btn btn-outline" onclick="filterCareers('Embedded Hardware', this)">Embedded Hardware</button>
+          <button class="btn btn-primary" onclick="filterCareers('All', this)">All</button>
+          <button class="btn btn-outline" onclick="filterCareers('Website Development', this)">Web</button>
+          <button class="btn btn-outline" onclick="filterCareers('Mobile Development', this)">Mobile</button>
+          <button class="btn btn-outline" onclick="filterCareers('AI & Data Science', this)">AI</button>
+          <button class="btn btn-outline" onclick="filterCareers('Embedded Hardware', this)">Hardware</button>
         </div>
         <div class="grid grid-2" style="gap: 30px;" id="careersGridContainer"></div>
       </div>
@@ -444,8 +424,7 @@
               style="padding-top: 20px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
               <span style="font-size: 0.8rem; color: var(--text-muted);">🕒 Mon - Sat: 9:30 AM - 7:30 PM</span><a
                 href="https://maps.google.com/?q=Raghuji+Nagar+Nagpur" target="_blank"
-                class="btn btn-outline-light btn-sm" style="border-color: var(--primary); color: var(--primary);">View
-                Google Map</a></div>
+                class="btn btn-outline-light btn-sm" style="border-color: var(--primary); color: var(--primary);">Map</a></div>
           </div>
 
           <div class="card" style="box-shadow: var(--shadow-md);">
@@ -479,8 +458,7 @@
                   class="form-control" rows="3"
                   placeholder="Please describe your project requirements or consulting questions..."
                   required></textarea></div>
-              <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1rem;">🚀
-                Submit Inquiry to CMS Database</button>
+              <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1rem;">Send</button>
             </form>
           </div>
         </div>
@@ -502,51 +480,50 @@
                 <span class="font-software-solutions">Software Solutions</span>
               </div>
             </div>
-            <p style="font-size: 0.9rem; line-height: 1.7; margin-bottom: 22px; color: #94a3b8;">We provide a wide range
+            <p style="font-size: 0.9rem; line-height: 1.7; margin-bottom: 22px; color: var(--text-on-dark-muted);">We provide a wide range
               of corporate IT solutions across custom website development, mobile app development, bespoke software
               projects, cloud DevOps, systems integration, and 24/7 AMC maintenance support.</p>
             <div style="display: flex; gap: 10px;"><span class="badge badge-primary"
-                style="background: rgba(26,133,232,0.15); color: #60a5fa; border: 1px solid rgba(26,133,232,0.3);">Nagpur
+                style="background: rgba(55, 106, 155,0.15); color: var(--on-dark-accent); border: 1px solid rgba(55, 106, 155,0.3);">Nagpur
                 HQ</span><span class="badge badge-accent"
-                style="background: rgba(34,163,22,0.18); color: #34d399; border: 1px solid rgba(34,163,22,0.35);">ISO
+                style="background: rgba(43, 125, 95,0.18); color: var(--on-dark-accent-2); border: 1px solid rgba(43, 125, 95,0.35);">ISO
                 Quality</span></div>
           </div>
           <div>
             <h4 class="footer-title" style="color: white;">Quick Links</h4>
             <ul class="footer-links">
-              <li><a onclick="scrollToSection('home')">Home Showcase</a></li>
-              <li><a onclick="scrollToSection('about')">About LIVEpro</a></li>
-              <li><a onclick="scrollToSection('projects')">Projects Portfolio</a></li>
-              <li><a onclick="scrollToSection('expertise')">Tech Expertise</a></li>
-              <li><a onclick="scrollToSection('careers')">Job Careers</a></li>
+              <li><a onclick="scrollToSection('home')">Home</a></li>
+              <li><a onclick="scrollToSection('about')">About</a></li>
+              <li><a onclick="scrollToSection('projects')">Projects</a></li>
+              <li><a onclick="scrollToSection('expertise')">Expertise</a></li>
+              <li><a onclick="scrollToSection('careers')">Careers</a></li>
             </ul>
           </div>
           <div>
-            <h4 class="footer-title" style="color: white;">Our Expertise</h4>
+            <h4 class="footer-title" style="color: white;">Expertise</h4>
             <ul class="footer-links">
-              <li><a onclick="scrollToSection('expertise')">Website Dev</a></li>
-              <li><a onclick="scrollToSection('expertise')">Mobile App Dev</a></li>
-              <li><a onclick="scrollToSection('expertise')">Custom Software</a></li>
-              <li><a onclick="scrollToSection('expertise')">Cloud DevOps &amp; AI</a></li>
-              <li><a onclick="scrollToSection('services')">24/7 AMC Support</a></li>
+              <li><a onclick="scrollToSection('expertise')">Web</a></li>
+              <li><a onclick="scrollToSection('expertise')">Mobile</a></li>
+              <li><a onclick="scrollToSection('expertise')">Software</a></li>
+              <li><a onclick="scrollToSection('expertise')">Cloud</a></li>
+              <li><a onclick="scrollToSection('services')">AMC</a></li>
             </ul>
           </div>
           <div>
-            <h4 class="footer-title" style="color: white;">Careers &amp; Jobs</h4>
+            <h4 class="footer-title" style="color: white;">Careers</h4>
             <ul class="footer-links">
-              <li><a onclick="scrollToSection('careers')">Website Dev Squad</a></li>
-              <li><a onclick="scrollToSection('careers')">Mobile Dev Team</a></li>
-              <li><a onclick="scrollToSection('careers')">AI &amp; Data Science</a></li>
-              <li><a onclick="scrollToSection('careers')">Embedded R&amp;D</a></li>
+              <li><a onclick="scrollToSection('careers')">Web</a></li>
+              <li><a onclick="scrollToSection('careers')">Mobile</a></li>
+              <li><a onclick="scrollToSection('careers')">AI</a></li>
+              <li><a onclick="scrollToSection('careers')">Embedded</a></li>
             </ul>
           </div>
           <div>
             <h4 class="footer-title" style="color: white;">CMS Admin Suite</h4>
-            <p style="font-size: 0.85rem; margin-bottom: 15px; color: #94a3b8;">Manage banners, feature panels, case
+            <p style="font-size: 0.85rem; margin-bottom: 15px; color: var(--text-on-dark-muted);">Manage banners, feature panels, case
               studies, IT services, projects, careers, and CRM leads.</p><button class="btn btn-accent"
               onclick="toggleCmsMode()"
-              style="width: 100%; justify-content: center; background: linear-gradient(135deg, #22a316, #167a0e);"><span>Launch
-                CMS Dashboard</span></button>
+              style="width: 100%; justify-content: center; background: linear-gradient(135deg, var(--accent), var(--accent-ink));">Dashboard</button>
           </div>
         </div>
         <div class="footer-bottom">
@@ -577,41 +554,36 @@
           </div>
         </div>
         <span
-          style="font-size: 0.65rem; color: #38bdf8; display: block; margin-top: 8px; letter-spacing: 1px; font-weight: 800;">CORPORATE
+          style="font-size: 0.65rem; color: var(--on-dark-accent); display: block; margin-top: 8px; letter-spacing: 1px; font-weight: 800;">CORPORATE
           IT SUITE v6.0</span>
       </div>
 
       <nav class="cms-nav">
-        <button class="cms-nav-item active" onclick="switchCmsTab('overview', this)">📊 Dashboard Overview</button>
-        <button class="cms-nav-item" onclick="switchCmsTab('settings', this)">⚙️ Site Brand &amp; Top Ticker</button>
-        <button class="cms-nav-item" onclick="switchCmsTab('banners', this)">🎠 Hero Banners Carousel</button>
-        <button class="cms-nav-item" onclick="switchCmsTab('panels', this)">🧩 Feature &amp; Value Panels</button>
-        <button class="cms-nav-item" onclick="switchCmsTab('casestudies', this)">📈 Enterprise Case Studies</button>
-        <button class="cms-nav-item" onclick="switchCmsTab('projects', this)">🏛️ Projects Portfolio</button>
-        <button class="cms-nav-item" onclick="switchCmsTab('expertise', this)">🧠 Tech Expertise &amp; Stack</button>
-        <button class="cms-nav-item" onclick="switchCmsTab('services', this)">🛠️ IT Capabilities &amp;
-          Services</button>
-        <button class="cms-nav-item" onclick="switchCmsTab('careers', this)">💼 Careers &amp; Job Openings</button>
-        <button class="cms-nav-item" onclick="switchCmsTab('applications', this)">
-          <span style="flex-grow: 1;">📄 Job Applications</span>
-          <span class="badge badge-warning" id="sidebarAppCount"
-            style="background: var(--danger); color: white;">0</span>
+        <button class="cms-nav-item active" onclick="switchCmsTab('overview', this)">Overview</button>
+        <button class="cms-nav-item" title="Site Brand & Top Ticker" onclick="switchCmsTab('settings', this)">Brand</button>
+        <button class="cms-nav-item" title="Hero Banners Carousel" onclick="switchCmsTab('banners', this)">Banners</button>
+        <button class="cms-nav-item" title="Feature & Value Panels" onclick="switchCmsTab('panels', this)">Panels</button>
+        <button class="cms-nav-item" title="Enterprise Case Studies" onclick="switchCmsTab('casestudies', this)">Cases</button>
+        <button class="cms-nav-item" title="Projects Portfolio" onclick="switchCmsTab('projects', this)">Projects</button>
+        <button class="cms-nav-item" title="Tech Expertise & Stack" onclick="switchCmsTab('expertise', this)">Expertise</button>
+        <button class="cms-nav-item" title="IT Capabilities & Services" onclick="switchCmsTab('services', this)">Services</button>
+        <button class="cms-nav-item" title="Careers & Job Openings" onclick="switchCmsTab('careers', this)">Careers</button>
+        <button class="cms-nav-item" title="Job Applications" onclick="switchCmsTab('applications', this)">
+          <span style="flex-grow: 1;">Applications</span>
+          <span class="badge badge-warning" id="sidebarAppCount">0</span>
         </button>
-        <button class="cms-nav-item" onclick="switchCmsTab('posts', this)">📰 Thought Leadership Blog</button>
-        <button class="cms-nav-item" onclick="switchCmsTab('testimonials', this)">💬 Testimonials &amp; Reviews</button>
-        <button class="cms-nav-item" onclick="switchCmsTab('inquiries', this)">
-          <span style="flex-grow: 1;">📥 CRM Leads Engine</span>
-          <span class="badge badge-warning" id="sidebarInquiryCount"
-            style="background: var(--danger); color: white;">0</span>
+        <button class="cms-nav-item" title="Thought Leadership Blog" onclick="switchCmsTab('posts', this)">Blog</button>
+        <button class="cms-nav-item" title="Testimonials & Reviews" onclick="switchCmsTab('testimonials', this)">Testimonials</button>
+        <button class="cms-nav-item" title="CRM Leads Enquiries" onclick="switchCmsTab('inquiries', this)">
+          <span style="flex-grow: 1;">Leads</span>
+          <span class="badge badge-warning" id="sidebarInquiryCount">0</span>
         </button>
-        <button class="cms-nav-item" onclick="switchCmsTab('leaders', this)">👥 Leaders &amp; Mentors (About)</button>
+        <button class="cms-nav-item" title="Leaders & Mentors" onclick="switchCmsTab('leaders', this)">Leaders</button>
       </nav>
 
       <div style="padding: 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: auto;">
         <button class="btn btn-outline" onclick="showPublicView()"
-          style="width: 100%; justify-content: center; font-size: 0.85rem;">
-          <span>🌐 View Live Portal</span>
-        </button>
+          style="width: 100%; justify-content: center; font-size: 0.85rem;">View</button>
       </div>
     </aside>
 
@@ -625,10 +597,10 @@
             projects in real-time for LIVEpro Software Solutions.</p>
         </div>
         <div style="display: flex; gap: 12px;">
-          <button class="btn btn-outline btn-sm" onclick="exportCmsData()">Export JSON</button>
+          <button class="btn btn-outline btn-sm" onclick="exportCmsData()">Export</button>
           <label class="btn btn-outline btn-sm" style="cursor: pointer; margin: 0;"><span>Import JSON</span><input
               type="file" accept=".json" onchange="importCmsData(event)" style="display: none;"></label>
-          <button class="btn btn-danger btn-sm" onclick="resetDemoData()">Reset Demo Data</button>
+          <button class="btn btn-danger btn-sm" onclick="resetDemoData()">Reset</button>
         </div>
       </div>
 
@@ -639,7 +611,7 @@
           <div
             style="background: white; padding: 20px; border-radius: var(--radius); border: 1px solid var(--border-color); display: flex; align-items: center; gap: 15px;">
             <div
-              style="width: 48px; height: 48px; border-radius: 12px; background: rgba(26,133,232,0.12); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+              style="width: 48px; height: 48px; border-radius: 12px; background: rgba(55, 106, 155,0.12); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
               🛠️</div>
             <div>
               <h3 id="statTotalServices" style="font-size: 1.6rem; font-weight: 900; margin: 0;">0</h3>
@@ -649,7 +621,7 @@
           <div
             style="background: white; padding: 20px; border-radius: var(--radius); border: 1px solid var(--border-color); display: flex; align-items: center; gap: 15px;">
             <div
-              style="width: 48px; height: 48px; border-radius: 12px; background: rgba(34,163,22,0.15); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+              style="width: 48px; height: 48px; border-radius: 12px; background: rgba(43, 125, 95,0.15); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
               🧠</div>
             <div>
               <h3 id="statTotalExpertise" style="font-size: 1.6rem; font-weight: 900; margin: 0;">0</h3>
@@ -659,7 +631,7 @@
           <div
             style="background: white; padding: 20px; border-radius: var(--radius); border: 1px solid var(--border-color); display: flex; align-items: center; gap: 15px;">
             <div
-              style="width: 48px; height: 48px; border-radius: 12px; background: rgba(34,163,22,0.15); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+              style="width: 48px; height: 48px; border-radius: 12px; background: rgba(43, 125, 95,0.15); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
               👥</div>
             <div>
               <h3 id="statTotalLeaders" style="font-size: 1.6rem; font-weight: 900; margin: 0;">0</h3>
@@ -669,7 +641,7 @@
           <div
             style="background: white; padding: 20px; border-radius: var(--radius); border: 1px solid var(--border-color); display: flex; align-items: center; gap: 15px;">
             <div
-              style="width: 48px; height: 48px; border-radius: 12px; background: rgba(26,133,232,0.12); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+              style="width: 48px; height: 48px; border-radius: 12px; background: rgba(55, 106, 155,0.12); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
               🏛️</div>
             <div>
               <h3 id="statTotalProjects" style="font-size: 1.6rem; font-weight: 900; margin: 0;">0</h3>
@@ -679,7 +651,7 @@
           <div
             style="background: white; padding: 20px; border-radius: var(--radius); border: 1px solid var(--border-color); display: flex; align-items: center; gap: 15px;">
             <div
-              style="width: 48px; height: 48px; border-radius: 12px; background: rgba(242,193,13,0.2); color: #a88406; display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+              style="width: 48px; height: 48px; border-radius: 12px; background: rgba(181, 133, 47,0.2); color: var(--warning-ink); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
               💼</div>
             <div>
               <h3 id="statTotalCareers" style="font-size: 1.6rem; font-weight: 900; margin: 0;">0</h3>
@@ -689,7 +661,7 @@
           <div
             style="background: white; padding: 20px; border-radius: var(--radius); border: 1px solid var(--border-color); display: flex; align-items: center; gap: 15px;">
             <div
-              style="width: 48px; height: 48px; border-radius: 12px; background: rgba(201,32,32,0.12); color: var(--danger); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+              style="width: 48px; height: 48px; border-radius: 12px; background: rgba(163, 77, 72,0.12); color: var(--danger); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
               📄</div>
             <div>
               <h3 id="statTotalApps" style="font-size: 1.6rem; font-weight: 900; margin: 0; color: var(--danger);">0
@@ -700,7 +672,7 @@
           <div
             style="background: white; padding: 20px; border-radius: var(--radius); border: 1px solid var(--border-color); display: flex; align-items: center; gap: 15px;">
             <div
-              style="width: 48px; height: 48px; border-radius: 12px; background: rgba(201,32,32,0.12); color: var(--danger); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+              style="width: 48px; height: 48px; border-radius: 12px; background: rgba(163, 77, 72,0.12); color: var(--danger); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
               📥</div>
             <div>
               <h3 id="statTotalInquiries" style="font-size: 1.6rem; font-weight: 900; margin: 0; color: var(--danger);">
@@ -714,8 +686,7 @@
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
             <h2 style="font-size: 1.2rem; font-weight: 700; margin: 0;">Recent Job Applications (Careers CRM)</h2>
             <button class="btn btn-outline btn-sm"
-              onclick="switchCmsTab('applications', document.querySelectorAll('.cms-nav-item')[9])">View All
-              Applications</button>
+              onclick="switchCmsTab('applications', document.querySelectorAll('.cms-nav-item')[9])">Browse</button>
           </div>
           <div style="overflow-x: auto;">
             <table class="cms-table">
@@ -739,8 +710,7 @@
             <h2 style="font-size: 1.2rem; font-weight: 700; margin: 0;">Recent Customer Inquiries &amp; Project Leads
             </h2>
             <button class="btn btn-outline btn-sm"
-              onclick="switchCmsTab('inquiries', document.querySelectorAll('.cms-nav-item')[12])">View All CRM
-              Leads</button>
+              onclick="switchCmsTab('inquiries', document.querySelectorAll('.cms-nav-item')[12])">Browse</button>
           </div>
           <div style="overflow-x: auto;">
             <table class="cms-table">
@@ -809,8 +779,7 @@
                   class="form-control" required></div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary" style="padding: 14px 30px; font-size: 1rem;">💾 Save Settings
-            &amp; Update Live Site</button>
+          <button type="submit" class="btn btn-primary" style="padding: 14px 30px; font-size: 1rem;">Save</button>
         </form>
       </div>
 
@@ -824,7 +793,7 @@
               <p style="color: var(--text-muted); font-size: 0.85rem; margin: 4px 0 0 0;">You can upload custom
                 background images from your computer or set external image URLs for each slide.</p>
             </div>
-            <button class="btn btn-primary btn-sm" onclick="openBannerModal()">+ Add Carousel Slide</button>
+            <button class="btn btn-primary btn-sm" onclick="openBannerModal()">Add</button>
           </div>
           <div style="overflow-x: auto;">
             <table class="cms-table">
@@ -850,7 +819,7 @@
         <div class="cms-card">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
             <h2 style="font-size: 1.25rem; font-weight: 700; margin: 0;">Manage Feature Panels</h2><button
-              class="btn btn-primary btn-sm" onclick="openPanelModal()">+ Add Feature Panel</button>
+              class="btn btn-primary btn-sm" onclick="openPanelModal()">Add</button>
           </div>
           <div style="overflow-x: auto;">
             <table class="cms-table">
@@ -876,7 +845,7 @@
         <div class="cms-card">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
             <h2 style="font-size: 1.25rem; font-weight: 700; margin: 0;">Manage Enterprise Case Studies</h2><button
-              class="btn btn-primary btn-sm" onclick="openCaseStudyModal()">+ Add Case Study</button>
+              class="btn btn-primary btn-sm" onclick="openCaseStudyModal()">Add</button>
           </div>
           <div style="overflow-x: auto;">
             <table class="cms-table">
@@ -901,7 +870,7 @@
         <div class="cms-card">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
             <h2 style="font-size: 1.25rem; font-weight: 700; margin: 0;">Manage Projects &amp; Clients Portfolio</h2>
-            <button class="btn btn-primary btn-sm" onclick="openProjectModal()">+ Add Client Project</button>
+            <button class="btn btn-primary btn-sm" onclick="openProjectModal()">Add</button>
           </div>
           <div style="overflow-x: auto;">
             <table class="cms-table">
@@ -927,7 +896,7 @@
         <div class="cms-card">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
             <h2 style="font-size: 1.25rem; font-weight: 700; margin: 0;">Manage Technological Expertise &amp; Stack</h2>
-            <button class="btn btn-primary btn-sm" onclick="openExpertiseModal()">+ Add Expertise Domain</button>
+            <button class="btn btn-primary btn-sm" onclick="openExpertiseModal()">Add</button>
           </div>
           <div style="overflow-x: auto;">
             <table class="cms-table">
@@ -953,7 +922,7 @@
         <div class="cms-card">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
             <h2 style="font-size: 1.25rem; font-weight: 700; margin: 0;">Manage Software &amp; IT Capabilities</h2>
-            <button class="btn btn-primary btn-sm" onclick="openServiceModal()">+ Add Capability</button>
+            <button class="btn btn-primary btn-sm" onclick="openServiceModal()">Add</button>
           </div>
           <div style="overflow-x: auto;">
             <table class="cms-table">
@@ -977,7 +946,7 @@
         <div class="cms-card">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
             <h2 style="font-size: 1.25rem; font-weight: 700; margin: 0;">Manage Careers &amp; Job Openings</h2><button
-              class="btn btn-primary btn-sm" onclick="openCareerModal()">+ Add Job Opening</button>
+              class="btn btn-primary btn-sm" onclick="openCareerModal()">Add</button>
           </div>
           <div style="overflow-x: auto;">
             <table class="cms-table">
@@ -1034,7 +1003,7 @@
         <div class="cms-card">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
             <h2 style="font-size: 1.25rem; font-weight: 700; margin: 0;">Manage Insights &amp; Blog Articles</h2><button
-              class="btn btn-primary btn-sm" onclick="openPostModal()">+ Create Article</button>
+              class="btn btn-primary btn-sm" onclick="openPostModal()">Create</button>
           </div>
           <div style="overflow-x: auto;">
             <table class="cms-table">
@@ -1059,7 +1028,7 @@
         <div class="cms-card">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
             <h2 style="font-size: 1.25rem; font-weight: 700; margin: 0;">Manage Client &amp; Partner Feedback</h2>
-            <button class="btn btn-primary btn-sm" onclick="openTestimonialModal()">+ Add Testimonial</button>
+            <button class="btn btn-primary btn-sm" onclick="openTestimonialModal()">Add</button>
           </div>
           <div style="overflow-x: auto;">
             <table class="cms-table">
@@ -1120,10 +1089,10 @@
                 <option value="Leader">Leaders Only</option>
                 <option value="Mentor">Mentors Only</option>
               </select>
-              <button class="btn btn-primary btn-sm" onclick="openLeaderModal()">+ Add Leader / Mentor</button>
+              <button class="btn btn-primary btn-sm" onclick="openLeaderModal()">Add</button>
             </div>
           </div>
-          <p style="background: #e7f3ff; border-left: 4px solid var(--primary); color: var(--text-main); font-size: 0.85rem; padding: 12px 16px; border-radius: 6px; margin-bottom: 20px;">
+          <p style="background: var(--primary-soft); border-left: 4px solid var(--primary); color: var(--text-main); font-size: 0.85rem; padding: 12px 16px; border-radius: 6px; margin-bottom: 20px;">
             ℹ️ Active profiles are published automatically inside the <strong>“The Leaders &amp; Mentors Behind LIVEpro”</strong> section of the About Us page (grouped as Leaders and Mentors).
           </p>
           <div style="overflow-x: auto;">
@@ -1161,7 +1130,7 @@
         <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Enter credentials to manage LIVEpro
           corporate IT portal.</p>
         <div
-          style="background: rgba(26,133,232,0.1); border-left: 4px solid var(--primary); padding: 10px 14px; border-radius: 4px; margin-bottom: 20px; font-size: 0.85rem;">
+          style="background: rgba(55, 106, 155,0.1); border-left: 4px solid var(--primary); padding: 10px 14px; border-radius: 4px; margin-bottom: 20px; font-size: 0.85rem;">
           <strong>Demo Credentials:</strong><br>Username: <code>admin</code> | Password: <code>livepro2026</code></div>
         <div class="form-group"><label>Admin Username</label><input type="text" id="loginUser" class="form-control"
             value="admin" required></div>
@@ -1169,7 +1138,7 @@
             value="livepro2026" required></div>
         <div style="display: flex; gap: 10px; margin-top: 25px;"><button type="button" class="btn btn-outline"
             onclick="closeModal('loginModal')" style="flex: 1;">Cancel</button><button type="submit"
-            class="btn btn-primary" style="flex: 1;">Login to CMS</button></div>
+            class="btn btn-primary" style="flex: 1;">Login</button></div>
       </form>
     </div>
   </div>
@@ -1194,7 +1163,7 @@
             class="form-control" rows="3" required></textarea></div>
 
         <div
-          style="background: #f4f7fb; border: 1px solid var(--border-color); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+          style="background: var(--bg-subtle); border: 1px solid var(--border-color); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
           <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--primary); margin-bottom: 10px;">🖼️ Carousel
             Background Image Settings</h4>
           <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Upload an image from your device
@@ -1236,7 +1205,7 @@
         </div>
         <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;"><button type="button"
             class="btn btn-outline" onclick="closeModal('bannerModal')">Cancel</button><button type="submit"
-            class="btn btn-primary">Save Hero Slide</button></div>
+            class="btn btn-primary">Save</button></div>
       </form>
     </div>
   </div>
@@ -1275,7 +1244,7 @@
         </div>
         <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;"><button type="button"
             class="btn btn-outline" onclick="closeModal('panelModal')">Cancel</button><button type="submit"
-            class="btn btn-primary">Save Feature Panel</button></div>
+            class="btn btn-primary">Save</button></div>
       </form>
     </div>
   </div>
@@ -1310,7 +1279,7 @@
         </div>
         <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;"><button type="button"
             class="btn btn-outline" onclick="closeModal('caseStudyModal')">Cancel</button><button type="submit"
-            class="btn btn-primary">Save Case Study</button></div>
+            class="btn btn-primary">Save</button></div>
       </form>
     </div>
   </div>
@@ -1329,10 +1298,10 @@
           <div class="form-group"><label>Client Name *</label><input type="text" id="prjClient" class="form-control"
               required></div>
           <div class="form-group"><label>Category *</label><select id="prjCat" class="form-control">
-              <option value="Web & Cloud Portals">Web &amp; Cloud Portals</option>
-              <option value="Mobile Enterprise Apps">Mobile Enterprise Apps</option>
-              <option value="Industrial IoT & Automation">Industrial IoT</option>
-              <option value="Cloud & AMC">Cloud &amp; AMC</option>
+              <option value="Web & Cloud Portals">Web</option>
+              <option value="Mobile Enterprise Apps">Mobile</option>
+              <option value="Industrial IoT & Automation">IoT</option>
+              <option value="Cloud & AMC">Cloud</option>
             </select></div>
           <div class="form-group"><label>Industry *</label><input type="text" id="prjInd" class="form-control" required>
           </div>
@@ -1355,7 +1324,7 @@
         </div>
         <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;"><button type="button"
             class="btn btn-outline" onclick="closeModal('projectModal')">Cancel</button><button type="submit"
-            class="btn btn-primary">Save Project</button></div>
+            class="btn btn-primary">Save</button></div>
       </form>
     </div>
   </div>
@@ -1372,11 +1341,11 @@
           <div class="form-group"><label>Domain Title *</label><input type="text" id="expTitle" class="form-control"
               required></div>
           <div class="form-group"><label>Category *</label><select id="expCat" class="form-control">
-              <option value="Core Engineering">Core Engineering</option>
-              <option value="Cloud DevOps">Cloud DevOps</option>
+              <option value="Core Engineering">Core</option>
+              <option value="Cloud DevOps">Cloud</option>
               <option value="AI & Intelligence">AI &amp; Intelligence</option>
-              <option value="Embedded Hardware">Embedded Hardware</option>
-              <option value="Quality Assurance">Quality Assurance</option>
+              <option value="Embedded Hardware">Hardware</option>
+              <option value="Quality Assurance">Quality</option>
             </select></div>
         </div>
         <div class="form-group"><label>Description *</label><textarea id="expDesc" class="form-control" rows="3"
@@ -1395,7 +1364,7 @@
         </div>
         <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;"><button type="button"
             class="btn btn-outline" onclick="closeModal('expertiseModal')">Cancel</button><button type="submit"
-            class="btn btn-primary">Save Expertise</button></div>
+            class="btn btn-primary">Save</button></div>
       </form>
     </div>
   </div>
@@ -1441,7 +1410,7 @@
         </div>
         <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;"><button type="button"
             class="btn btn-outline" onclick="closeModal('careerModal')">Cancel</button><button type="submit"
-            class="btn btn-primary">Save Job Opening</button></div>
+            class="btn btn-primary">Save</button></div>
       </form>
     </div>
   </div>
@@ -1460,7 +1429,7 @@
           <div class="form-group"><label>Category *</label><select id="srvCategory" class="form-control">
               <option value="Corporate IT">Corporate IT</option>
               <option value="Web & Mobile">Web &amp; Mobile Dev</option>
-              <option value="AI & Platforms">AI &amp; Cognitive Platforms</option>
+              <option value="AI & Platforms">AI</option>
             </select></div>
         </div>
         <div class="form-group"><label>Short Summary *</label><textarea id="srvShortDesc" class="form-control" rows="2"
@@ -1477,7 +1446,7 @@
         </div>
         <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;"><button type="button"
             class="btn btn-outline" onclick="closeModal('serviceModal')">Cancel</button><button type="submit"
-            class="btn btn-primary">Save Capability</button></div>
+            class="btn btn-primary">Save</button></div>
       </form>
     </div>
   </div>
@@ -1486,7 +1455,7 @@
   <div class="modal-overlay" id="postModal">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 id="postModalTitle" style="font-size: 1.4rem; font-weight: 800; margin: 0;">Create Article</h3><button
+        <h3 id="postModalTitle" style="font-size: 1.4rem; font-weight: 800; margin: 0;">Create</h3><button
           class="modal-close" onclick="closeModal('postModal')">×</button>
       </div>
       <form onsubmit="handlePostSave(event)"><input type="hidden" id="pstId">
@@ -1506,7 +1475,7 @@
             rows="6" required></textarea></div>
         <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;"><button type="button"
             class="btn btn-outline" onclick="closeModal('postModal')">Cancel</button><button type="submit"
-            class="btn btn-primary">Publish Article</button></div>
+            class="btn btn-primary">Create</button></div>
       </form>
     </div>
   </div>
@@ -1537,7 +1506,7 @@
             required></textarea></div>
         <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;"><button type="button"
             class="btn btn-outline" onclick="closeModal('testimonialModal')">Cancel</button><button type="submit"
-            class="btn btn-primary">Save Testimonial</button></div>
+            class="btn btn-primary">Save</button></div>
       </form>
     </div>
   </div>
@@ -1600,7 +1569,7 @@
           </select></div>
         <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
           <button type="button" class="btn btn-outline" onclick="closeModal('leaderModal')">Cancel</button>
-          <button type="submit" class="btn btn-primary">Save Profile</button>
+          <button type="submit" class="btn btn-primary">Save</button>
         </div>
       </form>
     </div>
@@ -1623,8 +1592,7 @@
       <div
         style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color); display: flex; justify-content: flex-end; gap: 10px;">
         <button class="btn btn-outline" onclick="closeModal('viewDetailModal')">Close</button><button
-          class="btn btn-primary" onclick="closeModal('viewDetailModal'); scrollToSection('contact');">Inquire About
-          This</button></div>
+          class="btn btn-primary" onclick="closeModal('viewDetailModal'); scrollToSection('contact');">Inquire</button></div>
     </div>
   </div>
 
@@ -1637,29 +1605,29 @@
         </div><button class="modal-close" onclick="closeModal('jobApplyModal')">&times;</button>
       </div>
       <div
-        style="background: #f4f7fb; padding: 15px; border-radius: 6px; margin-bottom: 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: center;">
-        <div><span style="font-size: 0.75rem; color: #64748b; font-weight: 700; display: block;">LOCATION</span><strong
+        style="background: var(--bg-subtle); padding: 15px; border-radius: 6px; margin-bottom: 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: center;">
+        <div><span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; display: block;">LOCATION</span><strong
             id="applyModalLoc">Nagpur</strong></div>
         <div><span
-            style="font-size: 0.75rem; color: #64748b; font-weight: 700; display: block;">EXPERIENCE</span><strong
+            style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; display: block;">EXPERIENCE</span><strong
             id="applyModalExp">2-5 Years</strong></div>
-        <div><span style="font-size: 0.75rem; color: #64748b; font-weight: 700; display: block;">SALARY</span><strong
-            style="color: #3a8a1a;" id="applyModalSal">Best in Industry</strong></div>
+        <div><span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; display: block;">SALARY</span><strong
+            style="color: var(--accent-hover);" id="applyModalSal">Best in Industry</strong></div>
       </div>
       <div style="margin-bottom: 20px;">
         <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 6px;">Description:</h4>
-        <p style="color: #64748b; font-size: 0.95rem;" id="applyModalDesc"></p>
+        <p style="color: var(--text-muted); font-size: 0.95rem;" id="applyModalDesc"></p>
       </div>
       <div style="margin-bottom: 25px;">
         <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 6px;">Requirements:</h4>
         <div
-          style="background: white; border: 1px solid #e2e8f0; padding: 12px; border-radius: 6px; font-size: 0.9rem; white-space: pre-line;"
+          style="background: white; border: 1px solid var(--border-color); padding: 12px; border-radius: 6px; font-size: 0.9rem; white-space: pre-line;"
           id="applyModalReq"></div>
       </div>
-      <div style="background: #f4f7fb; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px;">
-        <h4 style="font-size: 1.15rem; font-weight: 800; color: #1a85e8; margin-bottom: 6px;">Apply For This Position
+      <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); padding: 20px; border-radius: 8px;">
+        <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--primary); margin-bottom: 6px;">Apply For This Position
         </h4>
-        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px;">Submissions are stored directly in the
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Submissions are stored directly in the
           recruitment CRM.</p>
         <form onsubmit="handleJobApplicationSubmit(event)"><input type="hidden" id="formJobId"><input type="hidden"
             id="formJobTitle">
@@ -1675,7 +1643,7 @@
               placeholder="https://linkedin.com/in/your-profile" required></div>
           <div class="form-group"><label>Cover Letter</label><textarea id="appCover" class="form-control"
               rows="2"></textarea></div><button type="submit" class="btn btn-primary"
-            style="width: 100%; padding: 12px;">🚀 Submit Application to HR</button>
+            style="width: 100%; padding: 12px;">Submit</button>
         </form>
       </div>
     </div>
@@ -1687,15 +1655,15 @@
     const DEFAULT_DATA = {
       settings: { companyName: "LIVEpro Software Solutions", tagline: "RIGHT TIME... RIGHT PLACE... RIGHT PEOPLE...", subTagline: "We provide a wide range of solutions and services across various verticals in Information Technologies like Website Development, Mobile App Development, Customized Software Solutions, Testing, Onsite Service and Support, Platform Delivery, Networking, Outsourcing and Application Management AMC Support.", tickerText: "🚀 LP Geometric Theme | Custom Website Development, Mobile Apps & 24/7 AMC Maintenance Services in Nagpur", tickerUrl: "#expertise", address: "G-9B, Sidhhesh Sai Darshan Apartment, Raghuji Nagar, Nagpur, Maharashtra, India", phone: "+91-712-274-0470, +91-940-448-4560, +91-956-107-9560", email: "admin@liveprosolutions.com, niteshg@liveprosolutions.com", copyrightYear: "2026", statYears: "15+", statProjects: "500+", statEngineers: "120+", statIndustries: "16+" },
       banners: [
-        { id: "bnr-1", badge: "PERPETUALLY ADAPTIVE IT", title: "Building on Belief: Custom Website & Mobile App Dev", subtitle: "Transforming corporate business models through enterprise web applications, native & hybrid mobile apps, and cloud-native software architecture.", ctaText: "Explore Our Expertise", ctaUrl: "#expertise", bgImage: "assets/images/banner1.jpg", order: 10, status: "active" },
-        { id: "bnr-2", badge: "END-TO-END IT CONSULTING", title: "Custom Software Projects & Systems Integration", subtitle: "We deliver comprehensive software solutions from architectural requirement analysis to full-cycle development, cloud deployment, and legacy re-engineering.", ctaText: "View Clients & Projects", ctaUrl: "#projects", bgImage: "assets/images/banner2.jpg", order: 20, status: "active" },
-        { id: "bnr-3", badge: "ZERO DOWNTIME RE-ENGINEERING", title: "24/7 AMC & Infrastructure Maintenance Support", subtitle: "Ensure continuous business uptime with scheduled hardware diagnostics, database tuning, API integration, and proactive security patching AMCs.", ctaText: "Request Consultation", ctaUrl: "#contact", bgImage: "assets/images/banner3.jpg", order: 30, status: "active" }
+        { id: "bnr-1", badge: "PERPETUALLY ADAPTIVE IT", title: "Building on Belief: Custom Website & Mobile App Dev", subtitle: "Transforming corporate business models through enterprise web applications, native & hybrid mobile apps, and cloud-native software architecture.", ctaText: "Explore", ctaUrl: "#expertise", bgImage: "assets/images/banner1.jpg", order: 10, status: "active" },
+        { id: "bnr-2", badge: "END-TO-END IT CONSULTING", title: "Custom Software Projects & Systems Integration", subtitle: "We deliver comprehensive software solutions from architectural requirement analysis to full-cycle development, cloud deployment, and legacy re-engineering.", ctaText: "Projects", ctaUrl: "#projects", bgImage: "assets/images/banner2.jpg", order: 20, status: "active" },
+        { id: "bnr-3", badge: "ZERO DOWNTIME RE-ENGINEERING", title: "24/7 AMC & Infrastructure Maintenance Support", subtitle: "Ensure continuous business uptime with scheduled hardware diagnostics, database tuning, API integration, and proactive security patching AMCs.", ctaText: "Consult", ctaUrl: "#contact", bgImage: "assets/images/banner3.jpg", order: 30, status: "active" }
       ],
       panels: [
-        { id: "pnl-1", group: "why_us", title: "Flexible Client Engagement", desc: "Tailored pricing models, agile team scaling, and adaptable delivery sprints designed around your core business KPIs.", linkText: "Read Engagement Model", linkUrl: "#about", order: 10, status: "active" },
-        { id: "pnl-2", group: "why_us", title: "Well-Defined Methodologies", desc: "Rigorous SDLC methodologies, DevOps automated testing, and CI/CD pipelines ensuring high code quality and rapid market delivery.", linkText: "Explore Methodologies", linkUrl: "#about", order: 20, status: "active" },
-        { id: "pnl-3", group: "why_us", title: "Rigorous Project Management", desc: "Achieving the optimal combination of cost, quality, and speed through ISO-certified quality practices and milestone governance.", linkText: "View Quality Assurance", linkUrl: "#about", order: 30, status: "active" },
-        { id: "pnl-4", group: "why_us", title: "Global & Domestic Perspective", desc: "A perfect blend of Indian engineering excellence and international business insight to tackle domestic and global IT challenges.", linkText: "Our Global Reach", linkUrl: "#about", order: 40, status: "active" }
+        { id: "pnl-1", group: "why_us", title: "Flexible Client Engagement", desc: "Tailored pricing models, agile team scaling, and adaptable delivery sprints designed around your core business KPIs.", linkText: "Read", linkUrl: "#about", order: 10, status: "active" },
+        { id: "pnl-2", group: "why_us", title: "Well-Defined Methodologies", desc: "Rigorous SDLC methodologies, DevOps automated testing, and CI/CD pipelines ensuring high code quality and rapid market delivery.", linkText: "Explore", linkUrl: "#about", order: 20, status: "active" },
+        { id: "pnl-3", group: "why_us", title: "Rigorous Project Management", desc: "Achieving the optimal combination of cost, quality, and speed through ISO-certified quality practices and milestone governance.", linkText: "Quality", linkUrl: "#about", order: 30, status: "active" },
+        { id: "pnl-4", group: "why_us", title: "Global & Domestic Perspective", desc: "A perfect blend of Indian engineering excellence and international business insight to tackle domestic and global IT challenges.", linkText: "Global", linkUrl: "#about", order: 40, status: "active" }
       ],
       caseStudies: [
         { id: "cs-1", title: "Core Banking System Re-Engineering & Web Portal Dev", industry: "Banking & Finance", metric: "40% Speed Boost", summary: "Modernized a monolithic core banking platform for Vidarbha Financial Services into agile cloud microservices and responsive web apps.", full: "LIVEpro engineering team conducted a comprehensive architectural audit, refactored legacy database schemas, and built a modern React.js web banking portal with secure RESTful payment gateway integrations. Transaction throughput increased by 40% while annual infrastructure maintenance costs dropped by 25%.", order: 10, status: "active" },
@@ -1877,14 +1845,14 @@
         return;
       }
       container.innerHTML = activeBanners.map((bnr, idx) => `
-        <div class="hero-slide" id="slide-${idx}" style="display: ${idx === 0 ? 'flex' : 'none'}; width: 100%; min-height: 650px; background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.80) 0%, rgba(30, 41, 59, 0.72) 50%, rgba(15, 23, 42, 0.85) 100%), url('${bnr.bgImage || 'assets/images/banner1.jpg'}'); background-size: cover; background-position: center; background-repeat: no-repeat; flex-direction: column; justify-content: center; align-items: center; position: relative; padding: 120px 20px 80px;">
+        <div class="hero-slide" id="slide-${idx}" style="display: ${idx === 0 ? 'flex' : 'none'}; width: 100%; min-height: 650px; background-image: linear-gradient(135deg, rgba(24, 37, 51, 0.80) 0%, rgba(30, 41, 59, 0.72) 50%, rgba(24, 37, 51, 0.85) 100%), url('${bnr.bgImage || 'assets/images/banner1.jpg'}'); background-size: cover; background-position: center; background-repeat: no-repeat; flex-direction: column; justify-content: center; align-items: center; position: relative; padding: 120px 20px 80px;">
           <div class="container" style="max-width: 1050px; text-align: center; position: relative; z-index: 2;">
             <div class="hero-tagline">${bnr.badge}</div>
             <h1 class="hero-title" style="font-size: 3.8rem; font-weight: 900; line-height: 1.15; margin-bottom: 25px; color: white; text-shadow: 0 4px 10px rgba(0,0,0,0.5);">${bnr.title}</h1>
-            <p class="hero-desc" style="font-size: 1.25rem; color: #e2e8f0; margin: 0 auto 40px; max-width: 850px; line-height: 1.8; text-shadow: 0 2px 5px rgba(0,0,0,0.4);">${bnr.subtitle}</p>
+            <p class="hero-desc" style="font-size: 1.25rem; color: var(--border-color); margin: 0 auto 40px; max-width: 850px; line-height: 1.8; text-shadow: 0 2px 5px rgba(0,0,0,0.4);">${bnr.subtitle}</p>
             <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-              <a onclick="scrollToSection('${bnr.ctaUrl.replace('#', '')}')" class="btn btn-primary" style="padding: 15px 34px; font-size: 1.05rem; box-shadow: 0 10px 25px rgba(26,133,232,0.4);">${bnr.ctaText} &rarr;</a>
-              <a onclick="scrollToSection('about')" class="btn btn-outline-light" style="padding: 15px 34px; font-size: 1.05rem;">Our Foundation</a>
+              <a onclick="scrollToSection('${bnr.ctaUrl.replace('#', '')}')" class="btn btn-primary" style="padding: 15px 34px; font-size: 1.05rem; box-shadow: 0 10px 25px rgba(55, 106, 155,0.4);">${lvOneWord(bnr.ctaText, 'Explore')} &rarr;</a>
+              <a onclick="scrollToSection('about')" class="btn btn-outline-light" style="padding: 15px 34px; font-size: 1.05rem;">Foundation</a>
             </div>
           </div>
         </div>
@@ -1893,7 +1861,7 @@
       if (activeBanners.length > 1) {
         container.innerHTML += `
           <div style="position: absolute; bottom: 30px; left: 0; right: 0; display: flex; justify-content: center; align-items: center; gap: 12px; z-index: 10;">
-            ${activeBanners.map((_, idx) => `<button onclick="switchHeroSlide(${idx})" class="hero-dot ${idx === 0 ? 'active' : ''}" style="width: ${idx === 0 ? '40px' : '14px'}; height: 14px; border-radius: 99px; background: ${idx === 0 ? '#38bdf8' : 'rgba(255,255,255,0.4)'}; border: 2px solid rgba(0,0,0,0.3); cursor: pointer; transition: 0.5s; box-shadow: 0 2px 6px rgba(0,0,0,0.4);"></button>`).join('')}
+            ${activeBanners.map((_, idx) => `<button onclick="switchHeroSlide(${idx})" class="hero-dot ${idx === 0 ? 'active' : ''}" style="width: ${idx === 0 ? '40px' : '14px'}; height: 14px; border-radius: 99px; background: ${idx === 0 ? 'var(--on-dark-accent)' : 'rgba(255,255,255,0.4)'}; border: 2px solid rgba(0,0,0,0.3); cursor: pointer; transition: 0.5s; box-shadow: 0 2px 6px rgba(0,0,0,0.4);"></button>`).join('')}
           </div>
         `;
       }
@@ -1902,7 +1870,7 @@
     window.switchHeroSlide = function (idx) {
 
       document.querySelectorAll('#heroCarouselContainer .hero-dot').forEach((dot, i) => {
-        dot.style.background = (i === idx ? '#38bdf8' : 'rgba(255,255,255,0.4)');
+        dot.style.background = (i === idx ? 'var(--on-dark-accent)' : 'rgba(255,255,255,0.4)');
         dot.style.width = (i === idx ? '40px' : '14px');
       });
       document.querySelectorAll('#heroCarouselContainer .hero-slide').forEach((el, i) => { el.style.display = (i === idx ? 'flex' : 'none'); });
@@ -1928,14 +1896,14 @@
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
               <span class="badge badge-primary">${cs.industry}</span>
-              <span class="badge badge-accent" style="background: #e6f4ea; color: #137333;">${cs.metric}</span>
+              <span class="badge badge-accent" style="background: var(--accent-soft); color: var(--accent-ink);">${cs.metric}</span>
             </div>
             <h3 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 12px; color: var(--text-main); line-height: 1.3;">${cs.title}</h3>
             <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px; line-height: 1.6;">${cs.summary}</p>
           </div>
           <div style="padding-top: 20px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
             <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">LIVEpro Enterprise Impact</span>
-            <button onclick="viewDetailModal('${cs.industry}', '${cs.title}', '${cs.metric}', '${cs.full.replace(/'/g, "\\'")}')" class="btn btn-outline btn-sm">Read Report &rarr;</button>
+            <button onclick="viewDetailModal('${cs.industry}', '${cs.title}', '${cs.metric}', '${cs.full.replace(/'/g, "\\'")}')" class="btn btn-outline btn-sm">Read</button>
           </div>
         </div>
       `).join('');
@@ -1950,9 +1918,9 @@
           <h3 style="font-size: 1.7rem; font-weight: 800; margin-bottom: 15px; color: var(--text-main);">Custom Software &amp; Web/Mobile Dev</h3>
           <p style="color: var(--text-muted); margin-bottom: 20px; line-height: 1.7;">We deliver comprehensive systems development services from requirement analysis and architectural design to full-cycle coding and cloud deployment. Our team builds high-performance website portals, progressive web apps, and native iOS/Android mobile apps.</p>
           <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px;">
-            ${whyPanels.map(p => `<div style="display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; color: #333;"><span style="color: var(--primary); font-weight: 800;">✔</span><div><strong>${p.title}:</strong> ${p.desc}</div></div>`).join('')}
+            ${whyPanels.map(p => `<div style="display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; color: var(--text-body);"><span style="color: var(--primary); font-weight: 800;">✔</span><div><strong>${p.title}:</strong> ${p.desc}</div></div>`).join('')}
           </div>
-          <a onclick="scrollToSection('expertise')" class="btn btn-primary">Explore Custom Development &rarr;</a>
+          <a onclick="scrollToSection('expertise')" class="btn btn-primary">Explore</a>
         </div>
 
         <div class="card" style="border-top: 5px solid var(--accent);">
@@ -1960,11 +1928,11 @@
           <h3 style="font-size: 1.7rem; font-weight: 800; margin-bottom: 15px; color: var(--text-main);">Onsite Support, AMC &amp; Re-Engineering</h3>
           <p style="color: var(--text-muted); margin-bottom: 20px; line-height: 1.7;">Ensure continuous uptime and optimal performance for your business-critical systems. We provide scheduled hardware diagnostics, software version management, database tuning, and immediate incident troubleshooting under 24/7 AMC contracts.</p>
           <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px;">
-            <div style="display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; color: #333;"><span style="color: var(--accent); font-weight: 800;">✔</span><div><strong>24/7 AMC Maintenance:</strong> Proactive hardware/software monitoring & SLA uptime guarantee.</div></div>
-            <div style="display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; color: #333;"><span style="color: var(--accent); font-weight: 800;">✔</span><div><strong>Legacy Re-Engineering:</strong> Monolithic modernization into cloud microservices.</div></div>
-            <div style="display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; color: #333;"><span style="color: var(--accent); font-weight: 800;">✔</span><div><strong>Network Cybersecurity:</strong> VPN administration, multi-layer firewalls, & security audits.</div></div>
+            <div style="display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; color: var(--text-body);"><span style="color: var(--accent); font-weight: 800;">✔</span><div><strong>24/7 AMC Maintenance:</strong> Proactive hardware/software monitoring & SLA uptime guarantee.</div></div>
+            <div style="display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; color: var(--text-body);"><span style="color: var(--accent); font-weight: 800;">✔</span><div><strong>Legacy Re-Engineering:</strong> Monolithic modernization into cloud microservices.</div></div>
+            <div style="display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; color: var(--text-body);"><span style="color: var(--accent); font-weight: 800;">✔</span><div><strong>Network Cybersecurity:</strong> VPN administration, multi-layer firewalls, & security audits.</div></div>
           </div>
-          <a onclick="scrollToSection('services')" class="btn btn-accent">Explore AMC &amp; Support Services &rarr;</a>
+          <a onclick="scrollToSection('services')" class="btn btn-accent">Explore</a>
         </div>
       `;
     }
@@ -2041,9 +2009,9 @@
             </div>
             <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--text-main); margin-bottom: 12px;">${prj.title}</h3>
             <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px;">
-              ${prj.tech.split(',').map(t => `<span style="font-size: 0.75rem; font-weight: 700; background: var(--bg-light); color: #333; padding: 3px 8px; border-radius: 4px; border: 1px solid var(--border-color);">${t.trim()}</span>`).join('')}
+              ${prj.tech.split(',').map(t => `<span style="font-size: 0.75rem; font-weight: 700; background: var(--bg-light); color: var(--text-body); padding: 3px 8px; border-radius: 4px; border: 1px solid var(--border-color);">${t.trim()}</span>`).join('')}
             </div>
-            <div style="margin-bottom: 15px; background: #f7f8fa; padding: 14px; border-radius: 6px; border: 1px solid var(--border-color);">
+            <div style="margin-bottom: 15px; background: var(--bg-soft); padding: 14px; border-radius: 6px; border: 1px solid var(--border-color);">
               <h4 style="font-size: 0.8rem; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-bottom: 4px;">THE CHALLENGE:</h4>
               <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">${prj.challenge}</p>
             </div>
@@ -2052,8 +2020,8 @@
               <p style="font-size: 0.95rem; color: var(--text-main); margin: 0;">${prj.solution}</p>
             </div>
           </div>
-          <div style="padding-top: 15px; border-top: 1px dashed var(--border-color); background: rgba(88,179,46,0.06); padding: 14px; border-radius: 6px; border: 1px solid rgba(88,179,46,0.2);">
-            <strong style="font-size: 0.8rem; color: #2e851e; text-transform: uppercase; display: block; margin-bottom: 4px;">📈 MEASURABLE IMPACT:</strong>
+          <div style="padding-top: 15px; border-top: 1px dashed var(--border-color); background: rgba(43, 125, 95,0.06); padding: 14px; border-radius: 6px; border: 1px solid rgba(43, 125, 95,0.2);">
+            <strong style="font-size: 0.8rem; color: var(--accent); text-transform: uppercase; display: block; margin-bottom: 4px;">📈 MEASURABLE IMPACT:</strong>
             <p style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin: 0;">${prj.results}</p>
           </div>
         </div>
@@ -2075,7 +2043,7 @@
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
               <span class="badge badge-primary">${exp.category}</span>
-              <span style="font-size: 0.8rem; font-weight: 800; color: var(--primary); background: rgba(26,133,232,0.1); padding: 3px 8px; border-radius: 4px;">${exp.prof}% PROFICIENCY</span>
+              <span style="font-size: 0.8rem; font-weight: 800; color: var(--primary); background: rgba(55, 106, 155,0.1); padding: 3px 8px; border-radius: 4px;">${exp.prof}% PROFICIENCY</span>
             </div>
             <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--text-main); margin-bottom: 10px;">${exp.title}</h3>
             <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 18px;">${exp.desc}</p>
@@ -2083,12 +2051,12 @@
               <div style="height: 100%; width: ${exp.prof}%; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 99px;"></div>
             </div>
             <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-              ${exp.tech.split(',').map(t => `<span style="font-size: 0.75rem; font-weight: 700; background: rgba(26,133,232,0.08); color: var(--primary); padding: 3px 8px; border-radius: 4px;">${t.trim()}</span>`).join('')}
+              ${exp.tech.split(',').map(t => `<span style="font-size: 0.75rem; font-weight: 700; background: rgba(55, 106, 155,0.08); color: var(--primary); padding: 3px 8px; border-radius: 4px;">${t.trim()}</span>`).join('')}
             </div>
           </div>
           <div style="padding-top: 18px; border-top: 1px solid var(--border-color); margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
             <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">LIVEpro Tech Stack</span>
-            <a onclick="scrollToSection('contact')" class="btn btn-outline btn-sm">Consult Team &rarr;</a>
+            <a onclick="scrollToSection('contact')" class="btn btn-outline btn-sm">Consult</a>
           </div>
         </div>
       `).join('');
@@ -2107,7 +2075,7 @@
           <div>
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
               <span class="badge badge-primary">${job.dept}</span>
-              <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent); background: rgba(88,179,46,0.15); padding: 4px 10px; border-radius: 4px;">${job.sal}</span>
+              <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent); background: rgba(43, 125, 95,0.15); padding: 4px 10px; border-radius: 4px;">${job.sal}</span>
             </div>
             <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main); margin-bottom: 10px;">${job.title}</h3>
             <div style="display: flex; gap: 15px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px; flex-wrap: wrap;">
@@ -2117,7 +2085,7 @@
           </div>
           <div style="padding-top: 18px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
             <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">LIVEpro Engineering</span>
-            <button onclick="openJobApplyModal('${job.id}', '${job.title.replace(/'/g, "\\'")}', '${job.dept}', '${job.loc}', '${job.exp}', '${job.sal}', '${job.desc.replace(/'/g, "\\'")}', '${job.req.replace(/'/g, "\\'")}')" class="btn btn-primary">View Role &amp; Apply &rarr;</button>
+            <button onclick="openJobApplyModal('${job.id}', '${job.title.replace(/'/g, "\\'")}', '${job.dept}', '${job.loc}', '${job.exp}', '${job.sal}', '${job.desc.replace(/'/g, "\\'")}', '${job.req.replace(/'/g, "\\'")}')" class="btn btn-primary">Apply</button>
           </div>
         </div>
       `).join('');
@@ -2169,7 +2137,7 @@
         <div class="card">
           <div>
             <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px;">
-              <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(26, 133, 232, 0.12); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 800;">${srv.title.charAt(0)}</div>
+              <div style="width: 50px; height: 50px; border-radius: 12px; background: rgba(55, 106, 155, 0.12); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 800;">${srv.title.charAt(0)}</div>
               <span class="badge ${srv.category === 'Corporate IT' ? 'badge-primary' : 'badge-accent'}">${srv.category}</span>
             </div>
             <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; color: var(--text-main);">${srv.title}</h3>
@@ -2177,7 +2145,7 @@
           </div>
           <div style="padding-top: 20px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
             <span style="font-size: 0.8rem; color: var(--text-muted);">LIVEpro Capability</span>
-            <button onclick="viewDetailModal('${srv.category}', '${srv.title}', '${srv.shortDesc.replace(/'/g, "\\'")}', '${srv.fullDesc.replace(/'/g, "\\'")}')" class="btn btn-outline btn-sm">Learn More &rarr;</button>
+            <button onclick="viewDetailModal('${srv.category}', '${srv.title}', '${srv.shortDesc.replace(/'/g, "\\'")}', '${srv.fullDesc.replace(/'/g, "\\'")}')" class="btn btn-outline btn-sm">Explore</button>
           </div>
         </div>
       `).join('');
@@ -2208,7 +2176,7 @@
               <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; color: var(--text-main);">${pst.title}</h3>
               <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">${pst.excerpt}</p>
             </div>
-            <div style="padding-top: 15px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 0.85rem; font-weight: 600;">By ${pst.author}</span><button onclick="viewDetailModal('${pst.category}', '${pst.title.replace(/'/g, "\\'")}', '${pst.excerpt.replace(/'/g, "\\'")}', '${pst.content.replace(/'/g, "\\'")}')" class="btn btn-outline btn-sm">Read Article &rarr;</button></div>
+            <div style="padding-top: 15px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;"><span style="font-size: 0.85rem; font-weight: 600;">By ${pst.author}</span><button onclick="viewDetailModal('${pst.category}', '${pst.title.replace(/'/g, "\\'")}', '${pst.excerpt.replace(/'/g, "\\'")}', '${pst.content.replace(/'/g, "\\'")}')" class="btn btn-outline btn-sm">Read</button></div>
           </div>
         </div>
       `).join('');
@@ -2263,7 +2231,7 @@
           <td><strong>${app.jobTitle}</strong></td>
           <td><a href="${app.resume}" target="_blank" style="color: var(--primary); font-weight: 700;">📄 Resume</a></td>
           <td><span class="badge ${app.status === 'new' ? 'badge-warning' : 'badge-primary'}">${app.status.toUpperCase()}</span></td>
-          <td><button class="btn btn-outline btn-sm" onclick="switchCmsTab('applications', document.querySelectorAll('.cms-nav-item')[9])">Review Candidate</button></td>
+          <td><button class="btn btn-outline btn-sm" onclick="switchCmsTab('applications', document.querySelectorAll('.cms-nav-item')[9])">Review</button></td>
         </tr>
       `).join('') || `<tr><td colspan="6" class="text-center">No applications received yet.</td></tr>`;
 
@@ -2274,7 +2242,7 @@
           <td><strong>${inq.name}</strong><br><a style="color: var(--primary);">${inq.email}</a></td>
           <td>${inq.subject}</td>
           <td><span class="badge ${inq.status === 'new' ? 'badge-warning' : 'badge-primary'}">${inq.status.toUpperCase()}</span></td>
-          <td><button class="btn btn-outline btn-sm" onclick="switchCmsTab('inquiries', document.querySelectorAll('.cms-nav-item')[12])">Review Lead</button></td>
+          <td><button class="btn btn-outline btn-sm" onclick="switchCmsTab('inquiries', document.querySelectorAll('.cms-nav-item')[12])">Review</button></td>
         </tr>
       `).join('') || `<tr><td colspan="5" class="text-center">No leads received yet.</td></tr>`;
 
@@ -2344,9 +2312,9 @@
           </td>
           <td><span class="badge badge-primary">${bnr.badge}</span></td>
           <td><strong>${bnr.title}</strong><br><span style="font-size: 0.8rem; color: var(--text-muted);">${bnr.subtitle.substring(0, 60)}...</span></td>
-          <td><a style="color: var(--primary);">${bnr.ctaText} &rarr;</a></td>
+          <td><a style="color: var(--primary);">${lvOneWord(bnr.ctaText, 'Explore')} &rarr;</a></td>
           <td><span class="badge ${bnr.status === 'active' ? 'badge-accent' : 'badge-warning'}">${bnr.status.toUpperCase()}</span></td>
-          <td><div style="display: flex; gap: 6px;"><button class="btn btn-outline btn-sm" onclick="editBanner('${bnr.id}')">Edit BG</button><button class="btn btn-danger btn-sm" onclick="deleteBanner('${bnr.id}')">Delete</button></div></td>
+          <td><div style="display: flex; gap: 6px;"><button class="btn btn-outline btn-sm" onclick="editBanner('${bnr.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="deleteBanner('${bnr.id}')">Delete</button></div></td>
         </tr>
       `).join('');
 
@@ -2357,7 +2325,7 @@
           <td><span class="badge badge-primary">${pnl.group}</span></td>
           <td><strong>${pnl.title}</strong></td>
           <td style="max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${pnl.desc}</td>
-          <td><a>${pnl.linkText} &rarr;</a></td>
+          <td><a>${lvOneWord(pnl.linkText, 'Read')} &rarr;</a></td>
           <td><span class="badge ${pnl.status === 'active' ? 'badge-accent' : 'badge-warning'}">${pnl.status.toUpperCase()}</span></td>
           <td><div style="display: flex; gap: 6px;"><button class="btn btn-outline btn-sm" onclick="editPanel('${pnl.id}')">Edit</button><button class="btn btn-danger btn-sm" onclick="deletePanel('${pnl.id}')">Delete</button></div></td>
         </tr>
@@ -2416,7 +2384,7 @@
       const tbody = document.getElementById("cmsAppsTableBody");
       const filtered = cmsData.applications.filter(a => currentAppFilter === 'all' || a.status === currentAppFilter);
       tbody.innerHTML = filtered.map(app => `
-        <tr style="${app.status === 'new' ? 'background: #ffebe9;' : ''}">
+        <tr style="${app.status === 'new' ? 'background: var(--danger-soft);' : ''}">
           <td style="font-size: 0.85rem; color: var(--text-muted);">${app.date}</td>
           <td><strong>${app.name}</strong><br><a style="color: var(--primary);">${app.email}</a></td>
           <td><strong>${app.jobTitle}</strong></td>
@@ -2435,7 +2403,7 @@
       const tbody = document.getElementById("cmsInquiriesTableBody");
       const filtered = cmsData.inquiries.filter(inq => currentInquiryFilter === 'all' || inq.status === currentInquiryFilter);
       tbody.innerHTML = filtered.map(inq => `
-        <tr style="${inq.status === 'new' ? 'background: #ffebe9;' : ''}">
+        <tr style="${inq.status === 'new' ? 'background: var(--danger-soft);' : ''}">
           <td style="font-size: 0.85rem; color: var(--text-muted);">${inq.date}</td>
           <td><strong>${inq.name}</strong><br><a style="color: var(--primary);">${inq.email}</a><br><span style="font-size: 0.8rem; color: var(--text-muted);">${inq.phone}</span></td>
           <td><strong>${inq.subject}</strong><br><p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">${inq.message}</p></td>
@@ -2593,7 +2561,7 @@
         ].filter(Boolean).join(' ') || '<span style="color: var(--text-muted);">—</span>';
 
         const avatar = m.photo
-          ? `<img src="${m.photo}" alt="${m.name}" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid #dbeafe;" onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='flex';}"><div class="admin-member-initials ${m.type === 'Mentor' ? 'mentor' : ''}" style="display:none;">${memberInitials(m.name)}</div>`
+          ? `<img src="${m.photo}" alt="${m.name}" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-border);" onerror="this.style.display='none'; if(this.nextElementSibling){this.nextElementSibling.style.display='flex';}"><div class="admin-member-initials ${m.type === 'Mentor' ? 'mentor' : ''}" style="display:none;">${memberInitials(m.name)}</div>`
           : `<div class="admin-member-initials ${m.type === 'Mentor' ? 'mentor' : ''}">${memberInitials(m.name)}</div>`;
 
         return `
@@ -2608,7 +2576,7 @@
             <td style="font-size: 0.85rem;">${contacts}</td>
             <td>
               <button class="badge ${m.status === 'active' ? 'badge-accent' : 'badge-warning'}" style="border: none; cursor: pointer;"
-                onclick="toggleLeaderStatus('${m.id}')" title="Click to toggle status">${String(m.status).toUpperCase()}</button>
+                onclick="toggleLeaderStatus('${m.id}')" title="Click to toggle status">Review</button>
             </td>
             <td>
               <div style="display: flex; gap: 8px;">
@@ -2617,7 +2585,7 @@
               </div>
             </td>
           </tr>`;
-      }).join('') || `<tr><td colspan="7" class="text-center" style="padding: 25px; color: var(--text-muted);">No Leaders or Mentors added yet. Click <strong>+ Add Leader / Mentor</strong> to create the first profile.</td></tr>`;
+      }).join('') || `<tr><td colspan="7" class="text-center" style="padding: 25px; color: var(--text-muted);">No Leaders or Mentors added yet. Click <strong>Add</strong> to create the first profile.</td></tr>`;
     }
 
     function filterCmsLeaders(type) {
@@ -2756,26 +2724,82 @@
       showToast("🎉 Thank you! Your inquiry has been saved into the CRM database and our Nagpur team has been notified.", "success");
     }
 
+    /* ---------------- ONE-WORD BUTTON NORMALISER ---------------- */
+    function lvOneWord(text, fallback) {
+      const t = String(text == null ? '' : text).replace(/\s+/g, ' ').trim();
+      if (!t) return fallback || 'View';
+      const map = {
+        'explore our expertise': 'Explore', 'view clients & projects': 'Projects',
+        'request consultation': 'Consult', 'request a consultation': 'Consult',
+        'get a quote': 'Quote', 'get in touch': 'Contact', 'contact us': 'Contact',
+        'learn more': 'Explore', 'read more': 'Read', 'view more': 'View',
+        'read engagement model': 'Read', 'explore methodologies': 'Explore',
+        'view quality assurance': 'Quality', 'our global reach': 'Global'
+      };
+      const key = t.toLowerCase();
+      if (map[key]) return map[key];
+      if (t.indexOf(' ') === -1) return t;
+      const first = t.split(' ')[0].replace(/[&;:,.!?-]+$/, '');
+      return first || (fallback || 'View');
+    }
+
     /* ---------------- ESTIMATOR CALCULATOR LOGIC ---------------- */
-    let estState = { service: 'Website & Web App Portal', scale: 'Mid-Size Enterprise Scale', timeline: 'Standard Delivery (3-4 Months)' };
+    const EST_LABELS = {
+      portal: 'Website & Web Application Portal',
+      mobile: 'Mobile App Development (iOS & Android)',
+      systems: 'Systems Integration & Re-Engineering',
+      ai: 'AI & Cognitive Business Operations',
+      amc: '24/7 AMC Support & Maintenance',
+      mvp: 'Startup MVP / Fast Track',
+      enterprise: 'Mid-Size Enterprise Scale',
+      global: 'Global MNC Scale & High Concurrency',
+      rush: 'Rush Delivery (1-2 Months)',
+      standard: 'Standard Delivery (3-4 Months)',
+      retainer: 'Long-term Partnership / Retainer'
+    };
+    let estState = { service: 'portal', scale: 'enterprise', timeline: 'standard' };
+
+    function estKey(value) {
+      const v = String(value == null ? '' : value).trim();
+      const lower = v.toLowerCase();
+      if (EST_LABELS[lower]) return lower;
+      if (/ai\b|cognitive|generative|llm/i.test(v)) return 'ai';
+      if (/amc|maintenance|support/i.test(v)) return 'amc';
+      if (/mobile|ios|android/i.test(v)) return 'mobile';
+      if (/systems|integration|re-engin/i.test(v)) return 'systems';
+      if (/global|mnc|high traffic|high concurrency/i.test(v)) return 'global';
+      if (/enterprise/i.test(v)) return 'enterprise';
+      if (/mvp|startup|fast track/i.test(v)) return 'mvp';
+      if (/rush|urgent|1-2/i.test(v)) return 'rush';
+      if (/retainer|long-term|long term|partnership/i.test(v)) return 'retainer';
+      if (/standard|3-4/i.test(v)) return 'standard';
+      return 'portal';
+    }
+
     function selectEstOption(group, val, btn) {
-      estState[group] = val;
-      btn.parentElement.querySelectorAll('.option-pill').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
+      estState[group] = estKey(val);
+      if (btn && btn.parentElement) {
+        btn.parentElement.querySelectorAll('.option-pill').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+      }
       calculateEstimate();
     }
+
     function calculateEstimate() {
       const costEl = document.getElementById('estCostDisplay'); const timeEl = document.getElementById('estTimeDisplay'); const descEl = document.getElementById('estDescDisplay'); if (!costEl) return;
+      const service = estKey(estState.service), scale = estKey(estState.scale), timeline = estKey(estState.timeline);
       let baseCost = 800000; let timeWeeks = 12;
-      if (estState.service.includes('Mobile App')) { baseCost = 1000000; timeWeeks = 14; } else if (estState.service.includes('AI & Cognitive')) { baseCost = 1200000; timeWeeks = 16; } else if (estState.service.includes('Systems Integration')) { baseCost = 900000; timeWeeks = 10; } else if (estState.service.includes('24/7 AMC Support')) { baseCost = 500000; timeWeeks = 4; }
-      if (estState.scale.includes('Startup MVP')) { baseCost *= 0.6; timeWeeks *= 0.7; } else if (estState.scale.includes('Global MNC Scale')) { baseCost *= 1.8; timeWeeks *= 1.4; }
-      if (estState.timeline.includes('Rush Delivery')) { baseCost *= 1.25; timeWeeks *= 0.6; } else if (estState.timeline.includes('Long-term Partnership')) { baseCost *= 0.9; timeWeeks *= 1.2; }
+      if (service === 'mobile') { baseCost = 1000000; timeWeeks = 14; } else if (service === 'ai') { baseCost = 1200000; timeWeeks = 16; } else if (service === 'systems') { baseCost = 900000; timeWeeks = 10; } else if (service === 'amc') { baseCost = 500000; timeWeeks = 4; }
+      if (scale === 'mvp') { baseCost *= 0.6; timeWeeks *= 0.7; } else if (scale === 'global') { baseCost *= 1.8; timeWeeks *= 1.4; }
+      if (timeline === 'rush') { baseCost *= 1.25; timeWeeks *= 0.6; } else if (timeline === 'retainer') { baseCost *= 0.9; timeWeeks *= 1.2; }
       const minCost = Math.round(baseCost * 0.85 / 100000); const maxCost = Math.round(baseCost * 1.15 / 100000); const minTime = Math.round(timeWeeks * 0.8 / 4); const maxTime = Math.round(timeWeeks * 1.2 / 4);
-      costEl.textContent = `₹${minCost}L - ₹${maxCost}L`; timeEl.textContent = `${Math.max(1, minTime)} - ${Math.max(2, maxTime)} Months`; descEl.textContent = `Estimated for: ${estState.service} (${estState.scale}) under ${estState.timeline}.`;
+      costEl.textContent = `₹${minCost}L - ₹${maxCost}L`; timeEl.textContent = `${Math.max(1, minTime)} - ${Math.max(2, maxTime)} Months`;
+      descEl.textContent = `Estimated for: ${EST_LABELS[service]} (${EST_LABELS[scale]}) under ${EST_LABELS[timeline]}.`;
     }
     function bookEstimateConsultation() {
-      const subject = encodeURIComponent(`Consultation: ${estState.service} (${estState.scale})`);
-      const message = encodeURIComponent(`Hello LIVEpro Engineering Team,\n\nI used the interactive estimator on your website and would like to schedule a technical consultation for:\n• Service Type: ${estState.service}\n• Scale: ${estState.scale}\n• Timeline: ${estState.timeline}\n• Estimated Investment: ${document.getElementById('estCostDisplay').textContent}`);
+      const service = EST_LABELS[estKey(estState.service)], scale = EST_LABELS[estKey(estState.scale)], timeline = EST_LABELS[estKey(estState.timeline)];
+      const subject = encodeURIComponent(`Consultation: ${service} (${scale})`);
+      const message = encodeURIComponent(`Hello LIVEpro Engineering Team,\n\nI used the interactive estimator on your website and would like to schedule a technical consultation for:\n• Service Type: ${service}\n• Scale: ${scale}\n• Timeline: ${timeline}\n• Estimated Investment: ${document.getElementById('estCostDisplay').textContent}`);
       window.location.href = `contact.php?subject=${subject}&message=${message}`;
     }
 
@@ -2808,6 +2832,163 @@
       });
     });
   </script>
+
+  <!-- LIVEpro motion & usability layer (SPA): scroll reveal, progress, back-to-top, counters -->
+  <script>
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---------- sticky header shadow ---------- */
+    var navbar = document.getElementById('navbar') || document.querySelector('header');
+    var onScrollHeader = function () {
+      if (navbar) navbar.classList.toggle('is-scrolled', window.scrollY > 12);
+    };
+    onScrollHeader();
+    window.addEventListener('scroll', onScrollHeader, { passive: true });
+
+    /* ---------- scroll progress bar ---------- */
+    if (!reduce) {
+      var bar = document.createElement('div');
+      bar.className = 'lv-progress';
+      bar.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(bar);
+      var updateBar = function () {
+        var doc = document.documentElement;
+        var max = (doc.scrollHeight - doc.clientHeight) || 1;
+        bar.style.width = Math.min(100, Math.max(0, (doc.scrollTop / max) * 100)) + '%';
+      };
+      updateBar();
+      window.addEventListener('scroll', updateBar, { passive: true });
+      window.addEventListener('resize', updateBar);
+    }
+
+    /* ---------- back to top ---------- */
+    var top = document.createElement('button');
+    top.type = 'button';
+    top.className = 'lv-backtop';
+    top.setAttribute('aria-label', 'Back to top');
+    top.innerHTML = '\u2191';
+    top.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    });
+    document.body.appendChild(top);
+    var toggleTop = function () { top.classList.toggle('show', window.scrollY > 480); };
+    toggleTop();
+    window.addEventListener('scroll', toggleTop, { passive: true });
+
+    /* ---------- scroll reveal (re-runs for dynamically rendered cards) ---------- */
+    var REVEAL_SELECTOR = '.card, .cms-card, .member-card, .stat-card, .section-header, .estimator-widget, .estimate-result-box, .faq-item';
+    var seen = new WeakSet();
+
+    function markVisible(el) { el.classList.add('lv-in'); }
+
+    function revealAll() {
+      document.querySelectorAll(REVEAL_SELECTOR).forEach(function (el) {
+        if (!seen.has(el)) { el.classList.add('lv-reveal'); seen.add(el); }
+        if (reduce || !('IntersectionObserver' in window)) markVisible(el);
+      });
+    }
+
+    var observer = null;
+    if ('IntersectionObserver' in window && !reduce) {
+      observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('lv-in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }
+
+    function revealInit() {
+      var nodes = document.querySelectorAll(REVEAL_SELECTOR);
+      nodes.forEach(function (el, i) {
+        if (seen.has(el)) return;
+        seen.add(el);
+        if (reduce || !observer) { markVisible(el); return; }
+        el.classList.add('lv-reveal');
+        el.style.setProperty('--lv-delay', Math.min(i % 6, 5) * 70 + 'ms');
+        observer.observe(el);
+      });
+    }
+
+    revealInit();
+
+    /* tabs / saves re-render markup, so re-scan a moment later */
+    document.addEventListener('click', function () { setTimeout(revealInit, 120); }, true);
+    if ('MutationObserver' in window) {
+      var mo = new MutationObserver(function () { window.requestAnimationFrame(revealInit); });
+      mo.observe(document.body, { childList: true, subtree: true });
+    }
+    /* safety net: nothing may stay invisible */
+    setTimeout(function () {
+      document.querySelectorAll('.lv-reveal:not(.lv-in)').forEach(function (el) { markVisible(el); });
+    }, 2500);
+
+    /* ---------- animated statistic counters ---------- */
+    var counters = document.querySelectorAll('.stat-value, .stat-num');
+    var animateCount = function (el) {
+      var raw = el.textContent.trim();
+      var m = raw.match(/^(\D*)(\d+(?:[.,]\d+)?)(.*)$/);
+      if (!m || reduce) return;
+      var prefix = m[1], target = parseFloat(m[2].replace(',', '')), suffix = m[3];
+      if (!isFinite(target)) return;
+      var start = performance.now();
+      var step = function (now) {
+        var p = Math.min(1, (now - start) / 1100);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = prefix + Math.round(target * eased) + suffix;
+        if (p < 1) requestAnimationFrame(step); else el.textContent = raw;
+      };
+      requestAnimationFrame(step);
+    };
+    if ('IntersectionObserver' in window && !reduce) {
+      var co = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { animateCount(e.target); co.unobserve(e.target); } });
+      }, { threshold: 0.5 });
+      counters.forEach(function (el) { co.observe(el); });
+    }
+
+    /* ---------- password show / hide in the CMS login modal ---------- */
+    var pass = document.getElementById('loginPass');
+    if (pass && !pass.dataset.lvToggle) {
+      pass.dataset.lvToggle = '1';
+      var field = document.createElement('div');
+      field.className = 'password-field';
+      pass.parentNode.insertBefore(field, pass);
+      field.appendChild(pass);
+
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'password-toggle';
+      btn.textContent = 'Show';
+      btn.setAttribute('aria-label', 'Show password');
+      field.appendChild(btn);
+
+      var hint = document.createElement('span');
+      hint.className = 'caps-hint';
+      hint.textContent = '\u26A0 Caps Lock is ON';
+      field.parentNode.insertBefore(hint, field.nextSibling);
+
+      btn.addEventListener('click', function () {
+        var show = pass.type === 'password';
+        pass.type = show ? 'text' : 'password';
+        btn.textContent = show ? 'Hide' : 'Show';
+        btn.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+        pass.focus();
+      });
+      var capsCheck = function (e) {
+        var on = e.getModifierState && e.getModifierState('CapsLock');
+        hint.classList.toggle('show', !!on);
+      };
+      pass.addEventListener('keyup', capsCheck);
+      pass.addEventListener('keydown', capsCheck);
+      pass.addEventListener('blur', function () { hint.classList.remove('show'); });
+    }
+  })();
+  </script>
+
 </body>
 
 </html>

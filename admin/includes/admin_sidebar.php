@@ -26,8 +26,8 @@ $current = basename($_SERVER['PHP_SELF']);
     <div class="admin-topbar d-flex justify-content-between align-items-center">
         <span class="fw-bold text-muted">Welcome, <?php echo sanitize($admin_user); ?> (<?php echo ucfirst($admin_role); ?>)</span>
         <div>
-            <a href="<?php echo base_url(); ?>" target="_blank" class="btn btn-sm btn-outline-secondary me-2">View Site</a>
-            <a href="<?php echo admin_url('change_password.php'); ?>" class="btn btn-sm btn-outline-warning me-2"><i class="material-icons" style="font-size:14px;vertical-align:middle;">lock</i> Change Password</a>
+            <a href="<?php echo base_url(); ?>" target="_blank" class="btn btn-sm btn-outline-secondary me-2" title="View public website">Preview</a>
+            <a href="<?php echo admin_url('change_password.php'); ?>" class="btn btn-sm btn-outline-warning me-2"><i class="material-icons" style="font-size:14px;vertical-align:middle;">lock</i> Password</a>
             <a href="<?php echo admin_url('logout.php'); ?>" class="btn btn-sm btn-livepro">Logout</a>
         </div>
     </div>

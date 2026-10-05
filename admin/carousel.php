@@ -28,7 +28,7 @@ $items = $pdo->query("SELECT * FROM carousel ORDER BY order_sort ASC, id ASC")->
 
 <h4 class="fw-bold mb-4">Manage Hero Carousel</h4>
 
-<a href="<?php echo admin_url('carousel_edit.php'); ?>" class="btn btn-livepro mb-3">Add New Slide</a>
+<a href="<?php echo admin_url('carousel_edit.php'); ?>" class="btn btn-livepro mb-3">Add</a>
 
 <div class="card admin-card">
     <div class="card-body">
@@ -68,7 +68,7 @@ $items = $pdo->query("SELECT * FROM carousel ORDER BY order_sort ASC, id ASC")->
             </table>
         </div>
         <?php if (empty($items)): ?>
-        <p class="text-muted">No carousel slides found. <a href="<?php echo admin_url('carousel_edit.php'); ?>">Add one</a>.</p>
+        <p class="text-muted">No carousel slides found. <a href="<?php echo admin_url('carousel_edit.php'); ?>">Add</a>.</p>
         <?php endif; ?>
     </div>
 </div>

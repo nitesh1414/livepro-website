@@ -8,6 +8,10 @@ This workspace delivers an enterprise web application structured into **Two Comp
 
 ---
 
+## 🌟 What's New in v6.1 (Design System Refresh, Single-Word Buttons, New Admin Login)
+
+See the design-system section below for the palette, button vocabulary and animation list.
+
 ## 🌟 What's New in v6.0 (Uploaded Logo-LP.png & Matching Typography Theme)
 
 1. **🖼️ Uploaded Geometric Logo Integration (`logo-LP.png`)**: Faithfully integrated your standalone geometric "LP" icon (`assets/images/logo-LP.png`) across the public header navbar, footer branding column, CMS admin sidebar, admin login box, and as the browser favicon (`<link rel="icon" href="assets/images/logo-LP.png">`)!
@@ -206,6 +210,89 @@ To access the backend admin control panel:
 13. **📥 Customer CRM Leads Engine**: Review incoming inquiries sent from `contact.php`. Update lead status, send email replies, or open WhatsApp chats.
 
 ---
+
+## 🎨 v6.1 Design System: Soothing Palette, Single-Word Buttons, Motion & New Admin Login
+
+A complete visual refresh of the public portal **and** the CMS admin suite. No database
+schema, route or business logic was changed — this release is CSS/markup/UX only.
+
+### 1. Colour palette (WCAG AA verified)
+
+Every text/background pair below was contrast-tested; body copy sits at **8.8:1** and
+the lowest interactive pair (white on accent green) at **5.0:1** — comfortably above the
+4.5:1 AA threshold, so nothing glares or vibrates on screen.
+
+| Token | Hex | Used for | Contrast |
+|---|---|---|---|
+| `--primary` | `#376a9b` | Buttons, links, active nav | white on it → **5.68:1** |
+| `--accent` | `#2b7d5f` | Success, secondary CTAs | white on it → **5.00:1** |
+| `--danger` | `#a34d48` | Delete / destructive | white on it → **5.66:1** |
+| `--warning` | `#b5852f` (ink `#8a6414`) | Badges, notices | **4.91:1** on soft gold |
+| `--text-main` | `#22303f` | Headings | **13.44:1** on `#f5f7fa` |
+| `--text-body` | `#3c4c5e` | Paragraphs | **8.80:1** |
+| `--text-muted` | `#5a6b7c` | Captions, meta | **5.48:1** |
+| `--bg-page` / `--bg-surface` | `#f5f7fa` / `#ffffff` | Page & cards | — |
+| dark panels | `#182533` → `#101a26` | Hero, footer, login brand side | muted text `#b9c6d4` → **8.95:1** |
+
+Greys are blue-leaning and hues are desaturated so long reading sessions stay easy on the
+eyes; the old neon blues/greens/reds and the `#050505`/`#0f172a` extremes were removed.
+
+### 2. Every button is now ONE word
+
+All action labels across the site, installer and CMS were normalised — **one verb per
+button**, with the full meaning preserved via `title` tooltips, helper text and context.
+
+| Before | After | Where |
+|---|---|---|
+| `Explore Our Expertise →`, `Learn More →`, `View All Capabilities` | **Explore** | Hero, cards, sections |
+| `Read Full Article →`, `Read Report →` | **Read** | Blog, case studies |
+| `View Details`, `View Live Portal` | **View** / **Preview** | Projects, SPA |
+| `Get a Quote` / `Contact Us` / `Talk to Our Leadership →` | **Quote** / **Contact** | CTAs |
+| `Request Technical Consultation →` | **Consult** | Services, estimator |
+| `Lock In Estimate & Book Consultation →` | **Book** | Cost estimator |
+| `View Role & Apply →`, `Submit General Application →` | **Apply** | Careers |
+| `Submit Inquiry to MySQL Database` | **Send** | Contact form |
+| `+ Add Carousel Slide`, `+ Add New Product`, `Create Article` | **Add** / **Create** | CMS |
+| `Save Hero Slide & Background Image`, `Save Settings & Update Live Site` | **Save** | CMS |
+| `← Back to List`, `← Return to Insights` | **Back** | CMS |
+| `Mark as Replied`, `Mark Reviewed`, `Mark Contacted` | **Replied** / **Reviewed** / **Contacted** | CRM |
+| `Review Lead`, `Shortlist Candidate` | **Review** / **Shortlist** | CRM |
+| `Update Password` | **Update** | Admin |
+| `Login to Corporate CMS Suite`, `Enter CMS Admin Suite` | **Login** | Login, installer |
+| `Proceed to Database Configuration →`, `Re-Check Environment` | **Continue** / **Recheck** | Installer |
+| `Export JSON`, `Reset Demo Data` | **Export** / **Reset** | SPA |
+
+Estimator option pills are single words too (`Portal`, `Mobile`, `Systems`, `AI`, `AMC`,
+`MVP`, `Enterprise`, `Global`, `Rush`, `Standard`, `Retainer`) — each carries the full
+description as a tooltip and the result panel spells out the chosen combination.
+
+Data-driven CTAs (hero banner captions entered in the CMS) are normalised at render time by
+`livepro_button_label()` in PHP and `lvOneWord()` in the SPA, so admin-entered text is
+always displayed as a single word.
+
+### 3. Motion & micro-interactions (`assets/css/style.css` + `assets/js/main.js`)
+
+* Scroll-reveal with per-card stagger (`IntersectionObserver`, `.lv-reveal` → `.lv-in`).
+* Sticky header that gains a soft shadow after 12px of scroll.
+* Reading-progress bar, animated statistic counters, back-to-top button.
+* Card lift, button shimmer, focus rings, toast slide-ins, modal scale-in, error shake.
+* All motion is disabled automatically under `prefers-reduced-motion: reduce`.
+
+### 4. Redesigned admin login (`admin/login.php`)
+
+Split-screen layout: a dark brand panel (logo, `We spread brand awareness. We have got an
+AGR team for this business.`, three trust bullets) beside a light login card with
+username, password with **Show/Hide**, a **Caps Lock** warning, a demo-credentials panel,
+a loading spinner on submit and a single-word **Login** button. Failed logins shake the
+error banner instead of jumping the layout. Login logic (`login_admin()`), the session
+flow and the demo credentials `admin / livepro2026` are unchanged.
+
+### 5. Legacy compatibility
+
+Older admin/product templates that used Bootstrap-style markup (`row`, `col-md-*`,
+`card-body`, `table-hover`, `modal-dialog`, `nav-pills`, `bg-primary`, …) are still
+supported by a lightweight compatibility section at the end of the stylesheet — no
+external framework is loaded.
 
 ## 🌐 Architecture 2: Standalone Browser Mode (`index.html`)
 

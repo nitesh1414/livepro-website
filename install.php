@@ -231,7 +231,7 @@ $write_ok  = is_writable(__DIR__) || is_writable(__DIR__ . '/includes');
         <span class="logo-sub">LP Theme Suite Installer</span>
       </div>
     </a>
-    <span style="font-size: 0.75rem; background: #e8f0fe; color: #1a85e8; border: 1px solid #1a85e8; padding: 4px 10px; border-radius: 99px; font-weight: 800;">v5.0 PRO</span>
+    <span style="font-size: 0.75rem; background: #eaf1f8; color: #376a9b; border: 1px solid #376a9b; padding: 4px 10px; border-radius: 99px; font-weight: 800;">v5.0 PRO</span>
   </div>
 
   <div class="steps-bar">
@@ -265,10 +265,10 @@ $write_ok  = is_writable(__DIR__) || is_writable(__DIR__ . '/includes');
       </ul>
       <?php if ($php_ok && ($mysql_ok || $sqlite_ok)): ?>
         <div class="alert alert-info"><span>ℹ️</span><span>Your server meets all necessary requirements! Click below to configure your database.</span></div>
-        <a href="install.php?step=2" class="btn btn-primary">Proceed to Database Configuration &rarr;</a>
+        <a href="install.php?step=2" class="btn btn-primary">Continue</a>
       <?php else: ?>
         <div class="alert alert-error"><span>⚠️</span><span>Please enable the required PHP extensions or file permissions before proceeding.</span></div>
-        <a href="install.php?step=1" class="btn btn-outline">🔄 Re-Check Environment</a>
+        <a href="install.php?step=1" class="btn btn-outline">Recheck</a>
       <?php endif; ?>
 
     <?php elseif ($step === 2): ?>
@@ -276,13 +276,13 @@ $write_ok  = is_writable(__DIR__) || is_writable(__DIR__ . '/includes');
       <p class="subtitle">Enter your database credentials and configure your initial admin account.</p>
       <form method="POST" action="install.php?step=2">
         <input type="hidden" name="action" value="install">
-        <div class="form-group" style="background: #e8f0fe; border: 1px solid #1a85e8; padding: 18px; border-radius: 8px; margin-bottom: 25px;">
-          <label style="color: #1a85e8; font-size: 0.95rem; margin-bottom: 8px;">Select Database Installation Mode *</label>
-          <select name="db_mode" id="dbModeSelect" onchange="toggleDbFields(this.value)" style="background: white; font-weight: 700; color: #1a85e8;">
+        <div class="form-group" style="background: #eaf1f8; border: 1px solid #376a9b; padding: 18px; border-radius: 8px; margin-bottom: 25px;">
+          <label style="color: #376a9b; font-size: 0.95rem; margin-bottom: 8px;">Select Database Installation Mode *</label>
+          <select name="db_mode" id="dbModeSelect" onchange="toggleDbFields(this.value)" style="background: white; font-weight: 700; color: #376a9b;">
             <?php if ($mysql_ok): ?><option value="mysql">🐬 MySQL / MariaDB Server (Production Standard)</option><?php endif; ?>
             <?php if ($sqlite_ok): ?><option value="sqlite">📦 SQLite Local File Database (Zero-Config / Offline Development)</option><?php endif; ?>
           </select>
-          <p style="font-size: 0.8rem; color: #0f172a; margin: 8px 0 0 0;">MySQL will connect to your server, create database <code>livepro_cms_db</code>, and install 15 corporate IT tables (incl. Leaders &amp; Mentors).</p>
+          <p style="font-size: 0.8rem; color: #182533; margin: 8px 0 0 0;">MySQL will connect to your server, create database <code>livepro_cms_db</code>, and install 15 corporate IT tables (incl. Leaders &amp; Mentors).</p>
         </div>
         <div id="mysqlFieldsSection">
           <div class="grid-2">
@@ -295,7 +295,7 @@ $write_ok  = is_writable(__DIR__) || is_writable(__DIR__ . '/includes');
           </div>
         </div>
         <hr style="border: none; border-top: 1px solid var(--border); margin: 25px 0;">
-        <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 15px; color: #0f172a;">Initial Admin Account &amp; Site Identity</h3>
+        <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 15px; color: #182533;">Initial Admin Account &amp; Site Identity</h3>
         <div class="form-group"><label>Company / Portal Title</label><input type="text" name="site_name" value="LIVEpro Software Solutions" required></div>
         <div class="grid-2">
           <div class="form-group"><label>Admin Username *</label><input type="text" name="admin_username" value="admin" required></div>
@@ -306,20 +306,20 @@ $write_ok  = is_writable(__DIR__) || is_writable(__DIR__ . '/includes');
           <input type="checkbox" name="seed_demo" id="seedDemo" value="1" checked>
           <div><label for="seedDemo">Seed Database with Complete LIVEpro Corporate IT &amp; Projects Content</label><p>Automatically populates all 15 tables with Banners (with Background Images!), Capabilities, Case Studies, Client Projects, Expertise, and Careers!</p></div>
         </div>
-        <div class="checkbox-group" style="border-color: #d92323; background: #ffebe9;">
+        <div class="checkbox-group" style="border-color: #a34d48; background: #fbeceb;">
           <input type="checkbox" name="clean_install" id="cleanInstall" value="1" checked>
-          <div><label for="cleanInstall" style="color: #c2070e;">Re-Create / Overwrite Existing Tables (Clean Install)</label><p>Drops existing tables before creating the new 14-table schema.</p></div>
+          <div><label for="cleanInstall" style="color: #a34d48;">Re-Create / Overwrite Existing Tables (Clean Install)</label><p>Drops existing tables before creating the new 14-table schema.</p></div>
         </div>
         <div style="display: flex; gap: 15px; margin-top: 30px;">
-          <a href="install.php?step=1" class="btn btn-outline" style="width: auto; padding: 14px 25px;">&larr; Back</a>
-          <button type="submit" class="btn btn-accent" style="flex: 1;">🚀 Install Schema &amp; Seed Database Now</button>
+          <a href="install.php?step=1" class="btn btn-outline" style="width: auto; padding: 14px 25px;">Back</a>
+          <button type="submit" class="btn btn-accent" style="flex: 1;">Install</button>
         </div>
       </form>
       <script>function toggleDbFields(v) { const s = document.getElementById('mysqlFieldsSection'); if(s) s.style.display=(v==='mysql'?'block':'none'); } toggleDbFields(document.getElementById('dbModeSelect').value);</script>
 
     <?php elseif ($step === 3): ?>
       <div style="text-align: center; padding: 10px 0;">
-        <div style="width: 65px; height: 65px; background: #e6f4ea; color: #137333; border: 2px solid #58b32e; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 20px; font-weight: 800;">✔</div>
+        <div style="width: 65px; height: 65px; background: #e7f4ef; color: #22674e; border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 20px; font-weight: 800;">✔</div>
         <h2>Installation Completed Successfully!</h2>
         <p class="subtitle">The 14-table schema, relational databases, and LP Geometric Logo theme content have been installed.</p>
         <div class="stats-box">
@@ -327,14 +327,14 @@ $write_ok  = is_writable(__DIR__) || is_writable(__DIR__ . '/includes');
           <div class="stat-item"><div class="stat-num">35+</div><div class="stat-lbl">Seeded Elements</div></div>
           <div class="stat-item"><div class="stat-num">100%</div><div class="stat-lbl">CMS Editable</div></div>
         </div>
-        <div style="background: #e8f0fe; border: 1px solid #1a85e8; padding: 20px; border-radius: 8px; text-align: left; margin-bottom: 30px;">
-          <h4 style="color: #1a85e8; font-size: 0.95rem; margin-bottom: 10px;">🔐 Your Admin Login Credentials:</h4>
-          <p style="font-size: 0.95rem; color: #0f172a; margin-bottom: 4px;"><strong>Username:</strong> <code><?= htmlspecialchars($installed_stats['admin'] ?? 'admin'); ?></code></p>
-          <p style="font-size: 0.95rem; color: #0f172a; margin: 0;"><strong>Password:</strong> <span style="color: #64748b;">(As configured during Step 2)</span></p>
+        <div style="background: #eaf1f8; border: 1px solid #376a9b; padding: 20px; border-radius: 8px; text-align: left; margin-bottom: 30px;">
+          <h4 style="color: #376a9b; font-size: 0.95rem; margin-bottom: 10px;">🔐 Your Admin Login Credentials:</h4>
+          <p style="font-size: 0.95rem; color: #182533; margin-bottom: 4px;"><strong>Username:</strong> <code><?= htmlspecialchars($installed_stats['admin'] ?? 'admin'); ?></code></p>
+          <p style="font-size: 0.95rem; color: #182533; margin: 0;"><strong>Password:</strong> <span style="color: #5a6b7c;">(As configured during Step 2)</span></p>
         </div>
         <div class="grid-2" style="gap: 15px;">
-          <a href="index.php" class="btn btn-primary">🌐 Launch Public Portal</a>
-          <a href="admin/login.php" class="btn btn-accent">🛡️ Enter CMS Admin Suite</a>
+          <a href="index.php" class="btn btn-primary">Launch</a>
+          <a href="admin/login.php" class="btn btn-accent">Login</a>
         </div>
       </div>
     <?php endif; ?>

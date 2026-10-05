@@ -59,57 +59,55 @@ if ($action === 'new' || $action === 'edit'):
     }
 ?>
     <div class="admin-card" style="max-width: 700px; margin: 0 auto;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid #e2e8f0; padding-bottom: 15px;">
-        <h3 style="font-size: 1.4rem; font-weight: 800; margin: 0; color: #0f172a;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">
+        <h3 style="font-size: 1.4rem; font-weight: 800; margin: 0; color: var(--text-main);">
           <?= $action === 'edit' ? '✏️ Edit Testimonial' : '➕ Add Client/Alumni Testimonial'; ?>
         </h3>
-        <a href="testimonials.php" class="btn" style="background: #f1f5f9; color: #475569; text-decoration: none; font-size: 0.85rem;">&larr; Back to List</a>
+        <a href="testimonials.php" class="btn" style="background: var(--bg-subtle); color: var(--text-body); text-decoration: none; font-size: 0.85rem;">Back</a>
       </div>
 
       <form method="POST" action="testimonials.php?<?= $action === 'edit' ? "action=edit&id={$id}" : "action=new"; ?>">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
           <div>
-            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: #334155;">Person Full Name *</label>
-            <input type="text" name="name" value="<?= htmlspecialchars($test['name']); ?>" required style="width: 100%; padding: 12px 14px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: var(--text-body);">Person Full Name *</label>
+            <input type="text" name="name" value="<?= htmlspecialchars($test['name']); ?>" required style="width: 100%; padding: 12px 14px; border: 1px solid var(--border-strong); border-radius: 8px; font-size: 0.95rem;">
           </div>
           <div>
-            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: #334155;">Role / Organization or College *</label>
-            <input type="text" name="role" value="<?= htmlspecialchars($test['role']); ?>" placeholder="e.g. IT Director, Infosys" required style="width: 100%; padding: 12px 14px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: var(--text-body);">Role / Organization or College *</label>
+            <input type="text" name="role" value="<?= htmlspecialchars($test['role']); ?>" placeholder="e.g. IT Director, Infosys" required style="width: 100%; padding: 12px 14px; border: 1px solid var(--border-strong); border-radius: 8px; font-size: 0.95rem;">
           </div>
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 20px;">
           <div>
-            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: #334155;">Feedback Type *</label>
-            <select name="type" style="width: 100%; padding: 12px 14px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; background: white;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: var(--text-body);">Feedback Type *</label>
+            <select name="type" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border-strong); border-radius: 8px; font-size: 0.95rem; background: white;">
               <option value="Client" <?= $test['type'] === 'Client' ? 'selected' : ''; ?>>Corporate Client</option>
               <option value="Student Alumni" <?= $test['type'] === 'Student Alumni' ? 'selected' : ''; ?>>Student Alumni</option>
             </select>
           </div>
           <div>
-            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: #334155;">Star Rating *</label>
-            <select name="rating" style="width: 100%; padding: 12px 14px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; background: white;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: var(--text-body);">Star Rating *</label>
+            <select name="rating" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border-strong); border-radius: 8px; font-size: 0.95rem; background: white;">
               <option value="5" <?= intval($test['rating']) === 5 ? 'selected' : ''; ?>>⭐⭐⭐⭐⭐ (5 Stars)</option>
               <option value="4" <?= intval($test['rating']) === 4 ? 'selected' : ''; ?>>⭐⭐⭐⭐ (4 Stars)</option>
               <option value="3" <?= intval($test['rating']) === 3 ? 'selected' : ''; ?>>⭐⭐⭐ (3 Stars)</option>
             </select>
           </div>
           <div>
-            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: #334155;">Display Order</label>
-            <input type="number" name="display_order" value="<?= intval($test['display_order']); ?>" style="width: 100%; padding: 12px 14px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: var(--text-body);">Display Order</label>
+            <input type="number" name="display_order" value="<?= intval($test['display_order']); ?>" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border-strong); border-radius: 8px; font-size: 0.95rem;">
           </div>
         </div>
 
         <div style="margin-bottom: 30px;">
-          <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: #334155;">Quote / Testimonial Body *</label>
-          <textarea name="quote" rows="4" required style="width: 100%; padding: 12px 14px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem;"><?= htmlspecialchars($test['quote']); ?></textarea>
+          <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: var(--text-body);">Quote / Testimonial Body *</label>
+          <textarea name="quote" rows="4" required style="width: 100%; padding: 12px 14px; border: 1px solid var(--border-strong); border-radius: 8px; font-size: 0.95rem;"><?= htmlspecialchars($test['quote']); ?></textarea>
         </div>
 
         <div style="display: flex; justify-content: flex-end; gap: 15px;">
-          <a href="testimonials.php" class="btn" style="background: #f1f5f9; color: #475569; text-decoration: none;">Cancel</a>
-          <button type="submit" class="btn" style="background: #059669; color: white; padding: 12px 30px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer;">
-            💾 Save Testimonial
-          </button>
+          <a href="testimonials.php" class="btn" style="background: var(--bg-subtle); color: var(--text-body); text-decoration: none;">Cancel</a>
+          <button type="submit" class="btn" style="background: var(--accent); color: white; padding: 12px 30px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer;">Save</button>
         </div>
       </form>
     </div>
@@ -121,10 +119,10 @@ if ($action === 'new' || $action === 'edit'):
     <div class="admin-card">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
         <div>
-          <h3 style="font-size: 1.35rem; font-weight: 800; margin: 0; color: #0f172a;">Client &amp; Student Testimonials Database</h3>
-          <p style="color: #64748b; font-size: 0.85rem; margin: 4px 0 0 0;">Total feedback records: <?= count($testimonials); ?></p>
+          <h3 style="font-size: 1.35rem; font-weight: 800; margin: 0; color: var(--text-main);">Client &amp; Student Testimonials Database</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 4px 0 0 0;">Total feedback records: <?= count($testimonials); ?></p>
         </div>
-        <a href="testimonials.php?action=new" class="btn" style="background: #059669; color: white; text-decoration: none; padding: 10px 20px; border-radius: 8px; font-weight: 700;">+ Add Testimonial</a>
+        <a href="testimonials.php?action=new" class="btn" style="background: var(--accent); color: white; text-decoration: none; padding: 10px 20px; border-radius: 8px; font-weight: 700;">Add</a>
       </div>
 
       <div style="overflow-x: auto;">
@@ -141,19 +139,19 @@ if ($action === 'new' || $action === 'edit'):
           </thead>
           <tbody>
             <?php if (empty($testimonials)): ?>
-              <tr><td colspan="6" style="text-align: center; padding: 30px; color: #64748b;">No testimonials found. Click Add Testimonial above.</td></tr>
+              <tr><td colspan="6" style="text-align: center; padding: 30px; color: var(--text-muted);">No testimonials found. Click Add Testimonial above.</td></tr>
             <?php else: ?>
               <?php foreach ($testimonials as $tst): ?>
                 <tr>
-                  <td style="color: #64748b; font-weight: 700;">#<?= intval($tst['display_order'] ?? 0); ?></td>
-                  <td><strong style="color: #0f172a; font-size: 1.05rem;"><?= htmlspecialchars($tst['name']); ?></strong></td>
-                  <td style="color: #334155;"><?= htmlspecialchars($tst['role']); ?></td>
+                  <td style="color: var(--text-muted); font-weight: 700;">#<?= intval($tst['display_order'] ?? 0); ?></td>
+                  <td><strong style="color: var(--text-main); font-size: 1.05rem;"><?= htmlspecialchars($tst['name']); ?></strong></td>
+                  <td style="color: var(--text-body);"><?= htmlspecialchars($tst['role']); ?></td>
                   <td><span class="badge <?= $tst['type'] === 'Client' ? 'badge-primary' : 'badge-accent'; ?>"><?= htmlspecialchars($tst['type']); ?></span></td>
-                  <td style="color: #f59e0b;"><?= str_repeat('★', intval($tst['rating'] ?? 5)); ?></td>
+                  <td style="color: var(--warning);"><?= str_repeat('★', intval($tst['rating'] ?? 5)); ?></td>
                   <td>
                     <div style="display: flex; gap: 8px;">
-                      <a href="testimonials.php?action=edit&id=<?= $tst['id']; ?>" class="btn" style="background: #f0fdf4; color: #059669; padding: 6px 12px; font-size: 0.8rem; text-decoration: none;">Edit</a>
-                      <a href="testimonials.php?action=delete&id=<?= $tst['id']; ?>" onclick="return confirm('Delete this testimonial permanently?')" class="btn" style="background: #fef2f2; color: #dc2626; padding: 6px 12px; font-size: 0.8rem; text-decoration: none;">Delete</a>
+                      <a href="testimonials.php?action=edit&id=<?= $tst['id']; ?>" class="btn" style="background: var(--accent-soft); color: var(--accent); padding: 6px 12px; font-size: 0.8rem; text-decoration: none;">Edit</a>
+                      <a href="testimonials.php?action=delete&id=<?= $tst['id']; ?>" onclick="return confirm('Delete this testimonial permanently?')" class="btn" style="background: var(--danger-soft); color: var(--danger); padding: 6px 12px; font-size: 0.8rem; text-decoration: none;">Delete</a>
                     </div>
                   </td>
                 </tr>

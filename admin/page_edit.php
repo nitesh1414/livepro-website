@@ -60,8 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label class="form-check-label" for="is_active">Active</label>
             </div>
             <div class="d-flex gap-2">
-                <button type="submit" class="btn btn-livepro">Save Changes</button>
-                <a href="<?php echo admin_url('pages.php'); ?>" class="btn btn-outline-secondary">Back to Pages</a>
+                <button type="submit" class="btn btn-livepro">Save</button>
+                <a href="<?php echo admin_url('pages.php'); ?>" class="btn btn-outline-secondary">Back</a>
             </div>
         </form>
     </div>

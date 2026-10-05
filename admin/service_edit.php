@@ -71,7 +71,7 @@ $icons = ['code', 'mobile', 'trending_up', 'support', 'security', 'home', 'schoo
                 </div>
             </div>
             <div class="d-flex gap-2 mt-4">
-                <button type="submit" class="btn btn-livepro">Save Service</button>
+                <button type="submit" class="btn btn-livepro">Save</button>
                 <a href="<?php echo admin_url('services.php'); ?>" class="btn btn-outline-secondary">Back</a>
             </div>
         </form>

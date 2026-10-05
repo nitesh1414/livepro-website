@@ -29,7 +29,7 @@ $products = $pdo->query("SELECT * FROM products ORDER BY order_sort ASC, id ASC"
 
 <h4 class="fw-bold mb-4">Manage Products</h4>
 
-<a href="<?php echo admin_url('product_edit.php'); ?>" class="btn btn-livepro mb-3">Add New Product</a>
+<a href="<?php echo admin_url('product_edit.php'); ?>" class="btn btn-livepro mb-3">Add</a>
 
 <div class="card admin-card">
     <div class="card-body">

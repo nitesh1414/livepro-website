@@ -50,22 +50,22 @@ if ($view_id > 0):
     }
 ?>
     <div class="admin-card" style="max-width: 800px; margin: 0 auto;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid #dddfe2; padding-bottom: 15px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">
         <div>
           <span class="badge badge-primary">Candidate ID: #<?= $app['id']; ?></span>
-          <h3 style="font-size: 1.5rem; font-weight: 800; margin: 6px 0 0 0; color: #050505;">Candidate Application Review</h3>
+          <h3 style="font-size: 1.5rem; font-weight: 800; margin: 6px 0 0 0; color: var(--text-main);">Candidate Application Review</h3>
         </div>
-        <a href="applications.php" class="btn" style="background: #f0f2f5; color: #65676b; text-decoration: none; font-size: 0.85rem;">&larr; Back to Applications Table</a>
+        <a href="applications.php" class="btn" style="background: var(--bg-subtle); color: var(--text-muted); text-decoration: none; font-size: 0.85rem;">Back</a>
       </div>
 
       <!-- CANDIDATE BOX -->
-      <div style="background: #f0f2f5; border: 1px solid #dddfe2; padding: 25px; border-radius: 8px; margin-bottom: 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); padding: 25px; border-radius: 8px; margin-bottom: 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
         <div>
-          <span style="font-size: 0.8rem; color: #65676b; font-weight: 700; display: block;">APPLICANT NAME</span>
-          <strong style="font-size: 1.15rem; color: #050505;"><?= htmlspecialchars($app['applicant_name']); ?></strong>
+          <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; display: block;">APPLICANT NAME</span>
+          <strong style="font-size: 1.15rem; color: var(--text-main);"><?= htmlspecialchars($app['applicant_name']); ?></strong>
         </div>
         <div>
-          <span style="font-size: 0.8rem; color: #65676b; font-weight: 700; display: block;">CURRENT APPLICATION STATUS</span>
+          <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; display: block;">CURRENT APPLICATION STATUS</span>
           <?php 
             $badges = ['new' => 'badge-warning', 'reviewed' => 'badge-primary', 'shortlisted' => 'badge-accent', 'rejected' => 'badge-warning'];
             $b_class = $badges[$app['status']] ?? 'badge-primary';
@@ -73,52 +73,50 @@ if ($view_id > 0):
           <span class="badge <?= $b_class; ?>" style="font-size: 0.85rem; padding: 6px 14px; margin-top: 4px;"><?= strtoupper(htmlspecialchars($app['status'])); ?></span>
         </div>
         <div>
-          <span style="font-size: 0.8rem; color: #65676b; font-weight: 700; display: block;">EMAIL ADDRESS</span>
-          <a href="mailto:<?= htmlspecialchars($app['email']); ?>" style="color: #1877f2; font-weight: 600; text-decoration: none; font-size: 1.05rem;"><?= htmlspecialchars($app['email']); ?></a>
+          <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; display: block;">EMAIL ADDRESS</span>
+          <a href="mailto:<?= htmlspecialchars($app['email']); ?>" style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 1.05rem;"><?= htmlspecialchars($app['email']); ?></a>
         </div>
         <div>
-          <span style="font-size: 0.8rem; color: #65676b; font-weight: 700; display: block;">MOBILE NUMBER</span>
-          <a href="tel:<?= htmlspecialchars($app['phone']); ?>" style="color: #42b72a; font-weight: 600; text-decoration: none; font-size: 1.05rem;"><?= htmlspecialchars($app['phone']); ?></a>
+          <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; display: block;">MOBILE NUMBER</span>
+          <a href="tel:<?= htmlspecialchars($app['phone']); ?>" style="color: var(--accent); font-weight: 600; text-decoration: none; font-size: 1.05rem;"><?= htmlspecialchars($app['phone']); ?></a>
         </div>
       </div>
 
       <!-- POSITION & RESUME -->
       <div style="margin-bottom: 25px;">
-        <span style="font-size: 0.8rem; color: #65676b; font-weight: 700; display: block; margin-bottom: 6px;">POSITION APPLIED FOR</span>
-        <h4 style="font-size: 1.25rem; font-weight: 800; color: #1877f2; margin: 0 0 15px 0; background: #e8f0fe; padding: 12px 18px; border-radius: 6px; border-left: 4px solid #1877f2;">
+        <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 6px;">POSITION APPLIED FOR</span>
+        <h4 style="font-size: 1.25rem; font-weight: 800; color: var(--primary); margin: 0 0 15px 0; background: var(--primary-soft); padding: 12px 18px; border-radius: 6px; border-left: 4px solid var(--primary);">
           <?= htmlspecialchars($app['job_title']); ?>
         </h4>
 
-        <span style="font-size: 0.8rem; color: #65676b; font-weight: 700; display: block; margin-bottom: 6px;">RESUME / PORTFOLIO LINK</span>
-        <div style="background: white; border: 1px solid #dddfe2; padding: 15px 20px; border-radius: 6px; margin-bottom: 20px;">
-          <a href="<?= htmlspecialchars($app['resume_link']); ?>" target="_blank" style="color: #1877f2; font-weight: 700; text-decoration: underline; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 6px;">RESUME / PORTFOLIO LINK</span>
+        <div style="background: white; border: 1px solid var(--border-color); padding: 15px 20px; border-radius: 6px; margin-bottom: 20px;">
+          <a href="<?= htmlspecialchars($app['resume_link']); ?>" target="_blank" style="color: var(--primary); font-weight: 700; text-decoration: underline; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
             📄 Open Candidate Resume &rarr;
           </a>
         </div>
         
         <?php if (!empty($app['cover_letter'])): ?>
-          <span style="font-size: 0.8rem; color: #65676b; font-weight: 700; display: block; margin-bottom: 6px;">COVER LETTER / INTRODUCTION</span>
-          <div style="background: white; border: 1px solid #dddfe2; padding: 25px; border-radius: 6px; font-size: 1.05rem; line-height: 1.8; color: #333; white-space: pre-line;">
+          <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 700; display: block; margin-bottom: 6px;">COVER LETTER / INTRODUCTION</span>
+          <div style="background: white; border: 1px solid var(--border-color); padding: 25px; border-radius: 6px; font-size: 1.05rem; line-height: 1.8; color: var(--text-body); white-space: pre-line;">
             <?= htmlspecialchars($app['cover_letter']); ?>
           </div>
         <?php endif; ?>
       </div>
 
       <!-- RECRUITMENT ACTION BAR -->
-      <div style="background: #050505; color: white; padding: 25px; border-radius: 8px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+      <div style="background: var(--text-main); color: white; padding: 25px; border-radius: 8px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
         <div>
-          <span style="font-size: 0.85rem; color: #e4e6eb; display: block; margin-bottom: 6px;">Update Recruitment Status:</span>
+          <span style="font-size: 0.85rem; color: var(--text-muted); display: block; margin-bottom: 6px;">Update Recruitment Status:</span>
           <div style="display: flex; gap: 8px;">
-            <a href="applications.php?action=status&id=<?= $app['id']; ?>&status=reviewed" class="btn btn-sm" style="background: #333; color: white; text-decoration: none;">Mark Reviewed</a>
-            <a href="applications.php?action=status&id=<?= $app['id']; ?>&status=shortlisted" class="btn btn-sm" style="background: #42b72a; color: white; text-decoration: none; font-weight: 800;">⭐ Shortlist Candidate</a>
-            <a href="applications.php?action=status&id=<?= $app['id']; ?>&status=rejected" class="btn btn-sm" style="background: #fa383e; color: white; text-decoration: none;">Reject</a>
+            <a href="applications.php?action=status&id=<?= $app['id']; ?>&status=reviewed" class="btn btn-sm" style="background: var(--text-body); color: white; text-decoration: none;" title="Mark as Reviewed">Reviewed</a>
+            <a href="applications.php?action=status&id=<?= $app['id']; ?>&status=shortlisted" class="btn btn-sm" style="background: var(--accent); color: white; text-decoration: none; font-weight: 800;" title="Shortlist Candidate">Shortlist</a>
+            <a href="applications.php?action=status&id=<?= $app['id']; ?>&status=rejected" class="btn btn-sm" style="background: var(--danger); color: white; text-decoration: none;" title="Reject Candidate">Reject</a>
           </div>
         </div>
 
         <div style="display: flex; gap: 12px;">
-          <a href="mailto:<?= htmlspecialchars($app['email']); ?>?subject=RE: Application for <?= urlencode($app['job_title']); ?> at LIVEpro Software Solutions&body=Dear <?= urlencode($app['applicant_name']); ?>,%0D%0A%0D%0AThank you for applying to LIVEpro Software Solutions.%0D%0A%0D%0A" class="btn btn-primary" style="text-decoration: none;">
-            ✉️ Email Candidate
-          </a>
+          <a href="mailto:<?= htmlspecialchars($app['email']); ?>?subject=RE: Application for <?= urlencode($app['job_title']); ?> at LIVEpro Software Solutions&body=Dear <?= urlencode($app['applicant_name']); ?>,%0D%0A%0D%0AThank you for applying to LIVEpro Software Solutions.%0D%0A%0D%0A" class="btn btn-primary" style="text-decoration: none;" title="Email Candidate">Email</a>
           <a href="https://wa.me/<?= preg_replace('/[^0-9]/', '', $app['phone']); ?>" target="_blank" class="btn btn-accent" style="text-decoration: none;">
             💬 WhatsApp
           </a>
@@ -136,14 +134,14 @@ if ($view_id > 0):
     <div class="admin-card">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
         <div>
-          <h3 style="font-size: 1.35rem; font-weight: 800; margin: 0; color: #050505;">Recruitment CRM &amp; Job Applications Database</h3>
-          <p style="color: #65676b; font-size: 0.85rem; margin: 4px 0 0 0;">Total submitted applications: <?= count($apps); ?></p>
+          <h3 style="font-size: 1.35rem; font-weight: 800; margin: 0; color: var(--text-main);">Recruitment CRM &amp; Job Applications Database</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 4px 0 0 0;">Total submitted applications: <?= count($apps); ?></p>
         </div>
 
         <!-- FILTER DROPDOWN -->
         <div style="display: flex; align-items: center; gap: 10px;">
-          <span style="font-size: 0.85rem; font-weight: 700; color: #65676b;">Filter Status:</span>
-          <select onchange="window.location.href='applications.php?filter=' + this.value" style="padding: 8px 14px; border: 1px solid #dddfe2; border-radius: 6px; font-size: 0.9rem; font-weight: 700; background: white; color: #050505;">
+          <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted);">Filter Status:</span>
+          <select onchange="window.location.href='applications.php?filter=' + this.value" style="padding: 8px 14px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.9rem; font-weight: 700; background: white; color: var(--text-main);">
             <option value="all" <?= $filter_status === 'all' ? 'selected' : ''; ?>>All Applications</option>
             <option value="new" <?= $filter_status === 'new' ? 'selected' : ''; ?>>🔴 New Unreviewed</option>
             <option value="reviewed" <?= $filter_status === 'reviewed' ? 'selected' : ''; ?>>🔵 Reviewed</option>
@@ -167,31 +165,31 @@ if ($view_id > 0):
           </thead>
           <tbody>
             <?php if (empty($apps)): ?>
-              <tr><td colspan="6" style="text-align: center; padding: 35px; color: #65676b;">No job applications found matching this status filter.</td></tr>
+              <tr><td colspan="6" style="text-align: center; padding: 35px; color: var(--text-muted);">No job applications found matching this status filter.</td></tr>
             <?php else: ?>
               <?php foreach ($apps as $app): ?>
-                <tr style="<?= $app['status'] === 'new' ? 'background: #ffebe9;' : ''; ?>">
-                  <td style="color: #65676b; font-size: 0.85rem; white-space: nowrap;"><?= htmlspecialchars($app['created_at']); ?></td>
+                <tr style="<?= $app['status'] === 'new' ? 'background: var(--danger-soft);' : ''; ?>">
+                  <td style="color: var(--text-muted); font-size: 0.85rem; white-space: nowrap;"><?= htmlspecialchars($app['created_at']); ?></td>
                   <td>
-                    <strong style="color: #050505; font-size: 1.05rem;"><?= htmlspecialchars($app['applicant_name']); ?></strong><br>
-                    <a href="mailto:<?= htmlspecialchars($app['email']); ?>" style="color: #1877f2; font-size: 0.85rem; text-decoration: none;"><?= htmlspecialchars($app['email']); ?></a><br>
-                    <span style="color: #65676b; font-size: 0.8rem;"><?= htmlspecialchars($app['phone']); ?></span>
+                    <strong style="color: var(--text-main); font-size: 1.05rem;"><?= htmlspecialchars($app['applicant_name']); ?></strong><br>
+                    <a href="mailto:<?= htmlspecialchars($app['email']); ?>" style="color: var(--primary); font-size: 0.85rem; text-decoration: none;"><?= htmlspecialchars($app['email']); ?></a><br>
+                    <span style="color: var(--text-muted); font-size: 0.8rem;"><?= htmlspecialchars($app['phone']); ?></span>
                   </td>
-                  <td><strong style="color: #050505;"><?= htmlspecialchars($app['job_title']); ?></strong></td>
-                  <td><a href="<?= htmlspecialchars($app['resume_link']); ?>" target="_blank" style="color: #1877f2; font-weight: 700; font-size: 0.85rem; text-decoration: underline;">📄 View Resume</a></td>
+                  <td><strong style="color: var(--text-main);"><?= htmlspecialchars($app['job_title']); ?></strong></td>
+                  <td><a href="<?= htmlspecialchars($app['resume_link']); ?>" target="_blank" style="color: var(--primary); font-weight: 700; font-size: 0.85rem; text-decoration: underline;">📄 View Resume</a></td>
                   <td>
                     <?php 
                       $badges = ['new' => 'badge-warning', 'reviewed' => 'badge-primary', 'shortlisted' => 'badge-accent', 'rejected' => 'badge-warning'];
                       $b_class = $badges[$app['status']] ?? 'badge-primary';
                     ?>
-                    <span class="badge <?= $b_class; ?>" style="<?= $app['status'] === 'new' ? 'background: #fa383e; color: white;' : ''; ?>">
+                    <span class="badge <?= $b_class; ?>" style="<?= $app['status'] === 'new' ? 'background: var(--danger); color: white;' : ''; ?>">
                       <?= strtoupper(htmlspecialchars($app['status'])); ?>
                     </span>
                   </td>
                   <td>
                     <div style="display: flex; gap: 8px;">
-                      <a href="applications.php?view=<?= $app['id']; ?>" class="btn" style="background: #1877f2; color: white; padding: 6px 14px; font-size: 0.8rem; text-decoration: none; font-weight: 700;">Review</a>
-                      <a href="applications.php?action=delete&id=<?= $app['id']; ?>" onclick="return confirm('Delete this application permanently?')" class="btn" style="background: #ffebe9; color: #fa383e; padding: 6px 12px; font-size: 0.8rem; text-decoration: none;">Delete</a>
+                      <a href="applications.php?view=<?= $app['id']; ?>" class="btn" style="background: var(--primary); color: white; padding: 6px 14px; font-size: 0.8rem; text-decoration: none; font-weight: 700;" title="Review Candidate">Review</a>
+                      <a href="applications.php?action=delete&id=<?= $app['id']; ?>" onclick="return confirm('Delete this application permanently?')" class="btn" style="background: var(--danger-soft); color: var(--danger); padding: 6px 12px; font-size: 0.8rem; text-decoration: none;">Delete</a>
                     </div>
                   </td>
                 </tr>

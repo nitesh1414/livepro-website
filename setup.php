@@ -85,11 +85,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="icon" type="image/png" href="assets/images/logo-LP.png" onerror="this.href='/home/user/uploads/logo-LP.png';">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #0f172a;">
+<body style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background: var(--text-main);">
     <div class="setup-card">
         <div class="logo">
             <div class="logo-icon">L</div>
-            <div>LIVE<span>pro</span> <small style="font-size:0.55em; display:block; color:#94a3b8;">Setup Wizard</small></div>
+            <div>LIVE<span>pro</span> <small style="font-size:0.55em; display:block; color:var(--text-muted);">Setup Wizard</small></div>
         </div>
         
         <h1>MySQL Database Installer</h1>
@@ -103,8 +103,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="alert alert-success">
                 <?= $success_message; ?>
                 <div style="margin-top: 15px; display: flex; gap: 10px;">
-                    <a href="index.php" class="btn btn-success" style="flex: 1;">Launch Public Portal</a>
-                    <a href="admin/login.php" class="btn" style="flex: 1; background: #4f46e5;">Enter Admin CMS</a>
+                    <a href="index.php" class="btn btn-success" style="flex: 1;">Launch</a>
+                    <a href="admin/login.php" class="btn" style="flex: 1; background: var(--primary);">Login</a>
                 </div>
             </div>
         <?php else: ?>
@@ -125,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label>MySQL Password</label>
                     <input type="password" name="db_pass" placeholder="Leave blank if no password">
                 </div>
-                <button type="submit" class="btn">🚀 Initialize Database & Seed Content</button>
+                <button type="submit" class="btn">Initialize</button>
             </form>
         <?php endif; ?>
     </div>

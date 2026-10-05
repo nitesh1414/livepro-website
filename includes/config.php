@@ -62,11 +62,11 @@ function get_db_connection() {
             }
             return $pdo;
         } catch (PDOException $sqlite_e) {
-            die("<div style='font-family:sans-serif; padding:30px; background:#fef2f2; color:#991b1b; border:1px solid #f87171; border-radius:8px; max-width:600px; margin:50px auto;'>
+            die("<div style='font-family:sans-serif; padding:30px; background:var(--danger-soft); color:#a34d48; border:1px solid var(--danger-border); border-radius:8px; max-width:600px; margin:50px auto;'>
                 <h2 style='margin-top:0;'>🟢 Database Connection Error</h2>
                 <p>Could not connect to MySQL database (<code>" . DB_NAME . "</code>) and SQLite fallback also failed.</p>
                 <p><strong>MySQL Error:</strong> " . htmlspecialchars($e->getMessage()) . "</p>
-                <hr style='border:none; border-top:1px solid #fca5a5;'>
+                <hr style='border:none; border-top:1px solid var(--danger);'>
                 <p style='font-size:0.9em;'>Please run <code>install.php</code> or import <code>schema.sql</code> into your MySQL server.</p>
             </div>");
         }
@@ -128,9 +128,9 @@ function seed_sqlite_fallback($pdo, $seed_demo = true) {
 
     // Seed Banners with bg_image
     $pdo->exec("INSERT INTO hero_banners (badge_text, title, subtitle, cta_text, cta_url, bg_image, bg_gradient, display_order, status) VALUES 
-    ('PERPETUALLY ADAPTIVE IT', 'Building on Belief: Custom Website & Mobile App Dev', 'Transforming corporate business models through enterprise web applications, native & hybrid mobile apps, and cloud-native software architecture.', 'Explore Our Expertise', 'expertise.php', 'assets/images/banner1.jpg', 'navy-blue', 10, 'active'),
-    ('END-TO-END IT CONSULTING', 'Custom Software Projects & Systems Integration', 'We deliver comprehensive software solutions from architectural requirement analysis to full-cycle development, cloud deployment, and legacy re-engineering.', 'View Clients & Projects', 'projects.php', 'assets/images/banner2.jpg', 'emerald-teal', 20, 'active'),
-    ('ZERO DOWNTIME RE-ENGINEERING', '24/7 AMC & Infrastructure Maintenance Support', 'Ensure continuous business uptime with scheduled hardware diagnostics, database tuning, API integration, and proactive security patching AMCs.', 'Request Consultation', 'contact.php', 'assets/images/banner3.jpg', 'purple-indigo', 30, 'active');");
+    ('PERPETUALLY ADAPTIVE IT', 'Building on Belief: Custom Website & Mobile App Dev', 'Transforming corporate business models through enterprise web applications, native & hybrid mobile apps, and cloud-native software architecture.', 'Explore', 'expertise.php', 'assets/images/banner1.jpg', 'navy-blue', 10, 'active'),
+    ('END-TO-END IT CONSULTING', 'Custom Software Projects & Systems Integration', 'We deliver comprehensive software solutions from architectural requirement analysis to full-cycle development, cloud deployment, and legacy re-engineering.', 'Projects', 'projects.php', 'assets/images/banner2.jpg', 'emerald-teal', 20, 'active'),
+    ('ZERO DOWNTIME RE-ENGINEERING', '24/7 AMC & Infrastructure Maintenance Support', 'Ensure continuous business uptime with scheduled hardware diagnostics, database tuning, API integration, and proactive security patching AMCs.', 'Consult', 'contact.php', 'assets/images/banner3.jpg', 'purple-indigo', 30, 'active');");
 
     // Seed Feature Panels
     $pdo->exec("INSERT INTO feature_panels (panel_group, title, description, icon, link_text, link_url, display_order, status) VALUES 

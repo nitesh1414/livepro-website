@@ -140,8 +140,8 @@ $categories = ['Enterprise', 'Sales & Marketing', 'Education', 'eCommerce', 'Hum
                 </div>
             </div>
             <div class="d-flex gap-2 mt-4">
-                <button type="submit" class="btn btn-livepro">Save Product</button>
-                <a href="<?php echo admin_url('products.php'); ?>" class="btn btn-outline-secondary">Back to Products</a>
+                <button type="submit" class="btn btn-livepro">Save</button>
+                <a href="<?php echo admin_url('products.php'); ?>" class="btn btn-outline-secondary">Back</a>
             </div>
         </form>
     </div>

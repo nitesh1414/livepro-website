@@ -13,12 +13,12 @@ $settings = get_all_settings();
 ?>
 
 <!-- PAGE HEADER -->
-<section style="background: linear-gradient(135deg, #090d16 0%, #182235 50%, #090d16 100%); color: white; padding: 70px 0; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
+<section style="background: linear-gradient(135deg, var(--dark-3) 0%, var(--dark-2) 50%, var(--dark-3) 100%); color: white; padding: 70px 0; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
   <div class="container" style="max-width: 800px;">
-    <div class="font-tagline-script" style="margin-bottom: 15px; font-size: 1.8rem; color: #f2c10d;"><?= htmlspecialchars($settings['tagline'] ?? 'Right People, Right Time, Right Place'); ?></div>
+    <div class="font-tagline-script" style="margin-bottom: 15px; font-size: 1.8rem; color: var(--warning);"><?= htmlspecialchars($settings['tagline'] ?? 'Right People, Right Time, Right Place'); ?></div>
     <span class="badge" style="background: rgba(255,255,255,0.2); color: white; margin-bottom: 15px;">Who We Are</span>
-    <h1 style="font-size: 3rem; font-weight: 900; margin-bottom: 15px; color: white;">About LIVEpro</h1>
-    <p style="font-size: 1.15rem; color: #e4e6eb; line-height: 1.7;">
+    <h1 style="font-size: 3rem; font-weight: 900; margin-bottom: 15px; color: white;">About</h1>
+    <p style="font-size: 1.15rem; color: var(--text-on-dark-muted); line-height: 1.7;">
       We provide a wide range of solutions and services across various verticals in Information Technologies like Custom Website Development, Mobile App Development, Systems Implementation, Testing, Onsite Support, Platform Delivery, Networking, Outsourcing, and Application Management AMC Support.
     </p>
   </div>
@@ -30,42 +30,42 @@ $settings = get_all_settings();
     <div class="grid grid-2" style="gap: 50px; align-items: center;">
       <div>
         <span class="badge badge-primary" style="margin-bottom: 15px;">Welcome to LIVEpro</span>
-        <h2 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 20px; color: #050505; line-height: 1.3;">
+        <h2 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 20px; color: var(--text-main); line-height: 1.3;">
           Providing Best Corporate IT Solutions &amp; Engineering Insight
         </h2>
-        <p style="color: #65676b; font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px;">
+        <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px;">
           We have zeroed-in to serve two basic enterprise sectors: <strong>Custom Software &amp; Web/Mobile App Development</strong> and <strong>Onsite Support, AMC &amp; Systems Integration</strong>. Our goal is to achieve the best combination of Cost, Quality, and Speed of development process for the maximum benefit of corporate customers.
         </p>
-        <p style="color: #65676b; font-size: 1.05rem; line-height: 1.8; margin-bottom: 30px;">
+        <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 30px;">
           We have a perfect blend of Indian and International perspective which provides the necessary insight and skills for tackling business situations both in domestic Indian and International markets. We work on the perception of strategic consultation and robust engineering, providing high quality teams to clients worldwide.
         </p>
         <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-          <div style="background: #f3f6fa; border: 1px solid #e2e8f0; padding: 15px 20px; border-radius: 8px; flex: 1; min-width: 200px;">
-            <strong style="color: #1a85e8; font-size: 1.2rem; display: block; margin-bottom: 4px;">100% Quality</strong>
-            <span style="font-size: 0.85rem; color: #65676b;">ISO Certified Standards</span>
+          <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); padding: 15px 20px; border-radius: 8px; flex: 1; min-width: 200px;">
+            <strong style="color: var(--primary); font-size: 1.2rem; display: block; margin-bottom: 4px;">100% Quality</strong>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">ISO Certified Standards</span>
           </div>
-          <div style="background: #f3f6fa; border: 1px solid #e2e8f0; padding: 15px 20px; border-radius: 8px; flex: 1; min-width: 200px;">
-            <strong style="color: #22a316; font-size: 1.2rem; display: block; margin-bottom: 4px;">Nagpur HQ</strong>
-            <span style="font-size: 0.85rem; color: #65676b;">Raghuji Nagar Engineering Hub</span>
+          <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); padding: 15px 20px; border-radius: 8px; flex: 1; min-width: 200px;">
+            <strong style="color: var(--accent); font-size: 1.2rem; display: block; margin-bottom: 4px;">Nagpur HQ</strong>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Raghuji Nagar Engineering Hub</span>
           </div>
         </div>
       </div>
 
-      <div style="background: #f3f6fa; border: 1px solid #e2e8f0; padding: 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-        <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 25px; color: #050505; border-bottom: 2px solid #1a85e8; padding-bottom: 12px;">
+      <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); padding: 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+        <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 25px; color: var(--text-main); border-bottom: 2px solid var(--primary); padding-bottom: 12px;">
           How We Achieve Excellence
         </h3>
         <div style="margin-bottom: 25px;">
-          <h4 style="font-size: 1.1rem; font-weight: 700; color: #050505; margin-bottom: 6px;">1. Flexible Client Engagement Models</h4>
-          <p style="color: #65676b; font-size: 0.95rem; margin: 0;">We tailor pricing, dedicated engineering team scaling, and project deliverables according to client agility requirements.</p>
+          <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">1. Flexible Client Engagement Models</h4>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">We tailor pricing, dedicated engineering team scaling, and project deliverables according to client agility requirements.</p>
         </div>
         <div style="margin-bottom: 25px;">
-          <h4 style="font-size: 1.1rem; font-weight: 700; color: #050505; margin-bottom: 6px;">2. Well-Defined Development Methodologies</h4>
-          <p style="color: #65676b; font-size: 0.95rem; margin: 0;">Proven Agile and DevOps practices ensuring rapid deployment, high code quality, automated testing, and continuous integration.</p>
+          <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">2. Well-Defined Development Methodologies</h4>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Proven Agile and DevOps practices ensuring rapid deployment, high code quality, automated testing, and continuous integration.</p>
         </div>
         <div>
-          <h4 style="font-size: 1.1rem; font-weight: 700; color: #050505; margin-bottom: 6px;">3. Rigorous Project Management Approach</h4>
-          <p style="color: #65676b; font-size: 0.95rem; margin: 0;">Dedicated sprint planning, risk mitigation, and transparent progress reporting from inception to post-deployment maintenance.</p>
+          <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">3. Rigorous Project Management Approach</h4>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Dedicated sprint planning, risk mitigation, and transparent progress reporting from inception to post-deployment maintenance.</p>
         </div>
       </div>
     </div>
@@ -73,7 +73,7 @@ $settings = get_all_settings();
 </section>
 
 <!-- DUAL PILLAR DEEP DIVE -->
-<section style="background: #f3f6fa; padding: 80px 0;">
+<section style="background: var(--bg-subtle); padding: 80px 0;">
   <div class="container">
     <div class="section-header">
       <span class="badge badge-primary">Our Core Sectors</span>
@@ -82,28 +82,28 @@ $settings = get_all_settings();
     </div>
 
     <div class="grid grid-2" style="gap: 40px;">
-      <div class="card" style="background: white; border-top: 5px solid #1a85e8;">
+      <div class="card" style="background: white; border-top: 5px solid var(--primary);">
         <span class="badge badge-primary" style="margin-bottom: 15px;">Sector 01</span>
-        <h3 style="font-size: 1.7rem; font-weight: 800; margin-bottom: 15px; color: #050505;">Custom Software &amp; Web/Mobile Dev</h3>
-        <p style="color: #65676b; line-height: 1.8; margin-bottom: 20px;">
+        <h3 style="font-size: 1.7rem; font-weight: 800; margin-bottom: 15px; color: var(--text-main);">Custom Software &amp; Web/Mobile Dev</h3>
+        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 20px;">
           We deliver comprehensive systems development services from requirement analysis and architectural design to full-cycle development and deployment. Our team builds robust enterprise web portals, e-commerce platforms, progressive web apps (PWAs), and native iOS/Android mobile applications.
         </p>
-        <p style="color: #65676b; line-height: 1.8; margin-bottom: 25px;">
+        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 25px;">
           Our customer services business unit handles the business-critical software needs of corporate organizations utilizing React, Node.js, PHP, Python Django, Java Spring Boot, and Flutter.
         </p>
-        <a href="expertise.php" class="btn btn-primary">Explore Our Tech Expertise &rarr;</a>
+        <a href="expertise.php" class="btn btn-primary">Explore</a>
       </div>
 
-      <div class="card" style="background: white; border-top: 5px solid #22a316;">
+      <div class="card" style="background: white; border-top: 5px solid var(--accent);">
         <span class="badge badge-accent" style="margin-bottom: 15px;">Sector 02</span>
-        <h3 style="font-size: 1.7rem; font-weight: 800; margin-bottom: 15px; color: #050505;">Onsite Support, AMC &amp; Re-Engineering</h3>
-        <p style="color: #65676b; line-height: 1.8; margin-bottom: 20px;">
+        <h3 style="font-size: 1.7rem; font-weight: 800; margin-bottom: 15px; color: var(--text-main);">Onsite Support, AMC &amp; Re-Engineering</h3>
+        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 20px;">
           Ensure continuous uptime and optimal performance for your business-critical systems. We provide scheduled hardware diagnostics, software version management, database tuning, and immediate incident troubleshooting under 24/7 Annual Maintenance Contracts (AMC).
         </p>
-        <p style="color: #65676b; line-height: 1.8; margin-bottom: 25px;">
+        <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 25px;">
           We also transform monolithic legacy IT infrastructures into agile cloud microservices without business disruption through API orchestration and database migration.
         </p>
-        <a href="services.php" class="btn btn-accent">Explore AMC &amp; Re-Engineering &rarr;</a>
+        <a href="services.php" class="btn btn-accent">Explore</a>
       </div>
     </div>
   </div>
@@ -147,9 +147,9 @@ $show_members_section = !empty($all_members) || is_admin_logged_in();
     <?php if (!empty($all_members)): ?>
       <?php if (!empty($leaders) && !empty($mentors)): ?>
         <div class="member-filter-bar" id="memberFilterTabs">
-          <button type="button" class="btn btn-primary" onclick="filterMembers('All', this)">All Profiles (<?= count($all_members); ?>)</button>
-          <button type="button" class="btn btn-outline" onclick="filterMembers('Leader', this)">👔 Leaders (<?= count($leaders); ?>)</button>
-          <button type="button" class="btn btn-outline" onclick="filterMembers('Mentor', this)">🎓 Mentors (<?= count($mentors); ?>)</button>
+          <button type="button" class="btn btn-primary" onclick="filterMembers('All', this)">All <span class="badge badge-primary"><?= count($all_members); ?></span></button>
+          <button type="button" class="btn btn-outline" onclick="filterMembers('Leader', this)">Leaders <span class="badge badge-primary"><?= count($leaders); ?></span></button>
+          <button type="button" class="btn btn-outline" onclick="filterMembers('Mentor', this)">Mentors <span class="badge badge-primary"><?= count($mentors); ?></span></button>
         </div>
       <?php endif; ?>
 
@@ -219,8 +219,8 @@ $show_members_section = !empty($all_members) || is_admin_logged_in();
     <?php endif; ?>
 
     <div style="text-align: center; margin-top: 45px;">
-      <a href="careers.php" class="btn btn-outline" style="margin-right: 10px;">Join Our Engineering Team &rarr;</a>
-      <a href="contact.php" class="btn btn-primary">Talk to Our Leadership &rarr;</a>
+      <a href="careers.php" class="btn btn-outline" style="margin-right: 10px;">Join</a>
+      <a href="contact.php" class="btn btn-primary">Contact</a>
     </div>
   </div>
 </section>

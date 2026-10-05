@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
             <div class="d-flex gap-2 mt-4">
-                <button type="submit" class="btn btn-livepro">Save Slide</button>
+                <button type="submit" class="btn btn-livepro">Save</button>
                 <a href="<?php echo admin_url('carousel.php'); ?>" class="btn btn-outline-secondary">Back</a>
             </div>
         </form>

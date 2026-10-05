@@ -37,11 +37,11 @@ $openings = get_job_openings('active', $filter_dept);
 ?>
 
 <!-- PAGE HEADER -->
-<section style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%); color: white; padding: 70px 0; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
+<section style="background: linear-gradient(135deg, var(--text-main) 0%, var(--text-main) 50%, var(--text-main) 100%); color: white; padding: 70px 0; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
   <div class="container" style="max-width: 850px;">
-    <span class="badge" style="background: rgba(88,179,46,0.25); color: #34d399; margin-bottom: 15px;">Join Our Team</span>
+    <span class="badge" style="background: rgba(43, 125, 95,0.25); color: var(--on-dark-accent-2); margin-bottom: 15px;">Join</span>
     <h1 style="font-size: 3rem; font-weight: 900; margin-bottom: 15px; color: white;">Build Your IT Career With LIVEpro</h1>
-    <p style="font-size: 1.15rem; color: #cbd5e1; line-height: 1.7;">
+    <p style="font-size: 1.15rem; color: var(--text-on-dark-muted); line-height: 1.7;">
       Whether you are an experienced software architect or an engineering specialist in AI, cloud DevOps, embedded firmware, or mobile apps, explore our open positions in Nagpur HQ and hybrid across India.
     </p>
   </div>
@@ -58,19 +58,19 @@ $openings = get_job_openings('active', $filter_dept);
     </div>
 
     <div style="display: flex; justify-content: center; gap: 12px; margin-bottom: 50px; flex-wrap: wrap;">
-      <a href="careers.php?dept=All" class="btn <?= $filter_dept === 'All' ? 'btn-primary' : 'btn-outline'; ?>" style="border-radius: 99px; padding: 10px 24px;">All Openings</a>
-      <a href="careers.php?dept=Website Development" class="btn <?= $filter_dept === 'Website Development' ? 'btn-primary' : 'btn-outline'; ?>" style="border-radius: 99px; padding: 10px 24px;">Website Development</a>
-      <a href="careers.php?dept=Mobile Development" class="btn <?= $filter_dept === 'Mobile Development' ? 'btn-primary' : 'btn-outline'; ?>" style="border-radius: 99px; padding: 10px 24px;">Mobile Development</a>
-      <a href="careers.php?dept=AI & Data Science" class="btn <?= $filter_dept === 'AI & Data Science' ? 'btn-primary' : 'btn-outline'; ?>" style="border-radius: 99px; padding: 10px 24px;">AI &amp; Data Science</a>
-      <a href="careers.php?dept=Embedded Hardware" class="btn <?= $filter_dept === 'Embedded Hardware' ? 'btn-primary' : 'btn-outline'; ?>" style="border-radius: 99px; padding: 10px 24px;">Embedded Hardware</a>
+      <a href="careers.php?dept=All" class="btn <?= $filter_dept === 'All' ? 'btn-primary' : 'btn-outline'; ?>" style="border-radius: 99px; padding: 10px 24px;">All</a>
+      <a href="careers.php?dept=Website Development" class="btn <?= $filter_dept === 'Website Development' ? 'btn-primary' : 'btn-outline'; ?>" style="border-radius: 99px; padding: 10px 24px;">Web</a>
+      <a href="careers.php?dept=Mobile Development" class="btn <?= $filter_dept === 'Mobile Development' ? 'btn-primary' : 'btn-outline'; ?>" style="border-radius: 99px; padding: 10px 24px;">Mobile</a>
+      <a href="careers.php?dept=AI & Data Science" class="btn <?= $filter_dept === 'AI & Data Science' ? 'btn-primary' : 'btn-outline'; ?>" style="border-radius: 99px; padding: 10px 24px;">AI</a>
+      <a href="careers.php?dept=Embedded Hardware" class="btn <?= $filter_dept === 'Embedded Hardware' ? 'btn-primary' : 'btn-outline'; ?>" style="border-radius: 99px; padding: 10px 24px;">Hardware</a>
     </div>
 
     <!-- JOB OPENINGS GRID -->
     <div class="grid grid-2" style="gap: 30px;" id="careersGrid">
       <?php if (empty($openings)): ?>
-        <div style="grid-column: 1/-1; text-align: center; padding: 60px; background: white; border-radius: 12px; color: #64748b; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+        <div style="grid-column: 1/-1; text-align: center; padding: 60px; background: white; border-radius: 12px; color: var(--text-muted); box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
           <div style="font-size: 2rem; margin-bottom: 10px;">💼</div>
-          <h3 style="font-size: 1.3rem; font-weight: 700; color: #0f172a; margin-bottom: 8px;">No Open Positions Found</h3>
+          <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--text-main); margin-bottom: 8px;">No Open Positions Found</h3>
           <p style="margin: 0;">We currently don't have any active openings matching this department filter. Please check back soon or submit a general application below.</p>
         </div>
       <?php else: ?>
@@ -79,7 +79,7 @@ $openings = get_job_openings('active', $filter_dept);
             <div>
               <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
                 <span class="badge badge-primary"><?= htmlspecialchars($job['department']); ?></span>
-                <span style="font-size: 0.8rem; font-weight: 800; color: #3a8a1a; background: rgba(88,179,46,0.15); padding: 4px 12px; border-radius: 6px; border: 1px solid rgba(88,179,46,0.3);"><?= htmlspecialchars($job['salary']); ?></span>
+                <span style="font-size: 0.8rem; font-weight: 800; color: var(--accent-hover); background: rgba(43, 125, 95,0.15); padding: 4px 12px; border-radius: 6px; border: 1px solid rgba(43, 125, 95,0.3);"><?= htmlspecialchars($job['salary']); ?></span>
               </div>
               <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--text-main); margin-bottom: 10px;"><?= htmlspecialchars($job['title']); ?></h3>
               
@@ -97,7 +97,7 @@ $openings = get_job_openings('active', $filter_dept);
             <div style="padding-top: 20px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
               <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">LIVEpro Engineering Division</span>
               <button onclick="openJobApplyModal('<?= $job['id']; ?>', '<?= addslashes(htmlspecialchars($job['title'])); ?>', '<?= addslashes(htmlspecialchars($job['department'])); ?>', '<?= addslashes(htmlspecialchars($job['location'])); ?>', '<?= addslashes(htmlspecialchars($job['experience'])); ?>', '<?= addslashes(htmlspecialchars($job['salary'])); ?>', '<?= addslashes(htmlspecialchars($job['description'])); ?>', '<?= addslashes(htmlspecialchars($job['requirements'])); ?>')" class="btn btn-primary" style="padding: 10px 22px;">
-                View Role &amp; Apply &rarr;
+                Apply
               </button>
             </div>
           </div>
@@ -116,8 +116,8 @@ $openings = get_job_openings('active', $filter_dept);
       We are always looking for exceptional software architects, mobile developers, AI engineers, and DevOps specialists to join our engineering hub in Nagpur.
     </p>
     <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-      <a href="contact.php?subject=General+Job+Application" class="btn btn-accent" style="padding: 14px 30px; font-size: 1rem;">Submit General Application &rarr;</a>
-      <a href="about.php" class="btn btn-outline" style="padding: 14px 30px; font-size: 1rem;">Why Work With Us</a>
+      <a href="contact.php?subject=General+Job+Application" class="btn btn-accent" style="padding: 14px 30px; font-size: 1rem;">Apply</a>
+      <a href="about.php" class="btn btn-outline" style="padding: 14px 30px; font-size: 1rem;">Benefits</a>
     </div>
   </div>
 </section>
@@ -137,7 +137,7 @@ $openings = get_job_openings('active', $filter_dept);
     <div style="background: var(--bg-light); padding: 18px; border-radius: 8px; margin-bottom: 25px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; text-align: center; border: 1px solid var(--border-color);">
       <div><span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; display: block;">LOCATION</span><strong style="font-size: 0.95rem; color: var(--text-main);" id="applyModalLoc">Nagpur</strong></div>
       <div style="border-left: 1px solid var(--border-color); border-right: 1px solid var(--border-color);"><span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; display: block;">EXPERIENCE</span><strong style="font-size: 0.95rem; color: var(--text-main);" id="applyModalExp">2-5 Years</strong></div>
-      <div><span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; display: block;">COMPENSATION</span><strong style="font-size: 0.95rem; color: #3a8a1a;" id="applyModalSal">Best in Industry</strong></div>
+      <div><span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; display: block;">COMPENSATION</span><strong style="font-size: 0.95rem; color: var(--accent-hover);" id="applyModalSal">Best in Industry</strong></div>
     </div>
 
     <div style="margin-bottom: 25px;">
@@ -147,11 +147,11 @@ $openings = get_job_openings('active', $filter_dept);
 
     <div style="margin-bottom: 30px;">
       <h4 style="font-size: 1.05rem; font-weight: 800; color: var(--text-main); margin-bottom: 8px;">Required Skills &amp; Qualifications:</h4>
-      <div style="background: #ffffff; border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; font-size: 0.95rem; color: #334155; white-space: pre-line; line-height: 1.7;" id="applyModalReq"></div>
+      <div style="background: #ffffff; border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; font-size: 0.95rem; color: var(--text-body); white-space: pre-line; line-height: 1.7;" id="applyModalReq"></div>
     </div>
 
     <!-- APPLICATION FORM -->
-    <div style="background: #f8fafc; border: 1px solid var(--border-color); padding: 25px; border-radius: 12px;">
+    <div style="background: var(--bg-soft); border: 1px solid var(--border-color); padding: 25px; border-radius: 12px;">
       <h4 style="font-size: 1.2rem; font-weight: 800; color: var(--primary); margin-bottom: 6px;">Apply For This Position</h4>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Your application will be sent directly into our MySQL Recruitment CRM for admin review.</p>
 
@@ -185,9 +185,7 @@ $openings = get_job_openings('active', $filter_dept);
           <textarea name="cover_letter" rows="3" placeholder="Tell us why you are a great fit for the LIVEpro Nagpur team..." style="width: 100%; padding: 12px 14px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem;"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1rem; cursor: pointer; border: none; border-radius: 8px; color: white; font-weight: 700;">
-          🚀 Submit Application to HR Database
-        </button>
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1rem; cursor: pointer; border: none; border-radius: 8px; color: white; font-weight: 700;">Submit</button>
       </form>
     </div>
   </div>

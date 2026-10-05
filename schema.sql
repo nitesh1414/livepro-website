@@ -74,9 +74,9 @@ CREATE TABLE `hero_banners` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `hero_banners` (`id`, `badge_text`, `title`, `subtitle`, `cta_text`, `cta_url`, `bg_image`, `bg_gradient`, `display_order`, `status`) VALUES
-(1, 'PERPETUALLY ADAPTIVE IT', 'Building on Belief: Custom Website & Mobile App Dev', 'Transforming corporate business models through enterprise web applications, native & hybrid mobile apps, and cloud-native software architecture.', 'Explore Our Expertise', 'expertise.php', 'assets/images/banner1.jpg', 'navy-blue', 10, 'active'),
-(2, 'END-TO-END IT CONSULTING', 'Custom Software Projects & Systems Integration', 'We deliver comprehensive software solutions from architectural requirement analysis to full-cycle development, cloud deployment, and legacy re-engineering.', 'View Clients & Projects', 'projects.php', 'assets/images/banner2.jpg', 'emerald-teal', 20, 'active'),
-(3, 'ZERO DOWNTIME RE-ENGINEERING', '24/7 AMC & Infrastructure Maintenance Support', 'Ensure continuous business uptime with scheduled hardware diagnostics, database tuning, API integration, and proactive security patching AMCs.', 'Request Consultation', 'contact.php', 'assets/images/banner3.jpg', 'purple-indigo', 30, 'active');
+(1, 'PERPETUALLY ADAPTIVE IT', 'Building on Belief: Custom Website & Mobile App Dev', 'Transforming corporate business models through enterprise web applications, native & hybrid mobile apps, and cloud-native software architecture.', 'Explore', 'expertise.php', 'assets/images/banner1.jpg', 'navy-blue', 10, 'active'),
+(2, 'END-TO-END IT CONSULTING', 'Custom Software Projects & Systems Integration', 'We deliver comprehensive software solutions from architectural requirement analysis to full-cycle development, cloud deployment, and legacy re-engineering.', 'Projects', 'projects.php', 'assets/images/banner2.jpg', 'emerald-teal', 20, 'active'),
+(3, 'ZERO DOWNTIME RE-ENGINEERING', '24/7 AMC & Infrastructure Maintenance Support', 'Ensure continuous business uptime with scheduled hardware diagnostics, database tuning, API integration, and proactive security patching AMCs.', 'Consult', 'contact.php', 'assets/images/banner3.jpg', 'purple-indigo', 30, 'active');
 
 -- 4. feature_panels
 DROP TABLE IF EXISTS `feature_panels`;

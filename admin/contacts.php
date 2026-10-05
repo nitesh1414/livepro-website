@@ -50,7 +50,7 @@ $messages = $pdo->query("SELECT * FROM contact_messages ORDER BY created_at DESC
                         <td>
                             <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#msg<?php echo $msg['id']; ?>">View</button>
                             <?php if ($msg['status'] === 'new'): ?>
-                            <a href="<?php echo admin_url('contacts.php?mark=' . $msg['id'] . '&status=read'); ?>" class="btn btn-sm btn-success">Mark Read</a>
+                            <a href="<?php echo admin_url('contacts.php?mark=' . $msg['id'] . '&status=read'); ?>" class="btn btn-sm btn-success">Read</a>
                             <?php endif; ?>
                             <a href="<?php echo admin_url('contacts.php?delete=' . $msg['id']); ?>" class="btn btn-sm btn-danger" onclick="return confirm('Delete this message?')">Delete</a>
                         </td>
@@ -82,8 +82,8 @@ $messages = $pdo->query("SELECT * FROM contact_messages ORDER BY created_at DESC
                 <p><?php echo nl2br(sanitize($msg['message'])); ?></p>
             </div>
             <div class="modal-footer">
-                <a href="<?php echo admin_url('contacts.php?mark=' . $msg['id'] . '&status=read'); ?>" class="btn btn-success">Mark as Read</a>
-                <a href="<?php echo admin_url('contacts.php?mark=' . $msg['id'] . '&status=replied'); ?>" class="btn btn-primary">Mark as Replied</a>
+                <a href="<?php echo admin_url('contacts.php?mark=' . $msg['id'] . '&status=read'); ?>" class="btn btn-success">Read</a>
+                <a href="<?php echo admin_url('contacts.php?mark=' . $msg['id'] . '&status=replied'); ?>" class="btn btn-primary">Replied</a>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>

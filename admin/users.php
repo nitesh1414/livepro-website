@@ -31,7 +31,7 @@ $users = $pdo->query("SELECT * FROM users ORDER BY id ASC")->fetchAll();
 
 <h4 class="fw-bold mb-4">Manage Admin Users</h4>
 
-<a href="<?php echo admin_url('user_edit.php'); ?>" class="btn btn-livepro mb-3">Add New User</a>
+<a href="<?php echo admin_url('user_edit.php'); ?>" class="btn btn-livepro mb-3">Add</a>
 
 <div class="card admin-card">
     <div class="card-body">

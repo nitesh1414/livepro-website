@@ -20,10 +20,10 @@ include __DIR__ . '/includes/header.php';
 
         <?php if (empty($products)): ?>
         <div class="text-center py-5">
-            <i class="material-icons" style="font-size:64px;color:#ccc;">inventory_2</i>
+            <i class="material-icons" style="font-size:64px;color:var(--border-color);">inventory_2</i>
             <h4 class="text-muted mt-3">Products coming soon!</h4>
             <p class="text-muted">We are working on exciting new products. Check back later or contact us for custom solutions.</p>
-            <a href="<?php echo base_url('contact.php'); ?>" class="btn btn-livepro mt-2">Contact Us</a>
+            <a href="<?php echo base_url('contact.php'); ?>" class="btn btn-livepro mt-2">Contact</a>
         </div>
         <?php else: ?>
         <!-- Category filter -->
@@ -74,7 +74,7 @@ include __DIR__ . '/includes/header.php';
                     </ul>
                     <?php endif; ?>
                     <div class="mt-auto">
-                        <button class="btn btn-sm btn-livepro w-100" data-bs-toggle="modal" data-bs-target="#productModal<?php echo $product['id']; ?>">View Details</button>
+                        <button class="btn btn-sm btn-livepro w-100" data-bs-toggle="modal" data-bs-target="#productModal<?php echo $product['id']; ?>">View</button>
                     </div>
                 </div>
             </div>
@@ -126,7 +126,7 @@ include __DIR__ . '/includes/header.php';
                         <?php if (!empty($product['button_link'])): ?>
                         <a href="<?php echo sanitize($product['button_link']); ?>" class="btn btn-livepro"><?php echo sanitize($product['button_text']); ?></a>
                         <?php else: ?>
-                        <a href="<?php echo base_url('contact.php'); ?>" class="btn btn-livepro">Contact Us</a>
+                        <a href="<?php echo base_url('contact.php'); ?>" class="btn btn-livepro">Contact</a>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -142,7 +142,7 @@ include __DIR__ . '/includes/header.php';
     <div class="container">
         <h2>Need a Custom Product?</h2>
         <p>We build tailor-made software products to match your unique business requirements.</p>
-        <a href="<?php echo base_url('contact.php'); ?>" class="btn btn-light btn-lg">Get a Quote</a>
+        <a href="<?php echo base_url('contact.php'); ?>" class="btn btn-light btn-lg">Quote</a>
     </div>
 </section>
 

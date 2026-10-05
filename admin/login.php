@@ -1,7 +1,8 @@
 <?php
 /**
- * LIVEpro Software Solutions x TCS Enterprise Theme
+ * LIVEpro Software Solutions
  * CMS Admin Authentication Page (admin/login.php)
+ * Modern corporate split-screen login with brand storytelling + secure form
  * Pure Corporate IT Consulting & Client Projects
  */
 require_once __DIR__ . '/../includes/functions.php';
@@ -9,6 +10,11 @@ require_once __DIR__ . '/../includes/functions.php';
 if (is_admin_logged_in()) {
     header("Location: index.php");
     exit;
+}
+
+/* Boot a fresh CSRF token for this session (defensive: works even on legacy installs) */
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(16));
 }
 
 $error = '';
@@ -21,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: index.php");
         exit;
     } else {
-        $error = 'Invalid username or password. Please use demo credentials: admin / livepro2026';
+        $error = 'Invalid username or password. Demo access: admin / livepro2026';
     }
 }
 ?>
@@ -30,52 +36,147 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CMS Login | LIVEpro Software Solutions</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#182533">
+  <title>Admin Login | LIVEpro Software Solutions</title>
   <link rel="icon" type="image/png" href="../assets/images/logo-LP.png" onerror="this.href='/home/user/uploads/logo-LP.png';">
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-<body style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #090d16;">
+<body class="login-body">
 
-<div class="login-card">
-  <!-- BRAND WITH LOGO-LP.PNG AND MATCHING TYPOGRAPHY -->
-  <a href="../index.php" class="logo">
-    <img src="../assets/images/logo-LP.png" alt="LIVEpro Geometric Logo" class="logo-img" onerror="this.onerror=null; this.src='/home/user/uploads/logo-LP.png';">
-    <div style="display: flex; flex-direction: column; justify-content: center; line-height: 1;">
-      <div>
-        <span style="font-family: 'Arial Black', 'Impact', sans-serif; color: #1a85e8; font-size: 1.6rem; font-weight: 900; letter-spacing: 0.5px;">LIVE</span><span style="font-family: 'Times New Roman', Georgia, serif; color: #c92020; font-size: 1.6rem; font-weight: bold;">pro</span>
+<div class="login-shell">
+
+  <!-- ---------------------------------------------------------------- BRAND -->
+  <aside class="login-brand">
+    <a href="../index.php" class="logo" aria-label="LIVEpro Software Solutions home">
+      <img src="../assets/images/logo-LP.png" alt="LIVEpro logo" class="logo-img" onerror="this.onerror=null; this.src='/home/user/uploads/logo-LP.png';">
+      <span class="logo-text-wrapper">
+        <span class="logo-main-text">
+          <span class="logo-live">LIVE</span><span class="logo-pro">pro</span>
+        </span>
+        <span class="logo-software-solutions">Software Solutions</span>
+      </span>
+    </a>
+
+    <h2>Enterprise CMS Control Centre</h2>
+    <p>We spread brand awareness. We have got an AGR team for this business.</p>
+
+    <div class="login-values">
+      <div class="login-value">
+        <span class="tick" aria-hidden="true">&#10003;</span>
+        <span><strong>One dashboard</strong> for capabilities, projects, careers and blogs.</span>
       </div>
-      <span style="font-family: 'Monotype Corsiva', 'Apple Chancery', 'Lucida Calligraphy', cursive; color: #22a316; font-size: 0.85rem; font-style: italic; display: block; margin-top: -3px;">Software Solutions</span>
+      <div class="login-value">
+        <span class="tick" aria-hidden="true">&#10003;</span>
+        <span><strong>Live CRM pipeline</strong> for enquiries and recruitment leads.</span>
+      </div>
+      <div class="login-value">
+        <span class="tick" aria-hidden="true">&#10003;</span>
+        <span><strong>Instant publishing</strong> — your changes reach the public site at once.</span>
+      </div>
     </div>
-  </a>
 
-  <h1>Admin Portal Access</h1>
-  <p>Enter your security credentials to manage corporate IT capabilities, client project deliverables, and CRM leads.</p>
+    <p class="login-brand-art">Nagpur &bull; Maharashtra &bull; India</p>
+  </aside>
 
-  <div class="demo-box">
-    <strong>Demo Credentials:</strong><br>
-    Username: <code>admin</code> | Password: <code>livepro2026</code>
-  </div>
+  <!-- ----------------------------------------------------------------- FORM -->
+  <main class="login-panel">
+    <div class="login-card">
+      <a href="../index.php" class="logo" aria-label="LIVEpro home">
+        <img src="../assets/images/logo-LP.png" alt="LIVEpro logo" class="logo-img" onerror="this.onerror=null; this.src='/home/user/uploads/logo-LP.png';">
+        <span class="logo-text-wrapper">
+          <span class="logo-main-text">
+            <span class="logo-live">LIVE</span><span class="logo-pro">pro</span>
+          </span>
+          <span class="logo-software-solutions">Software Solutions</span>
+        </span>
+      </a>
 
-  <?php if (!empty($error)): ?>
-    <div class="error-msg"><?= htmlspecialchars($error); ?></div>
-  <?php endif; ?>
+      <h1>Admin Login</h1>
+      <p>Enter your security credentials to manage IT capabilities, client projects, careers and CRM leads.</p>
 
-  <form method="POST" action="login.php">
-    <div class="form-group">
-      <label>Admin Username</label>
-      <input type="text" name="username" value="admin" required>
+      <div class="demo-box">
+        <strong>Demo credentials</strong><br>
+        Username <code>admin</code> &nbsp;&bull;&nbsp; Password <code>livepro2026</code>
+      </div>
+
+      <?php if (!empty($error)): ?>
+        <div class="error-msg" role="alert">
+          <span aria-hidden="true">&#9888;</span>
+          <span><?= htmlspecialchars($error); ?></span>
+        </div>
+      <?php endif; ?>
+
+      <form method="POST" action="login.php" id="adminLoginForm" autocomplete="on">
+        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']); ?>">
+
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" class="form-control" value="admin"
+                 autocomplete="username" autocapitalize="none" spellcheck="false"
+                 placeholder="your.username" required autofocus>
+        </div>
+
+        <div class="form-group password-group">
+          <label for="password">Password</label>
+          <div class="password-field">
+            <input type="password" id="password" name="password" class="form-control" value="livepro2026"
+                   autocomplete="current-password" placeholder="••••••••" required>
+            <button type="button" class="password-toggle" aria-label="Show password">Show</button>
+          </div>
+          <span class="caps-hint" aria-live="polite">&#9888; Caps Lock is ON</span>
+        </div>
+
+        <button type="submit" class="btn btn-primary login-submit" id="loginSubmit">Login</button>
+      </form>
+
+      <div class="login-footnote">
+        <a href="../index.php">&larr; Back</a>
+        <span>Encrypted session &bull; Authorised staff only</span>
+      </div>
     </div>
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" name="password" value="livepro2026" required>
-    </div>
-    <button type="submit" class="btn">🛡️ Login to Corporate CMS Suite</button>
-  </form>
+  </main>
 
-  <div style="text-align: center; margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-    <a href="../index.php" style="color: #60a5fa; font-size: 0.85rem; text-decoration: none; font-weight: 600;">&larr; Return to Live Public Portal</a>
-  </div>
 </div>
+
+<script>
+/* Password visibility, caps-lock hint and button loading state (self-contained). */
+(function () {
+  var input = document.getElementById('password');
+  var toggle = document.querySelector('.password-toggle');
+  var hint = document.querySelector('.caps-hint');
+  var form = document.getElementById('adminLoginForm');
+  var submit = document.getElementById('loginSubmit');
+
+  if (input && toggle) {
+    toggle.addEventListener('click', function () {
+      var show = input.type === 'password';
+      input.type = show ? 'text' : 'password';
+      toggle.textContent = show ? 'Hide' : 'Show';
+      toggle.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+      input.focus();
+    });
+  }
+
+  if (input && hint) {
+    var checkCaps = function (event) {
+      var on = event.getModifierState && event.getModifierState('CapsLock');
+      hint.classList.toggle('show', !!on);
+    };
+    input.addEventListener('keyup', checkCaps);
+    input.addEventListener('keydown', checkCaps);
+    input.addEventListener('blur', function () { hint.classList.remove('show'); });
+  }
+
+  if (form && submit) {
+    form.addEventListener('submit', function () {
+      submit.classList.add('is-loading');
+      submit.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span> Please wait';
+      submit.disabled = true;
+    });
+  }
+})();
+</script>
 
 </body>
 </html>

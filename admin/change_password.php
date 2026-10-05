@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <input type="password" name="confirm_password" class="form-control" required minlength="6">
                     </div>
                     <div class="d-flex gap-2">
-                        <button type="submit" class="btn btn-livepro">Update Password</button>
+                        <button type="submit" class="btn btn-livepro">Update</button>
                         <a href="<?php echo admin_url('index.php'); ?>" class="btn btn-outline-secondary">Cancel</a>
                     </div>
                 </form>

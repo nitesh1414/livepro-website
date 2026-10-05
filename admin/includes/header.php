@@ -24,9 +24,9 @@ $settings = get_all_settings();
       <img src="../assets/images/logo-LP.png" alt="LIVEpro Geometric Logo" style="height: 42px; width: auto; object-fit: contain;" onerror="this.onerror=null; this.src='/home/user/uploads/logo-LP.png';">
       <div style="display: flex; flex-direction: column; justify-content: center; line-height: 1;">
         <div>
-          <span style="font-family: 'Arial Black', 'Impact', sans-serif; color: #1a85e8; font-size: 1.3rem; font-weight: 900;">LIVE</span><span style="font-family: 'Times New Roman', Georgia, serif; color: #c92020; font-size: 1.3rem; font-weight: bold;">pro</span>
+          <span style="font-family: 'Arial Black', 'Impact', sans-serif; color: var(--primary); font-size: 1.3rem; font-weight: 900;">LIVE</span><span style="font-family: 'Times New Roman', Georgia, serif; color: var(--danger); font-size: 1.3rem; font-weight: bold;">pro</span>
         </div>
-        <span style="font-family: 'Monotype Corsiva', 'Apple Chancery', 'Lucida Calligraphy', cursive; color: #22a316; font-size: 0.75rem; font-style: italic; display: block; margin-top: -2px;">Software Solutions</span>
+        <span style="font-family: 'Monotype Corsiva', 'Apple Chancery', 'Lucida Calligraphy', cursive; color: var(--accent); font-size: 0.75rem; font-style: italic; display: block; margin-top: -2px;">Software Solutions</span>
       </div>
     </div>
   </div>
@@ -46,7 +46,7 @@ $settings = get_all_settings();
       <span>📄 Job Applications</span>
       <?php 
         $unread_apps = count(get_job_applications('new')); 
-        if ($unread_apps > 0) echo "<span class='badge' style='background:#c92020; color:white; margin-left:auto; padding: 2px 8px; border-radius: 99px; font-size: 0.75rem;'>{$unread_apps}</span>";
+        if ($unread_apps > 0) echo "<span class='badge' style='background:var(--danger); color:white; margin-left:auto; padding: 2px 8px; border-radius: 99px; font-size: 0.75rem;'>{$unread_apps}</span>";
       ?>
     </a></li>
     <li><a href="blog.php" class="<?= $admin_page === 'blog' ? 'active' : ''; ?>">📰 Thought Leadership Blog</a></li>
@@ -55,7 +55,7 @@ $settings = get_all_settings();
       <span>📥 CRM Leads Engine</span>
       <?php 
         $unread_inq = count(get_inquiries('new')); 
-        if ($unread_inq > 0) echo "<span class='badge' style='background:#c92020; color:white; margin-left:auto; padding: 2px 8px; border-radius: 99px; font-size: 0.75rem;'>{$unread_inq}</span>";
+        if ($unread_inq > 0) echo "<span class='badge' style='background:var(--danger); color:white; margin-left:auto; padding: 2px 8px; border-radius: 99px; font-size: 0.75rem;'>{$unread_inq}</span>";
       ?>
     </a></li>
   </ul>
@@ -70,16 +70,16 @@ $settings = get_all_settings();
 <main class="admin-main">
   <header class="admin-topbar">
     <div>
-      <h2 style="font-size: 1.4rem; font-weight: 900; margin: 0; color: #0f172a;"><?= htmlspecialchars(ucfirst($admin_page)); ?> Control Panel</h2>
-      <span style="font-size: 0.85rem; color: #64748b;">Managing corporate IT consulting &amp; client projects for <?= htmlspecialchars($settings['company_name'] ?? 'LIVEpro'); ?></span>
+      <h2 style="font-size: 1.4rem; font-weight: 900; margin: 0; color: var(--text-main);"><?= htmlspecialchars(ucfirst($admin_page)); ?> Control Panel</h2>
+      <span style="font-size: 0.85rem; color: var(--text-muted);">Managing corporate IT consulting &amp; client projects for <?= htmlspecialchars($settings['company_name'] ?? 'LIVEpro'); ?></span>
     </div>
 
     <div style="display: flex; align-items: center; gap: 15px;">
       <div style="text-align: right; font-size: 0.85rem;">
-        <strong style="display: block; color: #0f172a;"><?= htmlspecialchars($_SESSION['admin_full_name'] ?? 'System Administrator'); ?></strong>
-        <span style="color: #1a85e8; font-weight: 800;"><?= htmlspecialchars(strtoupper($_SESSION['admin_role'] ?? 'SUPERADMIN')); ?></span>
+        <strong style="display: block; color: var(--text-main);"><?= htmlspecialchars($_SESSION['admin_full_name'] ?? 'System Administrator'); ?></strong>
+        <span style="color: var(--primary); font-weight: 800;"><?= htmlspecialchars(strtoupper($_SESSION['admin_role'] ?? 'SUPERADMIN')); ?></span>
       </div>
-      <a href="logout.php" class="btn" style="background: #c92020; color: white; text-decoration: none; padding: 8px 16px; font-size: 0.85rem; border-radius: 6px; font-weight: 700;">Logout &rarr;</a>
+      <a href="logout.php" class="btn" style="background: var(--danger); color: white; text-decoration: none; padding: 8px 16px; font-size: 0.85rem; border-radius: 6px; font-weight: 700;">Logout</a>
     </div>
   </header>
   <div class="admin-content">

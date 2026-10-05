@@ -16,7 +16,7 @@ $current_admin = basename($_SERVER['PHP_SELF']);
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo assets_url('css/style.css'); ?>">
     <style>
-        .admin-topbar { background: #fff; border-bottom: 1px solid #e0e0e0; padding: 0.75rem 1.5rem; }
+        .admin-topbar { background: #fff; border-bottom: 1px solid var(--border-color); padding: 0.75rem 1.5rem; }
         .admin-content { padding: 1.5rem; }
     </style>
 </head>

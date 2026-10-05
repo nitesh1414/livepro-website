@@ -586,12 +586,12 @@ function display_flash_message() {
         unset($_SESSION['flash_message']);
         
         $colors = [
-            'success' => '#42b72a',
-            'error'   => '#fa383e',
-            'warning' => '#f7b928',
-            'info'    => '#1877f2'
+            'success' => '#2b7d5f',
+            'error'   => '#a34d48',
+            'warning' => '#b5852f',
+            'info'    => '#376a9b'
         ];
-        $bg = isset($colors[$flash['type']]) ? $colors[$flash['type']] : '#1877f2';
+        $bg = isset($colors[$flash['type']]) ? $colors[$flash['type']] : 'var(--primary)';
         
         echo "<div id='serverFlashToast' style='position:fixed; bottom:24px; right:24px; z-index:9999; background:{$bg}; color:white; padding:14px 22px; border-radius:8px; font-weight:600; box-shadow:0 10px 15px -3px rgba(0,0,0,0.2); display:flex; align-items:center; gap:12px; animation:slideInToast 0.3s ease forwards;'>
             <span>" . htmlspecialchars($flash['msg']) . "</span>
@@ -600,4 +600,44 @@ function display_flash_message() {
         <script>setTimeout(() => { const t = document.getElementById('serverFlashToast'); if(t) { t.style.opacity='0'; t.style.transition='all 0.5s'; setTimeout(()=>t.remove(),500); } }, 4500);</script>";
     }
 }
+/**
+ * Normalises a data-driven button/CTA caption to ONE word so every action
+ * label in the portal stays consistent (e.g. "Explore Our Expertise" => "Explore").
+ * Unknown multi-word captions fall back to their leading action word.
+ */
+function livepro_button_label($text, $fallback = 'View') {
+    $text = trim(preg_replace('/\s+/', ' ', (string) $text));
+    if ($text === '') {
+        return $fallback;
+    }
+
+    $map = [
+        'explore our expertise'   => 'Explore',
+        'view clients & projects' => 'Projects',
+        'request consultation'    => 'Consult',
+        'request a consultation'  => 'Consult',
+        'get a quote'             => 'Quote',
+        'get in touch'            => 'Contact',
+        'contact us'              => 'Contact',
+        'learn more'              => 'Explore',
+        'read more'               => 'Read',
+        'view more'               => 'View',
+        'view details'            => 'View',
+        'see more'                => 'View',
+    ];
+    $key = strtolower($text);
+    if (isset($map[$key])) {
+        return $map[$key];
+    }
+
+    if (strpos($text, ' ') === false) {
+        return $text;                       // already a single word
+    }
+
+    // First word, with trailing punctuation removed.
+    $first = preg_split('/\s+/', $text)[0];
+    $first = trim($first, " \t\n\r\0\x0B&;:,.!?-");
+    return $first !== '' ? $first : $fallback;
+}
+
 ?>
