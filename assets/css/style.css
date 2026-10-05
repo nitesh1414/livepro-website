@@ -664,35 +664,79 @@ section { padding: 78px 0; }
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+/* Top bar is a STRICT single row: no wrapping, long items truncate with an
+   ellipsis instead of pushing the social icons onto a second line. */
 .top-bar-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 18px;
   min-height: 44px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .top-bar-contact {
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
+  flex: 1 1 auto;
+  min-width: 0;
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
+
+.top-bar-contact > * { flex: 0 0 auto; }
 
 .top-bar-contact a,
 .top-bar-contact span {
   display: inline-flex;
   align-items: center;
   gap: 7px;
+  min-width: 0;
   color: var(--text-on-dark-muted);
   transition: color var(--speed) var(--ease);
 }
 
-.top-bar-contact a:hover { color: #fff; }
-.top-bar-divider { opacity: 0.28; }
+.top-bar-contact a { text-decoration: none; }
 
-.top-bar-social { display: flex; align-items: center; gap: 8px; }
+/* Every text item stays on one line and shortens gracefully when space runs out */
+.top-bar-item {
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.top-bar-item > .top-bar-text {
+  display: block;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.top-bar-contact svg { flex: 0 0 auto; }
+
+.top-bar-address { flex-shrink: 1; }
+
+.top-bar-contact a:hover { color: #fff; }
+
+.top-bar-divider {
+  opacity: 0.28;
+  flex: 0 0 auto;
+  padding: 0 2px;
+}
+
+.top-bar-social {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;               /* social icons never wrap or shrink */
+  white-space: nowrap;
+}
+
+.top-bar-social > * { flex: 0 0 auto; }
+
+/* Mobile-only quick contact (replaces the top bar when it is hidden) */
+.nav-mobile-contact { display: none; }
 
 .social-icon-btn {
   display: inline-flex;
@@ -719,12 +763,25 @@ section { padding: 78px 0; }
   display: flex;
   align-items: center;
   gap: 14px;
+  flex-wrap: nowrap;
   background: linear-gradient(90deg, var(--primary-soft), #fff 60%, var(--accent-soft));
   border-bottom: 1px solid var(--border-color);
   padding: 10px 22px;
   font-size: 0.88rem;
   color: var(--text-body);
 }
+
+.news-ticker #tickerTextDisplay,
+.news-ticker .ticker-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.news-badge { flex: 0 0 auto; }
+.news-ticker > a { flex: 0 0 auto; }
 
 .news-badge {
   flex: 0 0 auto;
@@ -2239,9 +2296,46 @@ body.setup-body {
   .login-shell { grid-template-columns: 1fr; }
   .login-brand { padding: 46px 32px; }
   .login-brand-art { align-self: flex-start; }
+
+  /* keep the top bar to one comfortable row on tablets */
+  .top-bar-address,
+  .top-bar-divider-address,
+  .top-bar-label { display: none; }
 }
 
 @media (max-width: 900px) {
+  /* MOBILE: the contact/social top bar is hidden completely — quick contact
+     moves into the collapsed menu instead */
+  .top-bar { display: none; }
+
+  .nav-mobile-contact {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .nav-links .nav-mobile-contact a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-full);
+    background: var(--bg-subtle);
+    color: var(--text-body);
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  .nav-links .nav-mobile-contact a:hover {
+    background: var(--primary-soft);
+    border-color: var(--primary-border);
+    color: var(--primary-ink);
+  }
   .hamburger { display: inline-flex; align-items: center; justify-content: center; }
   .nav-container { flex-wrap: wrap; gap: 12px; }
   .nav-links {
@@ -2256,7 +2350,7 @@ body.setup-body {
     transition: max-height 0.4s var(--ease), opacity 0.3s var(--ease), padding 0.3s var(--ease);
   }
   .nav-links.active {
-    max-height: 620px;
+    max-height: 760px;
     opacity: 1;
     padding: 10px 0 16px;
   }
@@ -2276,7 +2370,6 @@ body.setup-body {
   .card, .admin-card, .cms-card, .estimator-widget, .installer-container, .setup-card { padding: 22px; }
   .login-card { padding: 28px 22px; }
   .modal-content { padding: 22px; }
-  .top-bar-contact { font-size: 0.78rem; }
   .hero-stats { grid-template-columns: repeat(2, 1fr); }
   .btn { width: auto; }
   .stats-box { grid-template-columns: repeat(2, 1fr); }

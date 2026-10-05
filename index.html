@@ -31,7 +31,7 @@
     <div class="top-bar">
       <div class="container top-bar-container">
         <div class="top-bar-contact">
-          <a href="tel:+917122740470" title="Call LIVEpro HQ"><svg width="14" height="14" viewBox="0 0 24 24"
+          <a class="top-bar-item top-bar-phone" href="tel:+917122740470" title="Call LIVEpro HQ"><svg width="14" height="14" viewBox="0 0 24 24"
               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
               style="color:var(--on-dark-accent);">
               <path
@@ -39,21 +39,21 @@
               </path>
             </svg> +91-712-274-0470</a>
           <span class="top-bar-divider">|</span>
-          <a href="mailto:admin@liveprosolutions.com" title="Email LIVEpro"><svg width="14" height="14"
+          <a class="top-bar-item top-bar-email" href="mailto:admin@liveprosolutions.com" title="Email LIVEpro"><svg width="14" height="14"
               viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round" style="color:var(--warning);">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
               <polyline points="22,6 12,13 2,6"></polyline>
             </svg> admin@liveprosolutions.com</a>
-          <span class="top-bar-divider">|</span>
-          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          <span class="top-bar-divider top-bar-divider-address">|</span>
+          <span class="top-bar-item top-bar-address" title="G-9B, Sidhhesh Sai Darshan Apartment, Raghuji Nagar, Nagpur, Maharashtra, India"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round" style="color:var(--danger);">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
               <circle cx="12" cy="10" r="3"></circle>
-            </svg> Nagpur, Maharashtra, India</span>
+            </svg> <span class="top-bar-text">Nagpur, Maharashtra, India</span></span>
         </div>
         <div class="top-bar-social">
-          <span style="color: var(--text-on-dark-muted); font-size: 0.8rem;">Connect:</span>
+          <span class="top-bar-label" style="color: var(--text-on-dark-muted); font-size: 0.8rem;">Connect:</span>
           <a href="https://www.linkedin.com/company/livepro-solutions" target="_blank" aria-label="LinkedIn"
             title="LinkedIn" class="social-icon-btn"><svg width="13" height="13" viewBox="0 0 24 24"
               fill="currentColor">
@@ -109,6 +109,10 @@
         <li><a onclick="showPublicView(); scrollToSection('careers')">Careers</a></li>
         <li><a onclick="showPublicView(); scrollToSection('blog')">Insights</a></li>
         <li><a onclick="showPublicView(); scrollToSection('contact')">Contact</a></li>
+        <li class="nav-mobile-contact">
+          <a href="tel:+917122740470" title="Call LIVEpro HQ">📞 +91-712-274-0470</a>
+          <a href="mailto:admin@liveprosolutions.com" title="Email LIVEpro">✉️ Email</a>
+        </li>
       </ul>
 
       <div style="display: flex; align-items: center; gap: 12px;">
